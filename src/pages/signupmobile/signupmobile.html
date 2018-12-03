@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="black">
+    <ion-title>注册</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="shoujihao">
+    <div class="mobile">手机号</div>
+    <input type="number" class="inp1" [(ngModel)]="codeParam.usertel" name="mobilenumber" placeholder="请输入手机号" #phonenum>
+  </div>
+  <div class="yanzhengma">
+    <div class="ident">验证码</div>
+    <input type="number" class="inp2" name="yanzhengma" placeholder="请输入验证码" #matchnum>
+    <button item-right ion-button round [disabled]="!verifyCode.disable" (click)="getCode(phonenum)" class="get">
+      {{verifyCode.verifyCodeTips}}
+    </button>
+  </div>
+  <button type="submit" class="nextone" (click)="finiSign(phonenum,matchnum)">
+    <span>完成</span>
+  </button>
+</ion-content>

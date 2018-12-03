@@ -1,0 +1,36 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding>
+  <img src="../assets/imgs/logo.png" alt="logo">
+  <input type="text" [(ngModel)]="uname" placeholder="用户名" class="inputs" #username>
+  <input type="password" [(ngModel)]="passw" placeholder="密码" class="inputs" #password>
+  <div class="psw">
+    <ion-checkbox [(ngModel)]="isRemember"></ion-checkbox>
+    <p>自动登录</p>
+    <a (click)="forget()">忘记密码？</a>
+  </div>
+  <button (click)="_login(username,password)">登录</button>
+  <a text-center class="signup" (click)="toSign()">还没有账号？点击注册</a>
+  <ion-row text-center>
+    <ion-col>
+      <a href="#">
+        <i class="iconfont" style="color:#f34426;">&#xe64c;</i>
+      </a>
+    </ion-col>
+    <ion-col>
+      <a href="#">
+        <i class="iconfont" style="color:#12864c;">&#xe628;</i>
+      </a>
+    </ion-col>
+    <ion-col>
+      <a href="#">
+          <i class="iconfont" style="color:#a6ec25;">&#xe646;</i>
+      </a>
+    </ion-col>
+  </ion-row>
+</ion-content>

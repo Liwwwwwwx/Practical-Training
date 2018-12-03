@@ -1,0 +1,16 @@
+page-head {
+    .toolbar-title-md {
+        margin-left: -25px;
+    }
+    ion-content{
+        background-color:#ece5da!important;
+        .head{
+            width: 102px;
+            height:102px;
+            border-radius:100%;
+            border: 1px solid ;
+            overflow: hidden;
+            margin:40px auto;
+        }
+    }
+}

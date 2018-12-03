@@ -1,0 +1,30 @@
+page-new {
+    ion-content{
+        background-color:#ece5da!important;
+        span{
+            float: right;
+            font-size: 18px;
+            color: rgba(0, 26, 255, 0.61);
+        }
+        .div1{
+            text-align: center;
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
+            margin: auto;
+            background-color: rgba(235, 231, 175, 0.712)!important;
+            p{
+                color: #fff;
+                text-shadow: 1px 1px 3px black;
+            }
+        }        
+        #text{
+            opacity: 0.7;
+            width: 100%;
+            margin-top: 10px;
+            text-align:center;
+            border:0;
+            background-color: #ece5da!important;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+page-search {
+    ion-content{
+        background-color:#ece5da!important;
+         .searchbar-md .searchbar-input {
+                padding: 6px 55px;
+                border-radius: 2px;
+                background-position: left 7px center;
+                height: auto;
+                width: 280px;
+                font-size: 1.6rem;
+                font-weight: 400;
+                line-height: 2rem;
+                color: #141414;
+                background-color: #fff;
+        } 
+    }
+    div{
+        color:rgb(217, 186, 138);
+        float: left;
+    }
+}

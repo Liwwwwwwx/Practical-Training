@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="dark">
+      <ion-searchbar (click)="goToh()" ></ion-searchbar> 
+  </ion-navbar> 
+</ion-header>
+<ion-content padding >
+  <div class="title">
+      <ion-title >
+        <i class="iconfont">&#xe619;</i>
+        <p>分类</p>
+      </ion-title>
+  </div>
+  <ul class="goods1">
+    <li (click)="goToa()">
+      <img src="assets/imgs/img4.jpg" alt="">
+      <p>[ 原创 ]</p>
+    </li>
+    <li (click)="goTob()">
+      <img src="assets/imgs/img2.jpg" alt="">
+      <p>[ 图文 ]</p>
+    </li>
+    <li (click)="goToc()">
+      <img src="assets/imgs/img3.jpg" alt="">
+      <p>[ 音乐 ]</p>
+    </li>
+    <li (click)="goTod()">
+      <img src="assets/imgs/img1.jpg" alt="">
+      <p>[ 全部 ] </p>
+    </li>
+  </ul>
+  <div class="zhuan">
+      <ion-title >
+        <i class="iconfont">&#xe619;</i>
+        <p>专题</p>
+      </ion-title>
+  </div>
+  <ul class="goods2">
+      <li (click)="goToe()">
+        <img src="assets/imgs/img5.jpg" alt="">
+        <p>童心已逝，童心未泯</p>
+      </li>
+      <li (click)="goTof()">
+          <img src="assets/imgs/img6.jpg" alt="">
+          <p>理想是灯，照亮夜行的路</p>
+      </li>
+      <li (click)="goTog()">
+          <img src="assets/imgs/aiqing5.jpg" alt="">
+          <p>有的爱情，活在你心里</p>
+      </li>
+  </ul> 
+</ion-content>

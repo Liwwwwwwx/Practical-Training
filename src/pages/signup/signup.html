@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="black">
+    <ion-title>注册</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="username">
+    <div class="name">用户名</div>
+    <input type="text" class="inp3" name="yonghuming" placeholder="请输入用户名" #username>
+  </div>
+  <div class="npwd">
+    <div class="new1">新密码</div>
+    <input type="password" class="inp1"  [(ngModel)]="params.newpass" name="pwd" placeholder="请输入新密码" #password>
+  </div>
+  <div class="surenpwd">
+    <div class="new2">再次输入新密码</div>
+    <input type="password" class="inp2" [(ngModel)]="params.sure_pwd" name="surepwd" placeholder="请再次输入新密码">
+  </div>
+  <div class="email">
+    <div class="mail">邮箱</div>
+    <input type="email" class="inp4" name="email" placeholder="请输入邮箱地址" #email>
+  </div>
+  <button type="submit" class="nextone" (click)="doReset(username,password,email)">
+    <span>下一步</span>
+  </button>
+</ion-content>

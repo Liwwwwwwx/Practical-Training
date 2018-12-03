@@ -1,0 +1,25 @@
+page-sign {
+    .toolbar-title-md {
+        margin-left: -25px;
+    }
+    ion-content{
+        background-color:#ece5da!important;
+        #text{
+            width: 90%;
+            height: 20%;
+            display: block;
+            margin: auto;
+            background-color:rgba(217, 186, 138, 0.8);
+        }
+        input{
+            text-align: center;
+            display: block;
+            margin: auto;
+            line-height: 40px;
+            width: 90%;
+            height: 40px;
+            font-size:20px;
+            background-color:rgba(217, 186, 138, 0.5);
+        }
+    }
+}

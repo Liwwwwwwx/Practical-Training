@@ -1,0 +1,30 @@
+page-yuanchuang {
+    ion-header{
+        ion-navbar{
+            .toolbar-title-md {
+                padding: 0 12px;
+                font-size: 2rem;
+                font-weight: 500;
+                color: #424242;
+                margin-left: -10px;
+            }
+        }
+    }
+    li{
+        border: 1px solid #cec2ae;
+        width: 50%;
+        margin-left: 10px;
+        float: left;
+        img{
+            width: 100%;
+            height: 100px;
+        }
+        p{
+            color: #424242;
+        }
+       
+    }
+     .li1{
+            margin-left: -25px;
+        }
+}

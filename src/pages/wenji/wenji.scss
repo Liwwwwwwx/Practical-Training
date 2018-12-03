@@ -1,0 +1,22 @@
+page-wenji {
+    .toolbar-title-md {
+        margin-left: -25px;
+    }
+    ion-content{
+        background-color:#ece5da!important;
+        ul{
+            margin: 20px auto;
+            padding: 0;
+            width: 100%;
+            li{
+                text-align: center;
+                line-height: 90px;
+                width: 45%;
+                height: 90px;
+                float: left;
+                margin: 5px 0 5px 4%;
+                background-color: rgb(240, 236, 185)!important;
+            }
+        }
+    }
+}

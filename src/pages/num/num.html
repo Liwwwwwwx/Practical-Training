@@ -1,0 +1,42 @@
+<!--
+  Generated template for the NumPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title text-center>账号与安全</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <ion-item (click)="goto()">
+          <span class="left">手机号</span>
+          <i class="iconfont" style="float:right;"> <font>未绑定</font>&#xe603;</i>
+        </ion-item>
+        <ion-item  (click)="go()">
+          <span class="left">登录密码</span>
+          <i class="iconfont" style="float:right;"><font>未设置</font>&#xe603;</i>
+        </ion-item>
+     </ion-list>
+     <ion-list>
+        <ion-item (click)="goto()">
+          <span class="left">微信账号</span>
+          <i class="iconfont" style="float:right;"><font>未绑定</font>&#xe603;</i>
+        </ion-item>
+        <ion-item  (click)="go()">
+          <span class="left">微博账号</span>
+          <i class="iconfont" style="float:right;"><font>未绑定</font>&#xe603;</i>
+        </ion-item>
+        <ion-item  (click)="go()">
+            <span class="left">QQ账号</span>
+            <i class="iconfont" style="float:right;"><font>未绑定</font>&#xe603;</i>
+          </ion-item>
+     </ion-list>
+
+</ion-content>

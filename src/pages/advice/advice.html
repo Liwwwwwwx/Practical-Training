@@ -1,0 +1,41 @@
+<!--
+  Generated template for the AdvicePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title text-center>意见反馈</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <p style="font-size:14px;letter-spacing:1px;margin-left:15px;">请选择问题出现的场景</p>
+    <ion-list>
+        <ion-item (click)="go()">
+          <span class="left">闪退/卡顿</span>
+          <i class="iconfont" style="float:right;"><font>页面闪退、卡顿</font>&#xe603;</i>
+        </ion-item>
+        <ion-item (click)="go()">
+          <span class="left">拍摄发布</span>
+          <i class="iconfont" style="float:right;"><font>图片、音乐发布问题</font>&#xe603;</i>
+        </ion-item>
+        <ion-item (click)="go()">
+          <span class="left">关注/评论</span>
+          <i class="iconfont" style="float:right;"><font>关注、评论</font>&#xe603;</i>
+        </ion-item>
+        <ion-item (click)="go()">
+          <span class="left">个人中心</span>
+          <i class="iconfont" style="float:right;"><font>账号注销、资料不显示</font>&#xe603;</i>
+        </ion-item>
+        <ion-item (click)="go()">
+            <span class="left">其他</span>
+            <i class="iconfont" style="float:right;"><font>点赞、收藏、分享</font>&#xe603;</i>
+          </ion-item>
+      </ion-list>
+
+</ion-content>
