@@ -1,0 +1,30 @@
+<!--
+  Generated template for the PublishPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content padding>
+
+    <!-- 叉号   -->
+    <ion-icon name="close" class="close" (click)="goHome()"></ion-icon>
+    <p style="text-align:center;font-size:14px;margin-top:1px;color:gray;">选择您要发布的类型</p>
+    <!-- 文字 -->
+    <button ion-button icon-only class="words" (click)="goPubwords()">
+        <i class="iconfont">&#xe670;</i>
+    </button>
+    <p style="text-align:center;font-size:16px;">文字</p>
+    <!-- 图片 -->
+    <button ion-button icon-only class="photo" (click)="goPubphoto()">
+        <i class="iconfont">&#xe63e;</i>
+      </button>
+      <p style="text-align:center;font-size:16px;">图片</p>
+    <!-- 音乐 -->
+    <button ion-button icon-only class="photo" (click)="goPubmusic()">
+        <i class="iconfont">&#xe63c;</i>
+      </button>
+      <p style="text-align:center;font-size:16px;">音乐</p>
+
+</ion-content>

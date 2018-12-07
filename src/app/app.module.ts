@@ -6,6 +6,8 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { PublishPage } from '../pages/publish/publish';
+import { SavewenjiPage } from '../pages/savewenji/savewenji';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ChangepasswordPage } from '../pages/changepassword/changepassword';
 import { ChangepasswordemailPage } from '../pages/changepasswordemail/changepasswordemail';
@@ -17,6 +19,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { SignupmobilePage } from '../pages/signupmobile/signupmobile';
 import { MyPage } from '../pages/my/my';
 import { ShezhiPage } from '../pages/shezhi/shezhi';
+import { TologinPage } from '../pages/tologin/tologin';
 import { WePage } from '../pages/we/we';
 import { FunPage } from '../pages/fun/fun';
 import { HelpPage } from '../pages/help/help';
@@ -46,6 +49,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera} from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
+import { PwordsPage } from '../pages/pwords/pwords';
+import { PphotoPage } from '../pages/pphoto/pphoto';
+import { PmusicPage } from '../pages/pmusic/pmusic';
 
 @NgModule({
   declarations: [
@@ -53,9 +59,15 @@ import { HttpClientModule } from '@angular/common/http';
     AboutPage,
     ContactPage,
     HomePage,
+    PublishPage,
+    PwordsPage,
+    PphotoPage,
+    PmusicPage,
+    SavewenjiPage,
     TabsPage,
     MyPage,
     ShezhiPage,
+    TologinPage,
     WePage,
     FunPage,
     HelpPage,
@@ -105,9 +117,15 @@ import { HttpClientModule } from '@angular/common/http';
     AboutPage,
     ContactPage,
     HomePage,
+    PublishPage,
+    PwordsPage,
+    PphotoPage,
+    PmusicPage,
+    SavewenjiPage,
     TabsPage,
     MyPage,
     ShezhiPage,
+    TologinPage,
     WePage,
     FunPage,
     HelpPage,
