@@ -32,6 +32,10 @@ export class ChangepasswordnewPage {
       this.showToast('middle','请输入新的密码！');
       return ;
     }
+    if( this.params.newpass.length<6 || this.params.newpass.length > 20) {
+      this.showToast('middle','新密码的长度为6到20位！');
+      return ;
+    }
     if (this.params.newpass == this.params.sure_pwd) {
       this.showToast('middle','恭喜您修改成功！');
       setTimeout(()=>{

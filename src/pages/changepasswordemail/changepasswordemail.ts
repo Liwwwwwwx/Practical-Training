@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController,ToastController } from 'ionic-angular';
 import { ChangepasswordnewPage } from '../changepasswordnew/changepasswordnew';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 /**
  * Generated class for the ChangepasswordemailPage page.
  *
@@ -15,8 +15,9 @@ import { ChangepasswordnewPage } from '../changepasswordnew/changepasswordnew';
   templateUrl: 'changepasswordemail.html',
 })
 export class ChangepasswordemailPage {
-
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  // matchCode:any;// 验证码
+  private headers = new HttpHeaders({'Content-Type':'application/json'});
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public http: HttpClient) {
   }
 
   ionViewDidLoad() {
@@ -62,8 +63,24 @@ export class ChangepasswordemailPage {
   
     this.verifyCode.disable = false;
     this.settime();
+	/* 该部分需要进行post请求，需要时去掉注释
+	// 发送验证码
+    this.http.post('/mail',{mail:mail.value} ,{
+      headers : this.headers,
+      observe : 'body',
+      responseType : 'json'
+    }).subscribe( data => {
+      this.matchCode = '' + data;
+      console.log('typeof matchCode:',typeof this.matchCode);
+      console.log(this.matchCode);
+    });
+    console.log('已发送！');
+	*/
   }
+
   toNew(mail: HTMLInputElement, matchnum: HTMLInputElement) {
+    console.log('typeof matchnum.value:',typeof matchnum.value);
+    console.log(matchnum.value);
     if(! mail.value) {
       this.showToast('middle','请输入邮箱！');
       return ;
@@ -75,6 +92,12 @@ export class ChangepasswordemailPage {
       this.showToast('middle','请输入验证码！');
       return ;
     }
+	/*
+    if(matchnum.value !== this.matchCode){
+      this.showToast('middle','验证码输入错误！');
+      return ;
+    }
+	*/
     this.navCtrl.push(ChangepasswordnewPage);
   }
   // 提示信息
