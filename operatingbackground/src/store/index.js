@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import request from '@/http/request.js'
 import URL from '@/http/url.js'
-import axios from 'axios'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -22,7 +21,7 @@ export default new Vuex.Store({
     username: "用户名",
     password: "密码",
     userposition: "系统管理员",
-    data: []
+    data: [],
   },
   mutations: {
     pageChange(state, index) {
@@ -30,39 +29,55 @@ export default new Vuex.Store({
     },
     setData(state, payload) {
       state.data = payload
-      console.log(state.data)
-    }
+    },
   },
   actions: {
-    // getdata({ commit }) {
-    //   var instance = axios.create({
-    //     headers: {'content-type': 'application/x-www-form-urlencoded'}
-    // });
-    // instance.get(URL.data).then(res => {
-    //   commit('setData',res.data)
-    //   res.data
-    // });
+    // getdata({
+    //   commit
+    // }) {
+    //   return  request({
+    //       url: URL.userdata
+    //     })
+    //     .then(res => {
+    //       commit('setData', res.data)
+    //       console.log(res)
+    //       return res
+    //     })
     // },
-    async getdata({
+
+    addOne({
       commit
-    }) {
-      return await request({
-          url: URL.userdata
+    }, data) {
+      return request({
+          url: URL.userdata + '/add',
+          method: 'post',
+          data: {
+            item: JSON.stringify(data)
+          }
         })
         .then(res => {
           commit('setData', res.data)
+          console.log(res.data)
           return res
         })
     },
-    // deletedata({commit}) {
-    //   var instance = axios.create({
-    //   headers: {'content-type': 'application/x-www-form-urlencoded'}
-    // })
-    //   instance.delete(URL.data,use).then(res =>{
-    //     commit('setData',res.data)
-    //     return res
-    //   })
-    // }
+
+    deletedata({
+      commit
+    }, data) {
+      return request({
+          url: URL.userdata + '/del',
+          method: 'post',
+          data: {
+            userid: data
+          }
+        })
+        .then(res => {
+          commit('setData', res.data)
+          console.log(res.data)
+          return res
+        })
+    },
   }
 
 })

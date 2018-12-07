@@ -86,7 +86,7 @@ export default {
   },
   created() {
     this.nowTimes();
-    this.$store.dispatch("getdata")
+    // this.$store.dispatch("getdata")
   },
   mounted() {
     this.nowTimes();

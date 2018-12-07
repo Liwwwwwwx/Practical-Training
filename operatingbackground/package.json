@@ -17,10 +17,14 @@
     "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.4.10",
     "element-vue": "^0.1.0",
+    "file-saver": "^2.0.0",
     "lru-cache": "^5.1.1",
+    "qs": "^6.6.0",
     "vue": "^2.5.2",
+    "vue-axios": "^2.1.4",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "xlsx": "^0.14.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

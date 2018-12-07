@@ -9,6 +9,7 @@ import file from '@/pages/file'
 import system from '@/pages/system'
 import opinion from '@/pages/opinion'
 import login from '@/pages/login'
+import eidt from '@/pages/user/eidt'
 Vue.use(Router)
 
 export default new Router({
@@ -26,7 +27,12 @@ export default new Router({
     {
       path:'/user',
       name:'user',
-      component:user
+      component:user,
+    },
+    {
+      path:'/note/eidt',
+      name:'eidt',
+      component:eidt,
     },
     {
       path:'/note',

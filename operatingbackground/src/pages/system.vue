@@ -85,7 +85,7 @@
 <script>
 import BasePage from "@/components/BasePage";
 export default {
-  name: "system",
+  name: "opinion",
 
   components: {
     "base-page": BasePage

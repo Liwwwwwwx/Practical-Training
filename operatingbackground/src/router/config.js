@@ -40,10 +40,12 @@ const PathConfig = {
     "0":'/',
     "1":"/home",
     "2":"/user",
+    "2-1":"/user/eidt",
     "3":"/note",
     "4":"/file",
     "5":"/system",
     "6":"/opinion",
+
 }
 
 export {
