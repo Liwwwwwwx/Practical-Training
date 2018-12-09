@@ -1,0 +1,8 @@
+{
+  "host": "localhost",
+  "user": "root",
+  "password": "ddd",
+  "database": "data",
+  "connectionLimit": 10,
+  "supportBigNumbers": true
+}
