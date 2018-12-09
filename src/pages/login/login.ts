@@ -22,7 +22,7 @@ export class LoginPage {
   uname: string = "";
   passw: string = "";
 
-  // private headers = new HttpHeaders({'Content-Type':'application/json'});// 请求头
+  private headers = new HttpHeaders({'Content-Type':'application/json'});// 请求头
 
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
@@ -60,9 +60,9 @@ export class LoginPage {
 
     // 验证是否正确
 	
-	/*
-	该部分需要进行post请求，需要时去除注释
-    this.http.post('/login', {name: username.value, psw: password.value} ,{
+	
+	//该部分需要进行post请求，需要时去除注释
+    this.http.post('/login/login', {name: username.value, psw: password.value} ,{
       headers : this.headers,
       observe : 'body',
       // params : {name: username.value, psw: password.value},
@@ -78,10 +78,10 @@ export class LoginPage {
         this.navCtrl.setRoot(TabsPage, data);
       }
     });
-	*/
+	
 	
     // console.log(username.value,password.value,this.isRemember,this.storage);
-	this.navCtrl.setRoot(TabsPage, data);// 块级注释去掉时，该语句注释
+	// this.navCtrl.setRoot(TabsPage, data);// 块级注释去掉时，该语句注释
   }
   
   // 提示信息

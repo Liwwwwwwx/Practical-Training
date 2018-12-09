@@ -11,6 +11,9 @@ page-about {
         background-color: #fff;
         
     }
+    .searchbar-md .searchbar-search-icon {
+        top:7px;
+    }
     ion-content{
         background-color:#ece5da !important;
         padding: 0 !important;
@@ -24,14 +27,17 @@ page-about {
                 float: left;
             }
             p{
-                position: absolute;
+                // position: absolute;
+                padding: 0;
+                margin: 0;
                 width: 80%;
                 font-size: 18px;    
                 color: #fff;
                 height: 30px;
                 line-height: 30px;
-                margin-left: 25px;
-                margin-top: -8px;  
+                padding-left:3rem;
+                // margin-left: 25px;
+                // margin-top: -8px;  
             }
         }
         .zhuan{
@@ -43,15 +49,14 @@ page-about {
                 float: left;
             }
             p{
-                position: absolute;
+                padding: 0;
+                margin: 0;
                 width: 80%;
                 font-size: 18px;    
                 color: #fff;
                 height: 30px;
                 line-height: 30px;
-                margin-left: 25px;
-                margin-top: -7px;
-               
+                padding-left:3rem;
             }
            
             

@@ -15,7 +15,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   templateUrl: 'changepasswordemail.html',
 })
 export class ChangepasswordemailPage {
-  // matchCode:any;// 验证码
+  matchCode:any;// 验证码
   private headers = new HttpHeaders({'Content-Type':'application/json'});
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public http: HttpClient) {
   }
@@ -63,7 +63,7 @@ export class ChangepasswordemailPage {
   
     this.verifyCode.disable = false;
     this.settime();
-	/* 该部分需要进行post请求，需要时去掉注释
+	//该部分需要进行post请求，需要时去掉注释
 	// 发送验证码
     this.http.post('/mail',{mail:mail.value} ,{
       headers : this.headers,
@@ -75,7 +75,7 @@ export class ChangepasswordemailPage {
       console.log(this.matchCode);
     });
     console.log('已发送！');
-	*/
+	
   }
 
   toNew(mail: HTMLInputElement, matchnum: HTMLInputElement) {

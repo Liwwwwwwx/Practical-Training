@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { ChangepasswordnewPage } from '../changepasswordnew/changepasswordnew';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 /**
  * Generated class for the ChangepasswordmobilePage page.
  *
@@ -15,8 +15,9 @@ import { ChangepasswordnewPage } from '../changepasswordnew/changepasswordnew';
   templateUrl: 'changepasswordmobile.html',
 })
 export class ChangepasswordmobilePage {
-
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  matchCode:any;// 验证码
+  private headers = new HttpHeaders({'Content-Type':'application/json'});
+  constructor(public http: HttpClient,public navCtrl: NavController, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -57,7 +58,23 @@ export class ChangepasswordmobilePage {
       this.showToast('middle','请输入正确的手机号格式！');
       return ;
     }
+    
+    //发送验证码成功后开始倒计时
   
+    this.verifyCode.disable = false;
+    this.settime();
+	//该部分需要进行post请求，需要时去掉注释
+	// 发送验证码
+    this.http.post('/phonecode', {phone:phonenum.value},{
+      headers : this.headers,
+      observe : 'body',
+      responseType : 'json'
+    }).subscribe( data => {
+      this.matchCode = '' + data;
+      console.log('typeof matchCode:',typeof this.matchCode);
+      console.log(this.matchCode);
+    });
+    console.log('已发送！');
     //发送验证码成功后开始倒计时
   
     this.verifyCode.disable = false;
