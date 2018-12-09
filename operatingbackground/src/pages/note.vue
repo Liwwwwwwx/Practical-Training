@@ -25,7 +25,7 @@
                 <el-button type="primary" @click="getUser">搜索</el-button>
               </el-form-item>
               <el-form-item>
-                <el-button type="primary" @click="getUser">添加</el-button>
+                <el-button type="primary" @click="get">添加</el-button>
               </el-form-item>
               <el-form-item>
                 <el-button type="primary" @click="exportExcel">导出</el-button>
@@ -34,19 +34,22 @@
           </el-col>
         </el-col>
         <div class="my-el-table">
-          <el-table id="out-table" :data="data" stripe border style="width:100%" v-loading="listLoading">
+          <el-table
+            id="out-table"
+            :data="data"
+            stripe
+            border
+            style="width:100%"
+            v-loading="listLoading"
+          >
             <el-table-column prop="noteid" label="文章ID"></el-table-column>
             <el-table-column prop="anthologyid" label="所属文集ID"></el-table-column>
             <el-table-column prop="notecategory" label="文章类别"></el-table-column>
-            <el-table-column prop="notecontent" label="文章内容" width="400"  ></el-table-column>
+            <el-table-column prop="notecontent" label="文章内容" width="400"></el-table-column>
             <el-table-column prop="isnoteoriginal" label="是否原创"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="props">
-                <el-button
-                  size="small"
-                  type="primary"
-                  @click="lookUser(props.row)"
-                >查看</el-button>
+                <el-button size="small" type="primary" @click="lookUser(props.row)">查看</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -93,9 +96,13 @@ export default {
   },
   mounted() {
     //初始化
-    this.typeInfo(); //分类初始化
-    this.userInfo(); //用户初始化列表
-    this.totalInfo();
+    if (this.$store.state.isLogin) {
+      this.typeInfo(); //分类初始化
+      this.userInfo(); //用户初始化列表
+      this.totalInfo();
+    } else {
+      this.$router.push({ path: "/" });
+    }
   },
   methods: {
     getUser() {
@@ -110,7 +117,18 @@ export default {
         { value: 4, label: "音乐" }
       ];
     },
-
+    get() {
+      return request({
+        url: URL.mail,
+        method: "POST",
+        data: {
+          mail: "1076843408@qq.com"
+        }
+      }).then(res => {
+        console.log(res);
+        return res;
+      });
+    },
     //数据初始化
     userInfo() {
       return request({
@@ -135,15 +153,13 @@ export default {
     },
     //查看用户信息
     lookUser(data) {
-       localStorage.setItem("key", JSON.stringify(data));
+      localStorage.setItem("key", JSON.stringify(data));
       const obj = JSON.parse(localStorage.getItem("key"));
       this.$router.push({
         path: "/note/eidt",
         name: "eidt",
         params: { notedata: obj }
       });
-   
-
     },
     exportExcel() {
       /* generate workbook object from table */
@@ -194,7 +210,7 @@ export default {
   padding: 0.6rem 0 !important;
   text-align: center;
 }
-.el-table__row{
+.el-table__row {
   height: 2rem;
 }
 .el-pagination {

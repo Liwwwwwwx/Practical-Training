@@ -3,6 +3,7 @@ const URL = {
     userdata: `${prefix}/userdata`,
     upload:`${prefix}/upload`,
     notedata:`${prefix}/notedata`,
-
+    mail:`${prefix}/mail`,
+    login:`${prefix}/login`,
 }
 export default URL

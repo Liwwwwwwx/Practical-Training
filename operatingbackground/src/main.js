@@ -8,7 +8,7 @@ import store from './store'
 import qs from 'qs'
 import echarts from 'echarts'
 import 'element-ui/lib/theme-chalk/index.css';
-
+import './assets/icon/iconfont.css'
 
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts

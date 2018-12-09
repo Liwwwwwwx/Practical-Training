@@ -2,21 +2,21 @@
   <base-page index="2">
     <template slot="content">
       <el-col :span="24" class="warp-breadcrum">
-          <!--搜索栏-->
-          <el-col :span="24" class="toolbar">
-            <el-form :inline="true">
-              <el-form-item>
-                <!-- <el-button type="primary" @click="getUser">搜索</el-button> -->
-              </el-form-item>
-              <el-form-item>
-                <!-- <el-button type="primary" @click="getUser">添加</el-button> -->
-              </el-form-item>
-              <el-form-item>
-                <el-button type="primary" @click="exportExcel">导出</el-button>
-              </el-form-item>
-            </el-form>
-          </el-col>
+        <!--搜索栏-->
+        <el-col :span="24" class="toolbar">
+          <el-form :inline="true">
+            <el-form-item>
+              <!-- <el-button type="primary" @click="getUser">搜索</el-button> -->
+            </el-form-item>
+            <el-form-item>
+              <!-- <el-button type="primary" @click="getUser">添加</el-button> -->
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="exportExcel">导出</el-button>
+            </el-form-item>
+          </el-form>
         </el-col>
+      </el-col>
       <el-table
         id="out-table"
         :data="userdata"
@@ -119,19 +119,18 @@ export default {
     };
   },
   beforeCreate() {
-    if (!this.userdata) {
+    if(this.$store.state.isLogin){
       return request({
-        url: URL.userdata
-      }).then(res => {
-        localStorage.setItem("datas", JSON.stringify(res.data));
-        const obj = JSON.parse(localStorage.getItem("datas"));
-        this.userdata = JSON.parse(localStorage.getItem("datas"));
-        console.log(this.userdata);
-        return res;
-      });
-    } else {
+      url: URL.userdata
+    }).then(res => {
+      localStorage.setItem("datas", JSON.stringify(res.data));
+      const obj = JSON.parse(localStorage.getItem("datas"));
       this.userdata = JSON.parse(localStorage.getItem("datas"));
       console.log(this.userdata);
+      return res;
+    });
+    }else {
+      this.$router.push({path:'/'});
     }
   },
   methods: {

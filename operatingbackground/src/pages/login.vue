@@ -1,25 +1,24 @@
 <template>
-    <div class="container" :style="backgroundDiv">
-       <div class="login">
-           <div>
-               <p style="font-size:46px;font-weight:solid;">{{Timenow}}</p>
-               <p style="font-size:10px;">{{Datenow}} <span>{{Weeknow}}</span> </p>
-           </div>
-            <div style="height:100px;display:flex;flex-direction:column;justify-content:space-around;">
-                <el-input
-                :placeholder="$store.state.username"
-                v-model="username">
-                <i slot="prefix" class="el-input__icon el-icon-search"></i>
-                </el-input>
-                <el-input
-                :placeholder="$store.state.password"
-                v-model="password">
-                <i slot="prefix" class="el-input__icon el-icon-search"></i>
-                </el-input>
-            </div>
-            <el-button style="width:100%;" type="primary" @click="loginsuccess">立即登陆</el-button>
-       </div>
+  <div class="container" :style="backgroundDiv">
+    <div class="login">
+      <div>
+        <p style="font-size:46px;font-weight:solid;">{{Timenow}}</p>
+        <p style="font-size:10px;">
+          {{Datenow}}
+          <span>{{Weeknow}}</span>
+        </p>
+      </div>
+      <div style="height:100px;display:flex;flex-direction:column;justify-content:space-around;">
+        <el-input :placeholder="$store.state.username" v-model="userInfo.username">
+          <i slot="prefix" class="el-input__icon el-icon-ali-user"></i>
+        </el-input>
+        <el-input type="password" :placeholder="$store.state.password" v-model="userInfo.password">
+          <i slot="prefix" class="el-input__icon el-icon-ali-password"></i>
+        </el-input>
+      </div>
+      <el-button style="width:100%;" type="primary" @click="loginsuccess()">立即登陆</el-button>
     </div>
+  </div>
 </template>
 <script>
 import { PathConfig } from "@/router/config";
@@ -30,12 +29,14 @@ export default {
       backgroundDiv: {
         backgroundImage: "url(" + require("../../static/bg.png") + ")"
       },
-      paths:PathConfig,
+      paths: PathConfig,
       Datenow: "",
       Timenow: "",
       Weeknow: "",
-      username: "",
-      password: ""
+      userInfo: {
+        username: "",
+        password: ""
+      }
     };
   },
   methods: {
@@ -57,31 +58,39 @@ export default {
         new Date(timeStamp).getMinutes() < 10
           ? "0" + new Date(timeStamp).getMinutes()
           : new Date(timeStamp).getMinutes();
-      if(new Date(timeStamp).getDay()==1){
-          this.Weeknow = '星期一'
-      }else if(new Date(timeStamp).getDay()==2){
-          this.Weeknow = '星期二'
-      }else if(new Date(timeStamp).getDay()==3){
-          this.Weeknow = '星期三'
-      }else if(new Date(timeStamp).getDay()==4){
-          this.Weeknow = '星期四'
-      }else if(new Date(timeStamp).getDay()==5){
-          this.Weeknow = '星期五'
-      }else if(new Date(timeStamp).getDay()==6){
-          this.Weeknow = '星期六'
-      }else{
-          this.Weeknow = '星期日'
+      if (new Date(timeStamp).getDay() == 1) {
+        this.Weeknow = "星期一";
+      } else if (new Date(timeStamp).getDay() == 2) {
+        this.Weeknow = "星期二";
+      } else if (new Date(timeStamp).getDay() == 3) {
+        this.Weeknow = "星期三";
+      } else if (new Date(timeStamp).getDay() == 4) {
+        this.Weeknow = "星期四";
+      } else if (new Date(timeStamp).getDay() == 5) {
+        this.Weeknow = "星期五";
+      } else if (new Date(timeStamp).getDay() == 6) {
+        this.Weeknow = "星期六";
+      } else {
+        this.Weeknow = "星期日";
       }
-      this.Timenow = hh + ":" + mm
-      this.Datenow = year + "-" + month + "-" + date
+      this.Timenow = hh + ":" + mm;
+      this.Datenow = year + "-" + month + "-" + date;
     },
     nowTimes() {
-      this.timeFormate(new Date())
-      setInterval(this.nowTimes, 30 * 1000)
+      this.timeFormate(new Date());
+      setInterval(this.nowTimes, 30 * 1000);
     },
     loginsuccess() {
-       let routePath = this.paths[1]; 
-      this.$router.push(routePath);
+      this.$store.dispatch("loginIn", this.userInfo).then(res => {
+        if (res.data.isLogin) {
+          let routePath = this.paths[1];
+          this.$router.push(routePath);
+        } else {
+          this.$alert("用户名或者密码错误，请重新输入", "提示：", {
+            confirmButtonText: "确定"
+          });
+        }
+      });
     }
   },
   created() {
