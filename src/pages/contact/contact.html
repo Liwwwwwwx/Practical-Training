@@ -1,17 +1,33 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>
-      Contact
+    消息
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+ <!-- <ul class="navList">
+   <li >
+     通知
+   </li>
+   <li>消息</li>
+ </ul> -->
+
+
+  <ul class="navList">
+    <li *ngFor="let item of arr;let idx=index" (click)="isClick(idx)" [class.first]="isActive==idx">{{item}}</li>
+  
+  </ul> 
+<div [ngSwitch]="isActive">
+    <div *ngSwitchCase="0">
+        
+    </div>
+    <div *ngSwitchCase="1">
+      
+    </div>
+   
+</div>
 </ion-content>
+  
+ 

@@ -1,3 +1,24 @@
 page-contact {
-
+    ion-title{
+        text-align: center;
+    }
+    .navList{
+        padding-left: 0!important;
+        margin: 0;
+        height: 44px;
+        line-height: 44px;
+        .first{
+            border-bottom:2px solid #ffdb2c;
+            background-color: #ece5da !important;
+        }
+        li{
+            height: 44px;
+            text-align: center;
+            float: left;
+            width: 50%;
+        }
+    }
+    ion-content{
+        background-color: #ece5da !important;
+    }
 }
