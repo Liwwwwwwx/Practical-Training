@@ -7,8 +7,8 @@
 6 silly lifecycle api@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle api@0.0.0~start: api@0.0.0
 8 verbose lifecycle api@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle api@0.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/wangding/serve/APIServes/api/node_modules/.bin:/usr/local/bin:/usr/bin:/home/wangding/bin:/usr/local/sbin:/usr/sbin:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/npm:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/colored-man-pages:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/colorize:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/github:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/z:/home/wangding/.antigen/bundles/zsh-users/zsh-autosuggestions:/home/wangding/.antigen/bundles/zsh-users/zsh-completions:/home/wangding/.antigen/bundles/zsh-users/zsh-syntax-highlighting
-10 verbose lifecycle api@0.0.0~start: CWD: /home/wangding/serve/APIServes/api
+9 verbose lifecycle api@0.0.0~start: PATH: /usr/lib/node_modules/npm/bin/node-gyp-bin:/home/wangding/suoji/APIServes/api/node_modules/.bin:/usr/local/bin:/usr/bin:/home/wangding/bin:/usr/local/sbin:/usr/sbin:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/npm:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/colored-man-pages:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/colorize:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/github:/home/wangding/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/z:/home/wangding/.antigen/bundles/zsh-users/zsh-autosuggestions:/home/wangding/.antigen/bundles/zsh-users/zsh-completions:/home/wangding/.antigen/bundles/zsh-users/zsh-syntax-highlighting
+10 verbose lifecycle api@0.0.0~start: CWD: /home/wangding/suoji/APIServes/api
 11 silly lifecycle api@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle api@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle api@0.0.0~start: Failed to exec start script
@@ -23,7 +23,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:886:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid api@0.0.0
-16 verbose cwd /home/wangding/serve/APIServes/api
+16 verbose cwd /home/wangding/suoji/APIServes/api
 17 error Linux 3.10.0-514.el7.x86_64
 18 error argv "/usr/bin/node" "/usr/bin/npm" "start"
 19 error node v6.10.1

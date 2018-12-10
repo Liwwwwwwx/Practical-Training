@@ -67,7 +67,7 @@ router.all('/paging', (req,res)=>{
   if(param.page == '' || param.page == null || param.page == undefined) {
     res.end(JSON.stringify({
       msg: '请传入参数page',
-      status: '102'
+      status: '101'
     }));
     return ;
   }

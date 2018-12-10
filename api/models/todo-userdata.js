@@ -26,10 +26,24 @@ class TodoUserData{
       callback(false,results);
     })
   }
+  
+  getCount(callback){
+    const sql = 'SELECT count(userid) count from user';
 
-  insertOne(id, name, gender, phone, date, birth, fans, follow, anthologycount, note, password, autograph, qq, wechat, callback) {
-    const sql = 'INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)'
-      db.query(sql,[id, name. gender, phone, date, birth, fans, follow, anthologycount, note, password, autograph, qq, wechat],(err,results)=>{
+    var count = 0;
+    db.query(sql, (err,results)=> {
+      if(err) {
+        callback(true);
+        return ;
+      }
+      count = results;
+      callback(false, count);
+    })
+  }
+
+  insertOne(id, name, password, phone, email, callback) {
+    const sql = 'INSERT INTO user (userid,username,password,phoneNumber,microblog) VALUES (?,?,?,?,?)'
+      db.query(sql,[id, name, password, phone, email],(err,results)=>{
         if(err){
           callback(true);
           return ;

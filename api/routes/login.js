@@ -24,11 +24,23 @@ router.post('/login', function (req, res) {
   var psw = req.body.psw;
   for (var i = 0; i < users.length; i++) {
     if(users[i].name == name && users[i].psw == psw) {
-      res.send(true);
+      res.send(JSON.stringify({
+        data:{
+          username:name,
+          password:psw
+        },
+        isLogin:true,
+        status:'200',
+        msg:'登陆成功'
+      }));
       return ;                       
     }
   }
-  res.send(false);
+  res.send(JSON.stringify({
+    isLogin:false,
+    msg:'用户名密码错误',
+    status:'102'
+  }));
 });
 
 module.exports = router;
