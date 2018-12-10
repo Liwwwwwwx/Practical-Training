@@ -21,7 +21,7 @@ export default new Vuex.Store({
     username: "用户名",
     password: "密码",
     userposition: "系统管理员",
-    isLogin:false,
+    isLogin: false,
     data: [],
   },
   mutations: {
@@ -34,7 +34,9 @@ export default new Vuex.Store({
     setUser(state, payload) {
       state.username = payload.username;
       state.password = payload.password;
-      state.isLogin = payload.isLogin;
+      localStorage.setItem("isLogin", payload.isLogin)
+      state.isLogin = localStorage.getItem("isLogin");
+      console.log(state.isLogin)
     }
   },
   actions: {
@@ -50,13 +52,15 @@ export default new Vuex.Store({
     //       return res
     //     })
     // },
-    async loginIn({commit},data) {
-       return await request({
+    async loginIn({
+      commit
+    }, data) {
+      return await request({
         url: URL.login + "/login",
         method: "POST",
         data: {
-          name:data.username,
-          psw:data.password
+          name: data.username,
+          psw: data.password
         }
       }).then(res => {
         commit('setUser', res.data);
@@ -77,13 +81,13 @@ export default new Vuex.Store({
         .then(res => {
           commit('setData', res.data)
           console.log(res.data)
-          if(res.data.isLogin){
-            let routePath = this.paths[1]; 
+          if (res.data.isLogin) {
+            let routePath = this.paths[1];
             this.$router.push(routePath);
-          }else {
+          } else {
             this.$alert('用户名或者密码错误，请重新输入', '提示：', {
               confirmButtonText: '确定',
-            
+
             });
           }
           return res

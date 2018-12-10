@@ -119,14 +119,15 @@ export default {
     };
   },
   beforeCreate() {
-    if(this.$store.state.isLogin){
+    const islogin = localStorage.getItem("isLogin");
+    if(islogin){
       return request({
       url: URL.userdata
     }).then(res => {
-      localStorage.setItem("datas", JSON.stringify(res.data));
+      localStorage.setItem("datas", JSON.stringify(res.data.data));
       const obj = JSON.parse(localStorage.getItem("datas"));
       this.userdata = JSON.parse(localStorage.getItem("datas"));
-      console.log(this.userdata);
+      console.log(res.data.data);
       return res;
     });
     }else {

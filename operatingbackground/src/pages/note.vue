@@ -96,7 +96,8 @@ export default {
   },
   mounted() {
     //初始化
-    if (this.$store.state.isLogin) {
+    const islogin = localStorage.getItem("isLogin");
+    if (islogin) {
       this.typeInfo(); //分类初始化
       this.userInfo(); //用户初始化列表
       this.totalInfo();
@@ -119,10 +120,14 @@ export default {
     },
     get() {
       return request({
-        url: URL.mail,
+        url: URL.userdata + "/add",
         method: "POST",
         data: {
-          mail: "1076843408@qq.com"
+          id: 1008,
+          name: "李文轩",
+          password: "123456",
+          phone: "15232780628",
+          email: "1076843408@qq.com"
         }
       }).then(res => {
         console.log(res);
