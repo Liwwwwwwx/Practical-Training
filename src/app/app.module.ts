@@ -167,3 +167,4 @@ import { PmusicPage } from '../pages/pmusic/pmusic';
   ]
 })
 export class AppModule {}
+//提交home页面和消息和发现页面

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { App,NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,ModalController} from 'ionic-angular';
 import { WePage } from '../we/we';
 import { AdvicePage } from '../advice/advice';
 import { NumPage } from '../num/num';
-import { LoginPage } from '../login/login';
+import { TologinPage } from '../tologin/tologin';
 /**
  * Generated class for the ShezhiPage page.
  *
@@ -18,7 +18,7 @@ import { LoginPage } from '../login/login';
 })
 export class ShezhiPage {
 
-  constructor(public app:App,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -34,6 +34,10 @@ export class ShezhiPage {
     this.navCtrl.push(NumPage);
   }
   goLogin(){
-    this.app.getRootNavs()[0].setRoot(LoginPage);
+    let modal = this.modalCtrl.create(TologinPage,{userId:8675309});
+    modal.onDidDismiss(data=>{
+      console.log(data);
+    })
+    modal.present();
   }
 }

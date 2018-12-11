@@ -1,17 +1,22 @@
-<ion-header text-center no-border>
+<ion-header>
   <ion-navbar color="dark">
-    <ion-title>首页</ion-title>
+    <img src="assets/imgs/logo.png" alt="" style="width:50px;height:50px;">
+    <ion-title text-center> 
+      首页
+      <ion-icon name="add" class="add" (click)="go()"></ion-icon>
+    </ion-title>
+    
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content>
+  <!-- <div>
+    <img src="" alt="">
+    <p>{{}}</p>
+  </div> -->
+  <!-- <ul>
+    <li *ngFor="let item of userdata;">
+      {{item.username}
+    </li>
+  </ul> -->
 </ion-content>
