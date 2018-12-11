@@ -42,7 +42,7 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
   
-  // 登录
+  // 点击登录
   _login(username: HTMLInputElement, password: HTMLInputElement) {
     if( !username.value) {
       this.showToast('bottom','请输入用户名');
@@ -59,17 +59,8 @@ export class LoginPage {
     this.storage.set("USER_INFO",JSON.stringify(data));
 
     // 验证是否正确
-	
-	
-	//该部分需要进行post请求，需要时去除注释
-    this.http.post('/login/login', {name: username.value, psw: password.value} ,{
-      headers : this.headers,
-      observe : 'body',
-      // params : {name: username.value, psw: password.value},
-      responseType : 'json'
-    }).subscribe(data => {
+    this.http.post('/login/login', {name: username.value, psw: password.value}).subscribe(data => {
       console.log(data);
-
       if( !data) {
         this.showToast('bottom','用户名或密码错误，请重新输入！');
         return ;
@@ -78,10 +69,6 @@ export class LoginPage {
         this.navCtrl.setRoot(TabsPage, data);
       }
     });
-	
-	
-    // console.log(username.value,password.value,this.isRemember,this.storage);
-	// this.navCtrl.setRoot(TabsPage, data);// 块级注释去掉时，该语句注释
   }
   
   // 提示信息

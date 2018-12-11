@@ -6,6 +6,7 @@ var router = express.Router();
 router.post('/',function(req,res) {
 	let code = getCode();// 生成验证码
 	const phone = req.body.phone;
+  
 	var queryData = querystring.stringify({
     "mobile": phone,  // 接受短信的用户手机号码
     "tpl_id": "120001",  // 您申请的短信模板ID，根据实际情况修改
@@ -17,15 +18,16 @@ router.post('/',function(req,res) {
 
 	request(queryUrl, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-			console.log(body) // 打印接口返回内容
+			console.log(body);// 打印接口返回内容
 			
 			var jsonObj = JSON.parse(body); // 解析接口返回的JSON内容
-			console.log(jsonObj)
+			console.log(jsonObj);
 		} else {
 			console.log('请求异常');
 		}
-	}) 
-})
+	});
+  res.send({code: code});
+});
 // 生成验证码FUNCTION
 function getCode(){
   let n = 6;

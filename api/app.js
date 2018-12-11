@@ -8,6 +8,7 @@ var usersRouter = require('./routes/userdata');
 var notesRouter = require('./routes/notedata');
 var mailRouter = require('./routes/mail');
 var loginRouter = require('./routes/login');
+var signupRouter = require('./routes/signup');
 var upload = require('./routes/upload');
 var phoneRouter = require('./routes/phonecode')
 var app = express();
@@ -26,6 +27,7 @@ app.use('/upload',upload);
 app.use('/notedata',notesRouter);
 app.use('/mail',mailRouter);
 app.use('/login',loginRouter);
+app.use('/signup',signupRouter);
 app.use('/phonecode',phoneRouter);
 
 // catch 404 and forward to error handler
