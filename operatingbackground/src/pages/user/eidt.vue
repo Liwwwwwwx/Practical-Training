@@ -3,13 +3,13 @@
     <template slot="content">
       <div class="box">
         <el-form ref="forms" :model="forms" label-width="80px">
-          <el-form-item label="用户 ID">
+          <el-form-item label="文章ID">
             <el-input readonly="readonly" v-model="forms.noteid"></el-input>
           </el-form-item>
           <el-form-item label="用户名">
             <el-input v-model="forms.username"></el-input>
           </el-form-item>
-          <el-form-item label="注册时间">
+          <el-form-item label="发表时间">
             <el-col :span="11">
               <el-date-picker
                 type="date"

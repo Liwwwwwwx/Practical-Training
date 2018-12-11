@@ -118,20 +118,14 @@ export default {
       listLoading: false
     };
   },
-  beforeCreate() {
+   mounted() {
+    //初始化
     const islogin = localStorage.getItem("isLogin");
-    if(islogin){
-      return request({
-      url: URL.userdata
-    }).then(res => {
-      localStorage.setItem("datas", JSON.stringify(res.data.data));
-      const obj = JSON.parse(localStorage.getItem("datas"));
-      this.userdata = JSON.parse(localStorage.getItem("datas"));
-      console.log(res.data.data);
-      return res;
-    });
-    }else {
-      this.$router.push({path:'/'});
+    if (islogin) {
+      this.userInfo(); //用户初始化列表
+      this.totalInfo();
+    } else {
+      this.$router.push({ path: "/" });
     }
   },
   methods: {
@@ -139,17 +133,36 @@ export default {
       this.multipleSelection = val;
       console.log(val);
     },
+
+    userInfo() {
+      return request({
+        url: URL.userdata + "/paging",
+        method: "POST",
+        data: {
+          page: 1
+        }
+      }).then(res => {
+        this.userdata = res.data.data;
+        console.log(res)
+        return res;
+      });
+    },
+    //隔行命名class
     tableRowClassName({ row, rowIndex }) {
       if (rowIndex % 2 === 1) {
         return "success-row";
       }
       return "";
     },
+
+    //隔行变色
     tableHeaderColors({ row, column, rowIndex, columnIndex }) {
       if (rowIndex === 0) {
         return "background-color: #00A0B0;color: #ffffff;font-weight: 600;text-align:center;";
       }
     },
+
+    //数据导出excel表格
     exportExcel() {
       /* generate workbook object from table */
 
@@ -172,6 +185,8 @@ export default {
       return wbout;
       console.log(wbout);
     },
+
+    //删除用户操作
     deleteRow(index, rows, data) {
       this.$confirm("此操作将永久删除该用户, 是否继续?", "提示", {
         confirmButtonText: "确定",
@@ -195,11 +210,33 @@ export default {
           });
         });
     },
+
+    //文章数量
+    totalInfo() {
+      return request({
+        url: URL.userdata + "/usercount"
+      }).then(res => {
+        console.log(res)
+        this.total = res.data.userCount[0].count;
+        return res;
+      });
+    },
+
+    //数据分页
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },
     handleCurrentChange(val) {
-      console.log(val);
+      return request({
+        url: URL.userdata + "/paging",
+        method: "POST",
+        data: {
+          page: val
+        }
+      }).then(res => {
+        this.data = res.data.data;
+        return res;
+      });
     }
   }
 };
@@ -231,5 +268,10 @@ export default {
 } */
 .el-pagination {
   padding-top: 2rem;
+}
+.demo-table-expand .el-form-item {
+  margin-right: 0;
+  margin-bottom: 0;
+  width: 50%;
 }
 </style>
