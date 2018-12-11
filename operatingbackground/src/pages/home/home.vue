@@ -63,7 +63,7 @@ export default {
 </script>
 <style>
 .box {
-  width: 99%;
+  width: 100% !important;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

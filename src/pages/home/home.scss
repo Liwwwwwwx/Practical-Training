@@ -1,3 +1,20 @@
 page-home {
-
+    .toolbar-title-md {
+        margin-left: 25px;
+        margin-top: -45px;
+    }
+    ion-navbar{
+        height: 40px;
+        .add{
+            font-size: 30px;
+            float: right;
+            color: white;
+            margin-top: -5px;
+        }
+    }
+    ion-content{
+        background-color: #ECE5DA!important;
+        
+    }
+   
 }

@@ -5,7 +5,7 @@
         <el-col :span="24" class="warp-breadcrum">
           <!--搜索栏-->
           <el-col :span="24" class="toolbar">
-            <el-form :inline="true" :model="filters">
+            <el-form :inline="true" :model="filters" class="form">
               <el-form-item>
                 <template>
                   <el-select v-model="filters.type" placeholder="请选择">
@@ -99,7 +99,7 @@ export default {
     const islogin = localStorage.getItem("isLogin");
     if (islogin) {
       this.typeInfo(); //分类初始化
-      this.userInfo(); //用户初始化列表
+      this.noteInfo(); //用户初始化列表
       this.totalInfo();
     } else {
       this.$router.push({ path: "/" });
@@ -107,7 +107,7 @@ export default {
   },
   methods: {
     getUser() {
-      this.userInfo();
+      this.noteInfo();
     },
     //下拉框初始化
     typeInfo() {
@@ -135,7 +135,7 @@ export default {
       });
     },
     //数据初始化
-    userInfo() {
+    noteInfo() {
       return request({
         url: URL.notedata + "/paging",
         method: "POST",
@@ -166,6 +166,7 @@ export default {
         params: { notedata: obj }
       });
     },
+     //数据导出excel表格
     exportExcel() {
       /* generate workbook object from table */
 
@@ -188,6 +189,8 @@ export default {
       return wbout;
       console.log(wbout);
     },
+
+    //数据分页
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },
@@ -216,9 +219,12 @@ export default {
   text-align: center;
 }
 .el-table__row {
-  height: 2rem;
+  height: 3.5rem;
 }
 .el-pagination {
   padding-top: 5px;
+}
+.form {
+  width: 100% !important;
 }
 </style>

@@ -1,14 +1,7 @@
-<ion-header>
-  <ion-navbar color="dark">
-      <ion-searchbar (click)="goToh()" ></ion-searchbar> 
-  </ion-navbar> 
-</ion-header>
-<ion-content padding >
+<ion-content>
+  <ion-searchbar (click)="goToh()" placeholder="请输入你喜欢的文章名称"></ion-searchbar> 
   <div class="title">
-      <ion-title >
-        <i class="iconfont">&#xe671;</i>
-        <p>分类</p>
-      </ion-title>
+    <i class="iconfont">&#xe62f;&nbsp;<font style="font-size:16px;letter-spacing:1px;color:#42413f;">分类</font></i>  
   </div>
   <ul class="goods1">
     <li (click)="goToa()">
@@ -29,10 +22,7 @@
     </li>
   </ul>
   <div class="zhuan">
-      <ion-title >
-        <i class="iconfont">&#xe66c;</i>
-        <p>专题</p>
-      </ion-title>
+    <i class="iconfont">&#xe66c;&nbsp;<font style="font-size:16px;letter-spacing:1px;color:#42413f;">专题</font></i>  
   </div>
   <ul class="goods2">
       <li (click)="goToe()">
