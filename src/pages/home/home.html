@@ -9,14 +9,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <!-- <div>
-    <img src="" alt="">
-    <p>{{}}</p>
-  </div> -->
-  <!-- <ul>
-    <li *ngFor="let item of userdata;">
-      {{item.username}
-    </li>
-  </ul> -->
+<ion-content padding>
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh"
+    refreshingSpinner="circles"
+    refreshingText="刷新"></ion-refresher-content>
+  </ion-refresher>     -->
+  <ion-slides  loop="true">
+    <ion-slide *ngFor="let item of content;">
+      <img src="assets/imgs/aiqing3.png" alt="">
+      <p>{{item.notecontent}}</p> 
+    </ion-slide>
+  </ion-slides>
+    
 </ion-content>
