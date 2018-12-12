@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { ChangepasswordnewPage } from '../changepasswordnew/changepasswordnew';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 /**
@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-changepasswordmobile',
   templateUrl: 'changepasswordmobile.html',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
 
 /**
@@ -9,7 +9,7 @@ import { DetailPage } from '../detail/detail';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-yuanchuang',
   templateUrl: 'yuanchuang.html',

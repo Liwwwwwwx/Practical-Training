@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ModalController} from 'ionic-angular';
+import { NavController, NavParams ,ModalController} from 'ionic-angular';
 import {HeaddetailPage } from '../headdetail/headdetail';
 /**
  * Generated class for the HeadPage page.
@@ -8,7 +8,7 @@ import {HeaddetailPage } from '../headdetail/headdetail';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-head',
   templateUrl: 'head.html',
