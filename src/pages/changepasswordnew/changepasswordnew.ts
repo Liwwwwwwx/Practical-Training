@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ToastController, ModalController } from 'ionic-angular';
+import { NavController, ToastController, ModalController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
 /**
@@ -9,7 +9,7 @@ import { LoginPage } from '../login/login';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-changepasswordnew',
   templateUrl: 'changepasswordnew.html',

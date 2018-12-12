@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
+import {  NavController, NavParams,ModalController } from 'ionic-angular';
 import {NewPage } from '../new/new';
 
 /**
@@ -9,7 +9,7 @@ import {NewPage } from '../new/new';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-wenji',
   templateUrl: 'wenji.html',

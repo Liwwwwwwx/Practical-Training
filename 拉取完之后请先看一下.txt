@@ -2,3 +2,5 @@ date: 2018/12/11/16:23
 api中的增加了signup，修改了login和phonecode（phonecode会返回code值）
 创建了node_modules文件夹，包含ionic所需的插件camera，报错时加入
 对pages中的login signup signupmobile进行了修改
+对pages中的自己创建的页面里的module.ts删除
+对pages中的home页进行了修改

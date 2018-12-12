@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,ModalController} from 'ionic-angular';
+import {  NavController, NavParams ,ModalController} from 'ionic-angular';
 import { WePage } from '../we/we';
 import { AdvicePage } from '../advice/advice';
 import { NumPage } from '../num/num';
