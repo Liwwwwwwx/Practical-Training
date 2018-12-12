@@ -8,3 +8,7 @@ api中的增加了signup，修改了login和phonecode（phonecode会返回code值）
 date: 2018/12/12/16:16
 更新了pages中的contact消息页面
 修改了pages中的detail详情页面的css样式，删除了module.ts文件
+
+
+date:2018/12/12/17:36
+更新了pages中的my页面布局以及样式
