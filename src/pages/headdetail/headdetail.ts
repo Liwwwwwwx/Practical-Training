@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import {NavController, NavParams,ViewController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 // import {HeaPage } from '../sign/sign';
-/**
- * Generated class for the HeaddetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-headdetail',
   templateUrl: 'headdetail.html',
@@ -18,10 +12,6 @@ export class HeaddetailPage {
   imgUrl:string;
   constructor(public camera:Camera,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad HeaddetailPage');
-  // }
   go(){
     let data = { 'foo': 'bar' };
     this.viewCtrl.dismiss(data);
@@ -43,5 +33,6 @@ export class HeaddetailPage {
      // Handle error
     });
   }
+  
 
 }

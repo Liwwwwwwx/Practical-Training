@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
+import {  NavController, NavParams,ModalController } from 'ionic-angular';
 import {NewPage } from '../new/new';
 /**
  * Generated class for the SavewenjiPage page.
@@ -8,7 +8,7 @@ import {NewPage } from '../new/new';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-savewenji',
   templateUrl: 'savewenji.html',

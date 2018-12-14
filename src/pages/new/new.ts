@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import {  NavController, NavParams,ViewController } from 'ionic-angular';
 import {WenjiPage } from '../wenji/wenji';
 /**
  * Generated class for the NewPage page.
@@ -8,7 +8,7 @@ import {WenjiPage } from '../wenji/wenji';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-new',
   templateUrl: 'new.html',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PwordsPage } from '../pwords/pwords';
 import { PphotoPage } from '../pphoto/pphoto';
 import { PmusicPage } from '../pmusic/pmusic';
@@ -11,7 +11,7 @@ import { PmusicPage } from '../pmusic/pmusic';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-publish',
   templateUrl: 'publish.html',

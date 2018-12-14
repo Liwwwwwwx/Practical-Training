@@ -5,27 +5,56 @@
   Ionic pages and navigation.
 -->
 <ion-content>
-  <div class="head" (click)="goTo()">
-    <img src="assets/imgs/my.jpg" alt="">
-  </div>
-  <p text-center class="name">The one</p>
-  <p text-center class="qm" (click)="goSign()">视线所及只剩生活<i class="iconfont">&#xe608;</i></p>
-  <div class="div1">
-      <i class="iconfont" (click)="goGuanzhu()">&#xe65d;&nbsp;&nbsp;关注</i>
-      <i class="iconfont" (click)="goto()">&#xe60f;&nbsp;&nbsp;粉丝</i>
-  </div>
-  <ul>
-    <li (click)="goCollect()">
-        <i class="iconfont">&#xe6f8;&nbsp;&nbsp;收藏</i>
-    </li>
-    <li (click)="goWenji()">
-        <i class="iconfont">&#xe605;&nbsp;&nbsp;文集</i>
-    </li>
-    <li>
-        <i class="iconfont">&#xe639;&nbsp;&nbsp;歌单</i>
-    </li>
-    <li (click)="go()">
-        <i class="iconfont">&#xe604;&nbsp;&nbsp;设置</i>
-    </li>
-  </ul>
+    <div class="header">
+        <i id="setup"  class="iconfont" (click)="go()">&#xe604;</i>
+        <div class="head"  (click)="goTo()" >
+            <img src="assets/imgs/my.jpg" alt="">
+        </div>
+    
+        <p text-center class="name">The one</p>
+        <p text-center class="qm" (click)="goSign()">视线所及只剩生活<i class="iconfont">&#xe608;</i></p>
+        <div class="div1">
+            <i class="iconfont" (click)="goGuanzhu()">&#xe65d;&nbsp;&nbsp;关注</i>
+            <i class="iconfont" (click)="goto()">&#xe60f;&nbsp;&nbsp;粉丝</i>
+        </div>
+
+        <!-- <ul>
+            <li (click)="goCollect()">
+                <i class="iconfont">&#xe6f8;&nbsp;&nbsp;收藏</i>
+            </li>
+            <li (click)="goWenji()">
+                <i class="iconfont">&#xe605;&nbsp;&nbsp;文集</i>
+            </li>
+            <li>
+                <i class="iconfont">&#xe639;&nbsp;&nbsp;歌单</i>
+            </li>
+            <li (click)="go()">
+                <i class="iconfont">&#xe604;&nbsp;&nbsp;设置</i>
+            </li>
+        </ul> -->
+    </div>
+
+    <ion-segment [(ngModel)]="icons" color="black">
+        <ion-segment-button value="collect">
+            <i class="iconfont">&#xe6f8;&nbsp;&nbsp;收藏</i>
+        </ion-segment-button>
+        <ion-segment-button value="wenji">
+            <i class="iconfont">&#xe605;&nbsp;&nbsp;文集</i>
+        </ion-segment-button>
+        <ion-segment-button value="gedan">
+            <i class="iconfont">&#xe639;&nbsp;&nbsp;歌单</i>
+        </ion-segment-button>
+    </ion-segment>
+          
+          <div [ngSwitch]="icons">
+            <div *ngSwitchCase="'collect'">
+              这是收藏
+            </div>
+            <div *ngSwitchCase="'wenji'">
+              这是文集
+            </div>
+            <div *ngSwitchCase="'gedan'">
+              这是歌单
+            </div>
+          </div>
 </ion-content>

@@ -18,16 +18,77 @@
   <ul class="navList">
     <li *ngFor="let item of arr;let idx=index" (click)="isClick(idx)" [class.first]="isActive==idx">{{item}}</li>
   
-  </ul> 
+  </ul>
 <div [ngSwitch]="isActive">
     <div *ngSwitchCase="0">
-        
+      <div class="follow">
+        <div class="head">
+          <img src="assets/imgs/my.jpg" alt="">
+        </div>
+        <div class="cont">
+          <p>你有一条系统通知</p>
+        </div>
+      </div>
     </div>
     <div *ngSwitchCase="1">
+      <div class="repeat">
+        <ul>
+          <li class="head">
+            <img src="assets/imgs/my.jpg" alt="">
+          </li>
+          <li class="name">
+            <span>啦啦啦</span>
+          </li>
+          <li class="date">
+            <span>2018-12-12</span>
+          </li>
+          <li class="btn">
+            <a>回复</a>
+          </li>
+        </ul>
+        <p>评论内容</p>
+        <div class="content">
+          <img src="assets/imgs/my.jpg" alt="">
+          <p>
+            balabalabalabalabalabalabalabala
+          </p>
+        </div>
+      </div>
       
+      <div class="repeat">
+        <ul>
+          <li class="head">
+            <img src="assets/imgs/my.jpg" alt="">
+          </li>
+          <li class="name">
+            <span>啦啦啦</span>
+          </li>
+          <li class="date">
+            <span>2018-12-12</span>
+          </li>
+          <li class="btn">
+            <a>回复</a>
+          </li>
+        </ul>
+        <p>评论内容</p>
+        <div class="content">
+          <img src="assets/imgs/my.jpg" alt="">
+          <p>
+            balabalabalabalabalabalabalabala
+          </p>
+        </div>
+      </div>
+
+      <div class="follow">
+        <div class="head">
+          <img src="assets/imgs/my.jpg" alt="">
+        </div>
+        <div class="cont">
+          <p>lalala关注了你</p>
+        </div>
+      </div>
     </div>
    
 </div>
 </ion-content>
   
- 
