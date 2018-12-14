@@ -10,6 +10,7 @@ page-problem {
             display: block;
             margin: auto;
             background-color:rgba(217, 186, 138, 0.8);
+            border-radius: 5px;
         }
         input{
             text-align: center;
@@ -20,6 +21,7 @@ page-problem {
             height: 40px;
             font-size:20px;
             background-color:rgba(217, 186, 138, 0.5);
+            border-radius: 5px;
         }
     }
 }
