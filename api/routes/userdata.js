@@ -141,7 +141,7 @@ router.all('/paging', (req,res)=> {
   }
   
   var start = (param.page - 1) * 9;
-  var sql = 'SELECT * FROM user limit' + start + ',9';
+  var sql = 'SELECT * FROM user limit ' + start + ',9';
   db.query(sql, (err, results)=> {
     if(err){
       console.error(err);
