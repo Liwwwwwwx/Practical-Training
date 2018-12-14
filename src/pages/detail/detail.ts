@@ -15,11 +15,14 @@ import {  NavController, NavParams } from 'ionic-angular';
 })
 export class DetailPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(params: NavParams,public navCtrl: NavController, public navParams: NavParams) {
+    console.log(params)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');
   }
-
+  close(){
+    this.navCtrl.pop();
+  }
 }

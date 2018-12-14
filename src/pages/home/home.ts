@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ModalController, NavParams, NavController,  } from 'ionic-angular';
 import { PublishPage } from '../publish/publish';
+import { DetailPage } from '../detail/detail'
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Component({
@@ -8,16 +9,17 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  content;
-  constructor(public http:HttpClient,public navCtrl: NavController) {
+  className:String = 'card'
+  constructor(public http:HttpClient,public modalCtrl: ModalController,public navCtrl: NavController) {
 
   }
+  isClick:Boolean = false;
   ngOnInit(){
-    this.http.get('/notedata').subscribe(data => {
-      console.log(data);
-      this.content = data;
-      // console.log(this.content[0].userid)
-    })
+    // this.http.get('/notedata').subscribe(data => {
+    //   console.log(data);
+    //   this.content = data;
+    //   // console.log(this.content[0].userid)
+    // })
   }
   // doRefresh(refresher) {
   //   // console.log('Begin async operation', refresher);
@@ -31,4 +33,13 @@ export class HomePage {
   go(){
     this.navCtrl.push(PublishPage);
   }
+  FullScreen(){
+    this.isClick = !this.isClick;
+    this.className = this.isClick?'card_container':'card';
+    console.log(this.isClick,this.className)
+    let profileModal = this.modalCtrl.create(DetailPage, { userId: 8675309 });
+   profileModal.present();
+  }
+  
 }
+

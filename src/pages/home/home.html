@@ -1,26 +1,50 @@
 <ion-header>
   <ion-navbar color="dark">
     <img src="assets/imgs/logo.png" alt="" style="width:50px;height:50px;">
-    <ion-title text-center> 
+    <ion-title text-center>
       首页
       <ion-icon name="add" class="add" (click)="go()"></ion-icon>
     </ion-title>
-    
+
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown"
     pullingText="Pull to refresh"
     refreshingSpinner="circles"
     refreshingText="刷新"></ion-refresher-content>
   </ion-refresher>     -->
-  <ion-slides  loop="true">
-    <ion-slide *ngFor="let item of content;">
-      <img src="assets/imgs/aiqing3.png" alt="">
-      <p>{{item.notecontent}}</p> 
+  <ion-slides>
+    <ion-slide>
+      <div class="card">
+        <div class="content" (click)="FullScreen()">
+          
+          <img src="../../assets/imgs/img1.jpg" class="image">
+          <div class="note_content">
+            <p>轻轻的我走了,<br>
+              正如我轻轻的来； <br>
+              我轻轻的招手， <br>
+              作别西天的云彩<br></p>
+          </div>
+          <div class="foot">
+            <div class="category">#文字</div>
+            <div class="msg">
+              <div class="collection">收藏 &nbsp;<span>51</span>&nbsp;感悟&nbsp;<span>133</span></div>
+              <div class="avater"><span>所及</span> 创建于 <span>[给你的情书]</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </ion-slide>
+    <ion-slide>
+      <div class="card">
+        <div class="content"></div>
+      </div>
+
+    </ion-slide>
+
   </ion-slides>
-    
+
 </ion-content>
