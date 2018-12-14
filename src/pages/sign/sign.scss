@@ -10,6 +10,7 @@ page-sign {
             display: block;
             margin: auto;
             background-color:rgba(217, 186, 138, 0.8);
+            border-radius: 5px;
         }
         input{
             text-align: center;
@@ -19,6 +20,7 @@ page-sign {
             width: 90%;
             height: 40px;
             font-size:20px;
+            border-radius: 5px;
             background-color:rgba(217, 186, 138, 0.5);
         }
     }
