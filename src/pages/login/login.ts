@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,  ModalController, ToastController } from 'ionic-angular';
+import { NavController, IonicPage, ModalController, ToastController } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { TabsPage } from '../tabs/tabs';
 import { Storage } from '@ionic/storage';
@@ -12,7 +12,7 @@ import { SignupPage } from '../signup/signup';
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -29,6 +29,7 @@ export class LoginPage {
               public toastCtrl: ToastController,
               public storage: Storage,
               private http: HttpClient) {
+    // 登陆页面的缓存
     storage.ready().then(() => {
       storage.get('USER_INFO').then( value => {
         this.uname = !!value ? JSON.parse(value).username : '';
@@ -42,8 +43,9 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
   
-  // 登录
+  // 点击登录
   _login(username: HTMLInputElement, password: HTMLInputElement) {
+    var that = this;
     if( !username.value) {
       this.showToast('bottom','请输入用户名');
       return false;
@@ -53,37 +55,49 @@ export class LoginPage {
       return false;
     }
 
-    let data = {username: username.value, password: password.value, isRemember: this.isRemember};
     // 存储用户信息
+    let data = {username: username.value, password: password.value, isRemember: this.isRemember};
     this.storage.remove("USER_INFO");
     this.storage.set("USER_INFO",JSON.stringify(data));
 
+    // 验证用户名是否存在
+    function checkName() {
+      return new Promise((resolve) => {
+        that.http.post('/signup/name',{username:username.value}).subscribe(result => {
+          if(!result) {
+            that.showToast('bottom','用户名不存在，请重新输入！');
+          } else {
+            resolve();
+          }
+        });
+      });
+    }
+    
     // 验证是否正确
-	
-	
-	//该部分需要进行post请求，需要时去除注释
-    this.http.post('/login/login', {name: username.value, psw: password.value} ,{
-      headers : this.headers,
-      observe : 'body',
-      // params : {name: username.value, psw: password.value},
-      responseType : 'json'
-    }).subscribe(data => {
-      console.log(data);
+    function checkMatch() {
+      return new Promise(() => {
+        that.http.post('/login/login', {name: username.value, psw: password.value}).subscribe(data => {
+          console.log(data);
+          if( !data) {
+            that.showToast('bottom','用户名与密码不匹配，请重新输入！');
+            return ;
+          } else {
+            // 界面跳转
+            that.navCtrl.setRoot(TabsPage, data);
+          }
+        });
+      });
+    }
 
-      if( !data) {
-        this.showToast('bottom','用户名或密码错误，请重新输入！');
-        return ;
-      } else {
-        // 界面跳转
-        this.navCtrl.setRoot(TabsPage, data);
-      }
+    // Promise
+    var p = new Promise((resolve) => {
+      resolve();
     });
-	
-	
-    // console.log(username.value,password.value,this.isRemember,this.storage);
-	// this.navCtrl.setRoot(TabsPage, data);// 块级注释去掉时，该语句注释
+    p.then(checkName).then(checkMatch).catch(reason => {console.log(reason);});
   }
   
+  
+
   // 提示信息
   showToast(position: string, message: string) {
     let toast = this.toastCtrl.create({
