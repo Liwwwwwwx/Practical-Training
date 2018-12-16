@@ -7,12 +7,49 @@
 <ion-header text-center no-border>
   <ion-navbar color="dark">
     <ion-title>全部</ion-title>
-    <div class="div1"></div>
+    
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content no-border>
+    <!-- 刷新 -->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>  
+    <ul>
+        <li (click)="goTog()" class="li1">
+            <img src="assets/imgs/img4.jpg" alt="">
+            <div class="li_content">
+                <div class="li_content_p">文章内容</div>
+                <div class="li_content_author">李薇</div>
+                <div class="li_content_date">2018/1/12</div>
+              </div>
+        </li>
+        <li (click)="goTog()">
+              <img src="assets/imgs/img3.jpg" alt="">
+            <div class="li_content">
+              <div class="li_content_p">文章内容</div>
+              <div class="li_content_author">李薇</div>
+              <div class="li_content_date">2018/1/12</div>
+            </div>
+        </li>
+        <li (click)="goTog()">
+            <img src="assets/imgs/img2.jpg" alt="">
+            <div class="li_content">
+                <div class="li_content_p">文章内容</div>
+                <div class="li_content_author">李薇</div>
+                <div class="li_content_date">2018/1/12</div>
+              </div>
+        </li>
+        <li (click)="goTog()">
+            <img src="assets/imgs/img1.jpg" alt="">
+            <div class="li_content">
+                <div class="li_content_p">文章内容</div>
+                <div class="li_content_author">李薇</div>
+                <div class="li_content_date">2018/1/12</div>
+              </div>
+        </li>
+      </ul>
 </ion-content>

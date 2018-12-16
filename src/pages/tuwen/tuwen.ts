@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { DetailPage } from '../detail/detail';
 /**
  * Generated class for the TuwenPage page.
  *
@@ -21,5 +21,14 @@ export class TuwenPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad TuwenPage');
   }
-
+  goTog(){
+    this.navCtrl.push(DetailPage);
+  }
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
 }
