@@ -10,26 +10,40 @@ page-tongxin {
         }
         
     }
-    ion-slides{
-        width: 100%;
-        height: 180px;
-    }
     ion-content{
-        background-color:#ece5da!important;; 
+        background-color:#ece5da!important;
+        .im1{
+            width: 100%;
+            position: absolute;
+            margin-left: -41px;
+        }
+        .title{
+            padding: 5%;
+            font-size: 14px;
+            position: relative;
+            margin-top: 42%;
+            line-height: 23px;
+            letter-spacing: 2px;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+            width:100%;
+            li{
+                background-color:rgba(217, 186, 138, 0.5);
+                width: 90%;
+                // height: 260px;
+                margin-left: 5%;
+                margin-top: 10px;
+                .text{
+                    letter-spacing: 1px;
+                    line-height: 23px;
+                    // color:gray;
+                    margin-left: 3%;
+                    // margin-bottom:18px;
+                }
+            }
+        }
        
-    }
-    p{
-        position: absolute;
-        width: 100%;
-        // bottom:4px;
-        font-size: 18px;
-        color: #fff;
-        height: 180px;
-        margin-top: -180px;
-        line-height: 30px;
-        text-align: center;
-        z-index: 99;
-        padding-top: 120px;
-        background-color:rgba(0, 0, 0, 0.205);
     }
 }

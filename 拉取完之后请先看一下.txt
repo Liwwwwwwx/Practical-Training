@@ -19,3 +19,6 @@ date:2018/12/15/12:59
 
 date:2018/12/16/14:25
 更新了pages中的pwords页面和关于发布文字的api
+
+date:2018/12/16/20:10
+更新了pages中的tongxin页面，删除了它的module.ts文件
