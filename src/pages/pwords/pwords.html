@@ -12,7 +12,7 @@
   <i class="iconfont" (click)="goPublish()" style="font-size:25px;">&#xe642;</i>
   <span class="title">心灵语录</span>
   <!-- 分享文字内容（多行文本框） -->
-    <textarea class="addtext" placeholder="分享你的视线所及"></textarea>
+    <textarea class="addtext" placeholder="分享你的视线所及" [(ngModel)]="content"></textarea>
   <!-- 字体&表情&字数限制 -->
     <div class="icon_family">
     <i class="iconfont">&#xe6ec;</i>
@@ -27,13 +27,13 @@
    <ion-list>
     <ion-item>
         <ion-label>是否原创</ion-label>
-        <ion-checkbox color="dark" checked="false"></ion-checkbox>
+        <ion-checkbox color="dark" checked="false" [(ngModel)]="isOriginal"></ion-checkbox>
     </ion-item>
   
   <!-- 是否私密发布 -->
   <ion-item>
       <ion-label>是否私密发布</ion-label>
-      <ion-checkbox color="dark" checked="false"></ion-checkbox>
+      <ion-checkbox color="dark" checked="false" [(ngModel)]="isPrivate"></ion-checkbox>
   </ion-item>
   </ion-list>
   <button ion-button  round (click)="go()" >&nbsp;下&nbsp;一&nbsp;步</button>

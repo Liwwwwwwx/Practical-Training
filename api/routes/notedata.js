@@ -52,6 +52,19 @@ router.post('/del',(req, res)=>{
   })
 })
 
+router.post('/new', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  console.log(req.body);
+  todonotedata.insertOne(req.body, (err ,result) => {
+    if(err) {
+      console.error(err);
+      return ;
+    }
+    console.log(result);
+  });
+  res.send(req.body);
+});
+
 //数据分页
 
 router.all('/paging', (req,res)=>{
