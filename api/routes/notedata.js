@@ -69,10 +69,23 @@ router.post('/notecategory',(req, res)=>{
   })
 })
 
-router.post('/new', (req, res) => {
+router.post('/newWords', (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   console.log(req.body);
-  todonotedata.insertOne(req.body, (err ,result) => {
+  todonotedata.insertOneWords(req.body, (err ,result) => {
+    if(err) {
+      console.error(err);
+      return ;
+    }
+    console.log(result);
+  });
+  res.send(req.body);
+});
+
+router.post('/newPhoto', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  console.log(req.body);
+  todonotedata.insertOnePhoto(req.body, (err ,result) => {
     if(err) {
       console.error(err);
       return ;

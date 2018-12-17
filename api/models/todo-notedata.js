@@ -60,9 +60,20 @@ class TodoNoteData{
       callback(false, results);
     });
   }
-  insertOne(datas, callback) {
+  insertOneWords(datas, callback) {
     const sql = 'INSERT INTO note(anthologyid, notecategory, notecontent, isnoteoriginal, isnoteprivate) VALUES ((SELECT anthologyid FROM anthology WHERE anthologyname = ? AND userid = (SELECT userid FROM user WHERE username = ?)),?,?,?,?)';
     db.query(sql, [datas.anthologyname, datas.username, datas.notecategory, datas.content, datas.isOriginal, datas.isPrivate], (err, results) => {
+      if (err){
+        callback(true);
+        return;
+      }
+      callback(false, results);
+    });
+  }
+  insertOnePhoto(datas, callback) {
+    console.log('up to insertOnePhoto');
+    const sql = 'INSERT INTO note(anthologyid, notecategory, notecontent, isnoteoriginal, isnoteprivate, noteimg) VALUES ((SELECT anthologyid FROM anthology WHERE anthologyname = ? AND userid = (SELECT userid FROM user WHERE username = ?)),?,?,?,?,?)';
+    db.query(sql, [datas.anthologyname, datas.username, datas.notecategory, datas.content, datas.isOriginal, datas.isPrivate, datas.newPath], (err, results) => {
       if (err){
         callback(true);
         return;

@@ -10,19 +10,25 @@
     <i class="iconfont" (click)="goPublish()" style="font-size:25px;">&#xe642;</i>
     <span class="title">心灵语录</span>
   <!-- 分享文字内容（多行文本框） -->
-    <textarea class="addtext" placeholder="分享你的视线所及"></textarea>
+    <textarea class="addtext" placeholder="分享你的视线所及" [(ngModel)]="content"></textarea>
     <div class="photo">
-        <div class="cercle">
-          <ion-fab>
-            <button ion-fab color="bg"><ion-icon name="add"></ion-icon></button>
-            <ion-fab-list side="left">
-              <button ion-fab color="bg"><i class="iconfont">&#xe622;</i></button>
-            </ion-fab-list>
-            <ion-fab-list side="right">
-              <button ion-fab color="bg"><i class="iconfont">&#xe620;</i></button>
-            </ion-fab-list>
-          </ion-fab>
-        </div>
+      <img id="showImg" src="" alt="">
+      <div class="cercle">
+        <ion-fab>
+          <button ion-fab color="bg"><ion-icon name="add"></ion-icon></button>
+          <ion-fab-list side="left">
+            <button ion-fab color="bg"><i class="iconfont">&#xe622;</i></button>
+          </ion-fab-list>
+          <ion-fab-list side="top">
+            <button ion-fab color="bg" (click)="openForm()" type="button">
+              <i class="iconfont">&#xe620;</i>
+              <form role="form" id="myForm" action="/" method="post" enctype="multipart/form-data">
+                <input type="file" name="fulAvatar" id="file_upload" value="" class="form-control" (change)="showPhoto($event)">
+              </form>
+            </button>
+          </ion-fab-list>
+        </ion-fab>
+      </div>
     </div>
   <!-- 字体&表情&字数限制 -->
     <div class="icon_family">
@@ -38,13 +44,13 @@
    <ion-list>
         <ion-item>
             <ion-label>是否原创</ion-label>
-            <ion-checkbox color="dark" checked="false"></ion-checkbox>
+            <ion-checkbox color="dark" checked="false" [(ngModel)]="isOriginal"></ion-checkbox>
         </ion-item>
   
   <!-- 是否私密发布 -->
       <ion-item>
           <ion-label>是否私密发布</ion-label>
-          <ion-checkbox color="dark" checked="false"></ion-checkbox>
+          <ion-checkbox color="dark" checked="false" [(ngModel)]="isPrivate"></ion-checkbox>
       </ion-item>
     </ion-list>
     <button ion-button  round (click)="go()">&nbsp;下&nbsp;一&nbsp;步</button>
