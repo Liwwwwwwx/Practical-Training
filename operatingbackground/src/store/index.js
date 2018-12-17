@@ -56,7 +56,7 @@ export default new Vuex.Store({
       commit
     }, data) {
       return await request({
-        url: URL.login + "/login",
+        url: URL.login + "/land",
         method: "POST",
         data: {
           name: data.username,
@@ -68,31 +68,7 @@ export default new Vuex.Store({
         return res;
       });
     },
-    addOne({
-      commit
-    }, data) {
-      return request({
-          url: URL.userdata + '/add',
-          method: 'post',
-          data: {
-            item: JSON.stringify(data)
-          }
-        })
-        .then(res => {
-          commit('setData', res.data)
-          console.log(res.data)
-          if (res.data.isLogin) {
-            let routePath = this.paths[1];
-            this.$router.push(routePath);
-          } else {
-            this.$alert('用户名或者密码错误，请重新输入', '提示：', {
-              confirmButtonText: '确定',
-
-            });
-          }
-          return res
-        })
-    },
+   
 
     deletedata({
       commit

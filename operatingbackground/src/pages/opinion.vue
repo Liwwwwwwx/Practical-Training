@@ -1,22 +1,20 @@
 <template>
   <base-page index="6">
     <template slot="content">
-      <el-col :span="24" class="toolbar pageBar">
-        <el-pagination
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-          :current-page="currentPage1"
-          :page-sizes="[10, 20, 30, 40]"
-          :page-size="pageSize"
-          layout=" prev, pager, next, sizes, total"
-          :total="total"
-        ></el-pagination>
-      </el-col>
+      <input
+        class="file"
+        name="file"
+        type="file"
+        accept="image/png, image/gif, image/jpeg"
+        @change="update"
+      >
     </template>
   </base-page>
 </template>
 <script>
 import BasePage from "@/components/BasePage";
+import request from "@/http/request.js";
+import URL from "@/http/url.js";
 export default {
   name: "opinion",
 
@@ -26,40 +24,37 @@ export default {
 
   data() {
     return {
-      currentPage1: 1,
-      total: 0,
-      page: 1,
-      pageSize: 10,
-      pageNum: 1
+      fileList: []
     };
   },
   methods: {
-    //获取列表数据
-    getUser: function() {
-      let para = { pageNum: this.pageNum, pageSize: this.pageSize };
-      this.loading = true;
-      getList(para).then(res => {
-        if (res.data.success) {
-          this.total = res.data.data.total;
-          this.currentPage1 = res.data.pageNum;
-          this.users = res.dataList;
-          this.loading = false;
-        } else {
-          this.loading = false;
-          this.$message({ message: res.data.returnMsg, type: "error" });
+    update(e) {
+      let file = e.target.files[0];
+      let param = new FormData(); //创建form对象
+      param.append("file", file, file.name); //通过append向form对象添加数据
+      param.append("chunk", "0"); //添加form表单中其他数据
+      console.log(param.get("file")); //FormData私有类对象，访问不到，可以通过get判断值是否传进去
+      // let config = {
+      //   headers:{'Content-Type':'multipart/form-data'}
+      // };  //添加请求头
+      // this.axios.post('http://upload.qiniu.com/',param,config)
+      // .then(response=>{
+      //   console.log(response.data);
+      // })
+      console.log(param)
+      return request({
+        url: URL.upload + '/upload',
+        method: "POST",
+        data: {
+          param: param,
         }
+      }).then(res => {
+        console.log(res)
+        return res;
       });
-    },
-    //改变时
-    handleSizeChange(val) {
-      this.pageSize = val;
-      this.getUser();
-    },
-    //条目改变时
-    handleCurrentChange(val) {
-      this.pageNum = val;
-      this.getUser();
     }
   }
 };
 </script>
+<style>
+</style>

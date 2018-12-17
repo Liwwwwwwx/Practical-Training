@@ -17,32 +17,26 @@
     refreshingText="刷新"></ion-refresher-content>
   </ion-refresher>     -->
   <ion-slides>
-    <ion-slide>
+    <ion-slide *ngFor="let item of data; let i = index">
       <div class="card">
-        <div class="content" (click)="FullScreen()">
-          
-          <img src="../../assets/imgs/img1.jpg" class="image">
-          <div class="note_content">
-            <p>轻轻的我走了,<br>
-              正如我轻轻的来； <br>
-              我轻轻的招手， <br>
-              作别西天的云彩<br></p>
+        <div class="content" (click)="FullScreen(i)">
+
+          <div>
+            <img src="{{item.noteimg}}" ngClass="{{item.noteimg?image:2}}">
+          </div>
+          <!-- <div  ngClass="{{item.noteimg?1:image}}"></div> -->
+          <div ngClass="{{item.noteimg?note_content:notecontent}}">
+            <p [innerHTML]="textcontent[i]"></p>
           </div>
           <div class="foot">
-            <div class="category">#文字</div>
+            <div class="category">#{{item.notecategory}}</div>
             <div class="msg">
-              <div class="collection">收藏 &nbsp;<span>51</span>&nbsp;感悟&nbsp;<span>133</span></div>
-              <div class="avater"><span>所及</span> 创建于 <span>[给你的情书]</span></div>
+              <div class="collection">收藏 &nbsp;<span>{{item.collectionCount}}</span>&nbsp;感悟&nbsp;<span>{{item.commentCount}}</span></div>
+              <div class="avater"><span>{{item.username}}</span> 创建于 <span>{{item.anthologyname}}</span></div>
             </div>
           </div>
         </div>
       </div>
-    </ion-slide>
-    <ion-slide>
-      <div class="card">
-        <div class="content"></div>
-      </div>
-
     </ion-slide>
 
   </ion-slides>

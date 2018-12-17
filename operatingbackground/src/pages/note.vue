@@ -11,9 +11,9 @@
                   <el-select v-model="filters.type" placeholder="请选择">
                     <el-option
                       v-for="item in typeData"
-                      :key="item.value"
+                      :key="item.index"
                       :label="item.label"
-                      :value="item.value"
+                      :value="item.label"
                     ></el-option>
                   </el-select>
                 </template>
@@ -43,10 +43,10 @@
             v-loading="listLoading"
           >
             <el-table-column prop="noteid" label="文章ID"></el-table-column>
-            <el-table-column prop="anthologyid" label="所属文集ID"></el-table-column>
+            <el-table-column prop="anthologyname" label="所属文集" width="200"></el-table-column>
+            <el-table-column prop="username" label="发表人"></el-table-column>
             <el-table-column prop="notecategory" label="文章类别"></el-table-column>
             <el-table-column prop="notecontent" label="文章内容" width="400"></el-table-column>
-            <el-table-column prop="isnoteoriginal" label="是否原创"></el-table-column>
             <el-table-column label="操作">
               <template slot-scope="props">
                 <el-button size="small" type="primary" @click="lookUser(props.row)">查看</el-button>
@@ -57,7 +57,7 @@
       </el-row>
       <el-col :span="24" class="toolbar block">
         <el-pagination
-          @size-change="handleSizeChange"
+          @size-change="handleSizeChange(val)"
           @current-change="handleCurrentChange"
           :current-page="4"
           :page-size="7"
@@ -85,7 +85,7 @@ export default {
     return {
       filters: {
         name: "",
-        type: 1
+        type: "全部"
       },
       total: 0,
       pageNum: 1,
@@ -99,7 +99,7 @@ export default {
     const islogin = localStorage.getItem("isLogin");
     if (islogin) {
       this.typeInfo(); //分类初始化
-      this.noteInfo(); //用户初始化列表
+      this.noteInfo(); //初始化列表
       this.totalInfo();
     } else {
       this.$router.push({ path: "/" });
@@ -108,6 +108,7 @@ export default {
   methods: {
     getUser() {
       this.noteInfo();
+      this.totalInfo();
     },
     //下拉框初始化
     typeInfo() {
@@ -140,17 +141,23 @@ export default {
         url: URL.notedata + "/paging",
         method: "POST",
         data: {
-          page: 1
+          page: 1,
+          notecategory: this.filters.type
         }
       }).then(res => {
         this.data = res.data.data;
+        console.log(res.data);
         return res;
       });
     },
     //文章数量
     totalInfo() {
       return request({
-        url: URL.notedata + "/notecount"
+        url: URL.notedata + "/notecount",
+        method: "POST",
+        data: {
+          notecategory: this.filters.type
+        }
       }).then(res => {
         this.total = res.data[0].count;
         return res;
@@ -166,7 +173,7 @@ export default {
         params: { notedata: obj }
       });
     },
-     //数据导出excel表格
+    //数据导出excel表格
     exportExcel() {
       /* generate workbook object from table */
 
@@ -192,14 +199,16 @@ export default {
 
     //数据分页
     handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
+      console.log(val)
+    
     },
     handleCurrentChange(val) {
       return request({
         url: URL.notedata + "/paging",
         method: "POST",
         data: {
-          page: val
+          page: val,
+          notecategory: this.filters.type
         }
       }).then(res => {
         this.data = res.data.data;
@@ -221,9 +230,15 @@ export default {
 .el-table__row {
   height: 3.5rem;
 }
-.el-pagination {
-  padding-top: 5px;
+.cell{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow: hidden;
 }
+/* .el-pagination {
+  padding-top: 5px;
+} */
 .form {
   width: 100% !important;
 }

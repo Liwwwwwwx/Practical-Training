@@ -17,7 +17,8 @@ export default function request({
     }
     var instance = axios.create({
       headers: {
-        'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'multipart/form-data'
       },
     })
     return instance(options)

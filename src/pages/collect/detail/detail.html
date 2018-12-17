@@ -6,41 +6,42 @@
 -->
 
 <ion-content>
-  
+  <ion-slides>
+    <ion-slide *ngFor="let item of data; let i = index">
+      <div class="header">
+        <div class="wrap">
+          <div class="index-container">
+            <div class="plain">No.</div>
+            <div class="index">{{i+1}}</div>
+            <div class="line"></div>
+          </div>
+          <div class="date-container">
+            <div class="month">十二月</div>
+            <div class="year">2018</div>
+          </div>
+        </div>
+        <div class="like">
+          <img src="../../assets/imgs/like@dis.png" />
+          <div>123</div>
+        </div>
+      </div>
+      <div class="nav">
+        <img src="../../assets/imgs/logo.png" class="image">
+        <p class="pub_name">{{item.username}}</p>
+        <p>发表于</p>
+        <p class="native">[{{item.anthologyname}}]</p>
+      </div>
 
       <div class="content">
-        <div class="header">
-          <div class="wrap">
-            <div class="index-container">
-              <div class="plain">No.</div>
-              <div class="index">{{index+1}}</div>
-              <div class="line"></div>
-            </div>
-            <div class="date-container">
-              <div class="month">十二月</div>
-              <div class="year">2018</div>
-            </div>
-          </div>
-          <div class="like">
-            <img src="../../assets/imgs/like@dis.png" />
-            <div>123</div>
-          </div>
-        </div>
-        <div class="nav">
-          <img src="../../assets/imgs/logo.png" class="image">
-          <p class="pub_name">{{item.username}}</p>
-          <p>发表于</p>
-          <p class="native">[{{item.anthologyname}}]</p>
-        </div>
         <img src="{{item.noteimg}}" ngClass="{{item.noteimg?imgs:2}}">
         <div ngClass="{{item.noteimg?note_content:notecontent}}">
-          <p [innerHTML]="contentdetail"></p>
+          <p [innerHTML]="contentdetail[i]"></p>
           <p class="avater">-{{item.username}}-</p>
+          <span>#{{item.notecategory}}</span>
         </div>
       </div>
 
       <div class="foot">
-          <span>#{{item.notecategory}}</span>
         <!-- <ion-icon (click)="close()" name="md-close"></ion-icon> -->
         <i class="iconfont" (click)="close()" style="padding-left: 10px;color: #bbbbbb;">&#xe642;</i>
         <div class="collection">
@@ -54,5 +55,6 @@
           <p>({{item.commentCount}})</p>
         </div>
       </div>
-    
+    </ion-slide>
+  </ion-slides>
 </ion-content>

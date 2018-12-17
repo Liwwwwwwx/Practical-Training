@@ -6,48 +6,20 @@
           <el-form-item label="文章ID">
             <el-input readonly="readonly" v-model="forms.noteid"></el-input>
           </el-form-item>
-          <el-form-item label="用户名">
-            <el-input v-model="forms.username"></el-input>
+          <el-form-item label="用户昵称">
+            <el-input readonly="readonly" v-model="forms.username"></el-input>
           </el-form-item>
-          <el-form-item label="发表时间">
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                readonly="readonly"
-                placeholder="选择日期"
-                v-model="forms.logindate"
-                style="width: 100%;"
-              ></el-date-picker>
-            </el-col>
+          <el-form-item label="文章内容">
+            <el-input type="textarea" v-model="forms.notecontent"></el-input>
           </el-form-item>
-          <el-form-item label="生日">
-            <el-col :span="11">
-              <el-date-picker
-                type="date"
-                readonly="readonly"
-                placeholder="选择日期"
-                v-model="forms.birth"
-                style="width: 100%;"
-              ></el-date-picker>
-            </el-col>
+          <el-form-item label="所属文集">
+            <el-input v-model="forms.anthologyname"></el-input>
           </el-form-item>
-          <el-form-item label="用户性别">
-            <el-input v-model="forms.sex"></el-input>
+          <el-form-item label="文章图片">
+            <el-input v-model="forms.noteimg"></el-input>
           </el-form-item>
-          <el-form-item label="手机号" prop="phone">
-            <el-input type="age" v-model.number="forms.phoneNumber" autocomplete="off"></el-input>
-          </el-form-item>
-          <!-- <el-form-item label="邮箱">
-            <el-input v-model="form.name"></el-input>
-          </el-form-item>-->
-          <el-form-item label="QQ">
-            <el-input v-model="forms.qq"></el-input>
-          </el-form-item>
-          <el-form-item label="微信">
-            <el-input v-model="forms.wechat"></el-input>
-          </el-form-item>
-          <el-form-item label="个性签名">
-            <el-input type="textarea" v-model="forms.desc"></el-input>
+          <el-form-item label="文章音乐">
+            <el-input v-model="forms.note"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onSubmit(forms)">立即修改</el-button>
@@ -81,13 +53,20 @@ export default {
   },
   methods: {
     onSubmit(datas) {
-      this.$confirm("此操作将永久修改该用户信息, 是否继续?", "提示", {
+      this.$confirm("此操作将永久修改该文章信息, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       })
         .then(() => {
-          this.$store.dispatch("addOne", datas);
+          return request({
+            url: URL.notedata + "/update",
+            method: "post",
+            data: {
+              item: JSON.stringify(datas)
+            }
+          });
+
           this.$message({
             type: "success",
             message: "修改用户信息成功!"
@@ -111,5 +90,8 @@ export default {
 .el-form {
   width: 30rem;
   margin: 0 auto;
+}
+.el-textarea__inner {
+  height: 10rem;
 }
 </style>
