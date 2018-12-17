@@ -76,7 +76,7 @@ export class PwordsPage {
       datas.anthologyname = '默认文集';
       datas.notecategory = '文字';
       console.log(datas);
-      that.http.post('/notedata/new',datas).subscribe(result => {
+      that.http.post('/notedata/newWords',datas).subscribe(result => {
         console.log(result);
       });
     }
