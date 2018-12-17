@@ -2,7 +2,7 @@ const db = require('./database.js');
 
 class TodoNoteData{
   getAll(callback){
-    const sql = 'SELECT * FROM note';
+    const sql = 'select notes.*,count(clickid) clickCount,count(commentid) commentCount,count(collectionid) collectionCount from (select note.*,user.avatar,user.username,anthology.anthologyname from note,user,anthology where anthology.userid = user.userid and note.anthologyid = anthology.anthologyid) as notes left join click on notes.noteid = click.noteid left join comment on notes.noteid = comment.noteid left join collection on notes.noteid = collection.cocontent group by (noteid);';
     var datas = [];
 
     db.query(sql, (err,results)=>{
@@ -16,9 +16,17 @@ class TodoNoteData{
     });
   };
 
-  getCount(callback){
-    const sql = 'SELECT count(noteid) count from note';
-
+  getCount(notecategory, callback){
+    console.log(notecategory)
+    console.log(typeof notecategory)
+    if(notecategory == '全部'){
+      var sql = 'SELECT count(noteid) count from note';
+      console.log(sql)
+    }else{
+      var sql = 'SELECT count(noteid) count from note where notecategory = "' + notecategory +' "'
+      console.log(sql)
+    }
+    
     var count = 0;
     db.query(sql, (err,results)=>{
       if(err) {
@@ -27,6 +35,17 @@ class TodoNoteData{
       }
       count = results;
       callback(false, count);
+    })
+  }
+
+  getNoteCategory(notecategory, callback){
+    const sql = 'select * from note where notecategory = ?';
+    db.query(sql,[notecategory], (err,results)=>{
+      if(err) {
+        callback(true);
+        return ;
+      }
+      callback(false,results);
     })
   }
 

@@ -13,15 +13,14 @@ router.get('/',(req,res)=>{
       console.error(err);
       return;
     }
-
-    res.status(200).json(datas);
+    res.status(200).send(datas);
   });
 });
 
-router.get('/notecount',(req,res)=>{
+router.post('/notecount',(req,res)=>{
   res.header('Access-Control-Allow-Origin','*');
-  res.header('Content-Type', 'text/plain; charset="utf-8"');
-  todonotedata.getCount((err, count)=>{
+  console.log(req.body)
+  todonotedata.getCount(req.body.notecategory, (err, count)=>{
     if(err) {
       console.error(err);
       return ;
@@ -52,6 +51,24 @@ router.post('/del',(req, res)=>{
   })
 })
 
+//筛选文章类型
+router.post('/notecategory',(req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body);
+  todonotedata.getNoteCategory(req.body.notecategory,(err,results)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }else{
+      res.send(JSON.stringify({
+        status:'200',
+        data:results,
+        msg:'获取成功'
+      }))
+    }
+  })
+})
+
 router.post('/new', (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   console.log(req.body);
@@ -65,6 +82,7 @@ router.post('/new', (req, res) => {
   res.send(req.body);
 });
 
+
 //数据分页
 
 router.all('/paging', (req,res)=>{
@@ -76,7 +94,7 @@ router.all('/paging', (req,res)=>{
   }else {
     param = req.query || req.params;
   }
-  console.log(param);
+  //console.log(param);
   if(param.page == '' || param.page == null || param.page == undefined) {
     res.end(JSON.stringify({
       msg: '请传入参数page',
@@ -85,14 +103,18 @@ router.all('/paging', (req,res)=>{
     return ;
   }
   var start = (param.page-1) * 7;
-  var sql = 'SELECT * FROM note limit '+ start + ',7';
+  if(req.body.notecategory == '全部'){
+    var sql = 'select note.*,user.username,anthology.anthologyname from note,user,anthology where     note.anthologyid = anthology.anthologyid and anthology.userid = user.userid limit '+ start + '    ,7';}else{
+      sql = 'select note.*,user.username,anthology.anthologyname from note,user,anthology where note.anthologyid = anthology.anthologyid and anthology.userid = user.userid and note.notecategory = "'+ req.body.notecategory + '" limit '+ start +',7'}
+
   db.query(sql, (err, results)=> {
     if(err) {
       console.error(err);
     }else {
-      console.log(results);
+    //  console.log(results);
       var noteList = results;
       res.end(JSON.stringify({
+        status:'200',
         data: noteList
       }));
     }
