@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { CollectiondetailPage } from '../collectiondetail/collectiondetail';
+import { NewPage } from '../new/new';
 
 /**
  * Generated class for the CollectPage page.
@@ -26,5 +28,10 @@ export class CollectPage {
   isClick(i){
     this.isActive=i;
   }
-
+  goToa(){
+    this.navCtrl.push(CollectiondetailPage);
+  }
+  goTonew(){
+    this.navCtrl.push(NewPage);
+  }
 }

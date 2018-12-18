@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content>
-    <ul class="navList">
+    <!-- <ul class="navList">
         <li *ngFor="let item of arr;let idx=index;" (click)="isClick(idx)" [class.first]="isActive==idx">
            {{item}}
         </li>
@@ -25,5 +25,17 @@
       </div>
       <div *ngSwitchCase="2">
       </div>
+    </div> -->
+    <div class="wenji" (click)="goToa()">
+      <p  >默认文集</p>
     </div>
+    <div class="wenji" (click)="goTonew()">
+      <p>新建文集</p>
+    </div>
+   
+    
 </ion-content>
+<!-- <ion-footer no-border>
+   <p (click)="goToa()">收藏</p>
+   
+ </ion-footer> -->

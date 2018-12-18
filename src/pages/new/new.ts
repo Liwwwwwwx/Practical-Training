@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams,ViewController } from 'ionic-angular';
 import {WenjiPage } from '../wenji/wenji';
+import { CollectiondetailPage } from '../collectiondetail/collectiondetail';
 /**
  * Generated class for the NewPage page.
  *
@@ -24,5 +25,8 @@ export class NewPage {
   go(){
     let data = { 'foo': 'bar' };
     this.viewCtrl.dismiss(data);
+  }
+  goToa(){
+    this.navCtrl.push(CollectiondetailPage);
   }
 }
