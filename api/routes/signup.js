@@ -87,11 +87,19 @@ router.post('/newUser', function(req, res) {
   signData.insertOne(name, psw, phone, mail, (err, result) => {
     if(err) {
       console.log(err);
-      res.send(false);
       return ;
     }
     console.log(result);
   });
+  //创建默认文集
+  signData.createAnt(name, '默认文集', (err, result) => {
+    if(err) {
+      console.log(err);
+      res.send(false);
+      return ;
+    }
+    console.log(result);
+  })
   res.send(true);
 });
 

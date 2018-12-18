@@ -45,6 +45,17 @@ class SignData {
       callback(false,results);
     });
   }
+  //创建文集
+  createAnt(name, anthologyname, callback) {
+    const sql = 'INSERT INTO anthology(userid, anthologyname) VALUES ((SELECT userid FROM user WHERE username = ?),?)';
+    db.query(sql, [name, anthologyname], (err, results) => {
+      if(err) {
+        callback(true);
+        return ;
+      }
+      callback(false,results);
+    })
+  }
 }
 
 module.exports = SignData;

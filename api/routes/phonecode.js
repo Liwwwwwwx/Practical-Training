@@ -26,7 +26,7 @@ router.post('/',function(req,res) {
 			console.log('请求异常');
 		}
 	});
-  res.send({code: code});
+  res.send({code: code,phone: phone});
 });
 // 生成验证码FUNCTION
 function getCode(){

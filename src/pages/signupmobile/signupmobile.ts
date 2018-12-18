@@ -20,7 +20,7 @@ export class SignupmobilePage {
   }
   data: any = this.params.data;// 上一页传来的数据
   matchCode: string = '';// 验证码
-
+  phoneNum: string = '';// 验证码对应的手机号
   ionViewDidLoad() {
     console.log(this.data);
   }
@@ -81,7 +81,9 @@ export class SignupmobilePage {
           console.log(JSON.stringify(result));
           console.log(typeof JSON.stringify(result));
           that.matchCode = JSON.stringify(result).slice(9,15);
+          that.phoneNum = JSON.stringify(result).slice(26,37);
           console.log(that.matchCode);
+          console.log(that.phoneNum);
         });
         that.verifyCode.disable = false;
         that.settime();
@@ -107,7 +109,11 @@ export class SignupmobilePage {
       this.showToast('middle','请输入验证码！');
       return ;
     }
-    if(matchnum.value !== this.matchCode) {
+    if(phonenum.value !== this.phoneNum) {// 匹配手机号
+      this.showToast('middle','验证码输入错误！');
+      return ;
+    }
+    if(matchnum.value !== this.matchCode) {// 匹配验证码
       this.showToast('middle','验证码输入错误！');
       return ;
     }

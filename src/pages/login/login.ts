@@ -60,7 +60,6 @@ export class LoginPage {
     this.storage.remove("USER_INFO");
     this.storage.set("USER_INFO",JSON.stringify(data));
 
-      /*
     // 验证用户名是否存在
     function checkName() {
       return new Promise((resolve) => {
@@ -95,8 +94,6 @@ export class LoginPage {
       resolve();
     });
     p.then(checkName).then(checkMatch).catch(reason => {console.log(reason);});
-    */
-   that.navCtrl.setRoot(TabsPage, data);
   }
   
   

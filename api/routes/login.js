@@ -3,17 +3,6 @@ var router = express.Router();
 var LoginData = require('../models/loginData.js');
 var loginData = new LoginData();
 var db = require('../models/database.js')
-/*
-function user(name, psw) {
-  this.name = name;
-  this.psw = psw;
-}
-
-var users = [
-  new user('suoji','000000'),
-  new user('fsq','000000')
-];
-*/
 
 router.get('/', function(req, res) {
   console.log('收到');
@@ -25,32 +14,27 @@ router.get('/', function(req, res) {
     }
   });
 });
-
+//手机端登陆
 router.post('/login', function (req, res) {
   res.header('Access-Control-Allow-Origin', '*');
   console.log(req.body);
   var name = req.body.name;
   var psw = req.body.psw;
-  /*
-  for (var i = 0; i < users.length; i++) {
-    if(users[i].name == name && users[i].psw == psw) {
-      res.send(true);
-      return ;                       
-    }
-  }
-  res.send(false);
-  */
-  const sql = 'SELECT password FROM user WHERE username = ?';
-  db.query(sql,name,(err, result)=>{
+  loginData.getOne(name, (err, data) => {
+    let password = '' + data[0].password;
+    console.log(password);
     if(err) {
       console.log(err);
-      return ;
+      res.send(false);
+    } else {
+      if (psw !== password) {
+        console.log(data[0].password);
+        res.send(false);
+      } else {
+        res.send(true);
+      }
     }
-    if(result == {}){
-      console.log('账号未注册')
-    }
-    console.log(typeof result)
-  })
+  });
 });
 
 router.post('/land', function(req, res){
