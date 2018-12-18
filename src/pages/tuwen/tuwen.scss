@@ -18,32 +18,36 @@ page-tuwen {
             margin: 0;
 
             li{
-                //border: 1px solid #cec2ae;
-                width: 44%;
-                margin-left:4%;
+
+                width: 75%;
+                margin-left: 12.5%;
+
+                background: #ffffff;
                 margin-top: 3%;
-                float: left;
-                height: 150px;
-                box-shadow:1px 1px 5px #cec2ae ;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                height: 20rem;
+              
+                box-shadow: 1px 1px 5px #cec2ae;
             }
         }
             img{
                 width: 100%;
-                height: 100px;
+                height: 14rem;
             }
        
-      
+        .li_notecontent{
+            font-size: 12px;
+            margin: 0;
+            text-align: center;
+        }    
         .li_audate{
             font-size: 10px;
             color: #424242;
-            margin-left: 5%;
-            margin-top: 2%;
-            .li_audate_author{
-            
-            }
-            .li_audate_date{
-                margin-top: 3%;
-            }
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
         }
     }
    

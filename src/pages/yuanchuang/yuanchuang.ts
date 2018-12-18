@@ -17,6 +17,9 @@ import { HttpClient } from "@angular/common/http";
 })
 export class YuanchuangPage {
   data;
+  imgs = 'imgs'
+  li_content = 'li_content'
+  licontent = 'licontent'
   constructor(
     public modalCtrl: ModalController,
     public http: HttpClient,
@@ -26,14 +29,13 @@ export class YuanchuangPage {
     this.http.get("/notedata").subscribe(data => {
       this.data = data;
       var note = [];
-      this.data.map(function(item, index) {
+      this.data.map(function(item) {
         if (item.isnoteoriginal == 1) {
           note.push(item);
         }
       });
       this.data = note;
     });
-   
   }
   ionViewDidLoad() {
     console.log("ionViewDidLoad YuanchuangPage");

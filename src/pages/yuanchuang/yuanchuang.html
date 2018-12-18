@@ -17,11 +17,11 @@
         </ion-infinite-scroll> -->
   <ul>
     <li (click)="goTog(i)" class="li1" *ngFor="let item of data;let i = index">
-        <img src="{{item.noteimg}}" alt="">
-        <div class="li_content">
-            <div class="li_content_p">文章内容</div>
+        <img src="{{item.noteimg}}"  ngClass="{{item.noteimg?imgs:2}}"alt="">
+        <div  ngClass="{{item.noteimg?li_content:licontent}}">
+            <div class="li_content_p">{{item.notecontent.length>20?item.notecontent.substr(0,20):item.notecontent}}...</div>
             <div class="li_content_author">{{item.username}}</div>
-            <div class="li_content_date">{{item.notedate}}</div>
+            <div class="li_content_date">{{item.notedate.substr(0,10)}}</div>
           </div>
     </li>
     

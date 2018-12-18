@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { ModalController,NavController } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
+import { HttpClient } from "@angular/common/http";
 /**
  * Generated class for the TuwenPage page.
  *
@@ -14,15 +15,32 @@ import { DetailPage } from '../detail/detail';
   templateUrl: 'tuwen.html',
 })
 export class TuwenPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  data;
+  constructor(public http: HttpClient,public modalCtrl: ModalController,public navCtrl: NavController) {
   }
-
+  ngOnInit() {
+    this.http.get("/notedata").subscribe(data => {
+      this.data = data;
+      var note = [];
+      this.data.map(function(item) {
+        if (item.notecategory == '图文') {
+          note.push(item);
+          
+        }
+      });
+      this.data = note;
+    });
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TuwenPage');
   }
-  goTog(){
-    this.navCtrl.push(DetailPage);
+  goTog(i){
+    console.log(this.data[i]);
+    let profileModal = this.modalCtrl.create(DetailPage, {
+      index: i,
+      note: this.data[i]
+    });
+    profileModal.present();
   }
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);

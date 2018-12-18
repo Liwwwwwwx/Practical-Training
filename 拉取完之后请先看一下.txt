@@ -34,3 +34,6 @@ date:2018/12/18/9:25
 
 date:2018/12/18/9:50
 修改了pages中的login signup signupmobile，修改了api/routes中的signup login phonecode 和 api/models中的signData
+
+date:2018/12/18/11:12
+修改了pages中home my yuanchuang tuwen savewenji的样式
