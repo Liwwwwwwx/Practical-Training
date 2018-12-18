@@ -9,6 +9,8 @@ import { CollectPage } from "../collect/collect";
 import { WenjiPage } from "../wenji/wenji";
 import { Storage } from "@ionic/storage";
 import { HttpClient } from "@angular/common/http";
+import { ContactPage } from "../contact/contact";
+import { AdvicePage } from "../advice/advice";
 /**
  * Generated class for the MyPage page.
  *
