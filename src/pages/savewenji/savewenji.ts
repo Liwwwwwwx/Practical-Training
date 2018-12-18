@@ -18,6 +18,8 @@ import { HttpClient } from "@angular/common/http";
 export class SavewenjiPage {
   username;
   data;
+  selectValue;
+  
   constructor(
     public http: HttpClient,
     public storage: Storage,
@@ -48,7 +50,7 @@ export class SavewenjiPage {
         .subscribe(result => {
           console.log(result);
           that.data = result;
-          console.log(that.data)
+          console.log(that.data);
         });
     }
     var p = new Promise(resolve => {
@@ -66,5 +68,8 @@ export class SavewenjiPage {
       console.log(data);
     });
     modal.present();
+  }
+  langSelect() {
+    console.log("langSelect: " + this.selectValue);
   }
 }

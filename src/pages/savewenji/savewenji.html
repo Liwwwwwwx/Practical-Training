@@ -14,8 +14,15 @@
 
 
 <ion-content padding>
-  <ul>
-    <li *ngFor="let item of data">{{item.anthologyname}}</li>
-    <li (click)="goNew()">+新建文集</li>
-  </ul>
+  <ion-list radio-group [(ngModel)]="selectValue" (ionChange)="langSelect()">
+
+    <ion-item *ngFor="let item of data">
+      <ion-label>{{item.anthologyname}}</ion-label>
+      <ion-radio value="{{item.anthologyname}}"></ion-radio>
+    </ion-item>
+
+    <ion-item (click)="goNew()">+新建文集</ion-item>
+
+  </ion-list>
+  <button ion-button round style="width: 50%;margin-top: 20px;margin-left: 22%;">&nbsp;完&nbsp;成</button>
 </ion-content>
