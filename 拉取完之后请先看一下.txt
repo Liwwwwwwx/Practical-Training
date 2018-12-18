@@ -28,3 +28,5 @@ date:2018/12/16/20:20
 
 date:2018/12/17/22:01
 更新了pages中的pphoto页面和关于发布图片的api，更新了pages中的signupmobile页面，页面中的$符为jQuery，需要引入node_modules中的jquery文件。
+date:2018/12/18/9:25
+更新了图标
