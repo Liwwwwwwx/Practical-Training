@@ -49,6 +49,17 @@ class TodoNoteData{
     })
   }
 
+  getAnthologyDetail(name, callback){
+    const sql = 'select * from anthology where userid = (select userid from user where username = ?)'
+      db.query(sql, [name], (err,results)=>{
+        if(err){
+          callback(true);
+          return ;
+        }
+        callback(false,results);
+      })
+  }
+
   deleteone(id, callback) {
     const sql = 'DELETE from note where noteid = ?';
 

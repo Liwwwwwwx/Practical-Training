@@ -120,6 +120,23 @@ router.post('/del',(req, res)=>{
   });
 })
 
+//用户详情
+router.post('/userdetail', (req,res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var name = req.body.name;
+  todouserdata.getUserDetail(name, (err,data)=>{
+    if(err){
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+    }
+    res.send(JSON.stringify(data))
+  })
+})
+
+
 //数据分页
 router.all('/paging', (req,res)=> {
   res.header('Access-Control-Allow-Origin','*');

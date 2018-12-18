@@ -10,7 +10,8 @@ var mailRouter = require('./routes/mail');
 var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
 var upload = require('./routes/upload');
-var phoneRouter = require('./routes/phonecode')
+var phoneRouter = require('./routes/phonecode');
+var uploadMP3Router = require('./routes/uploadMP3.js');
 var app = express();
 
 // view engine setup
@@ -31,6 +32,7 @@ app.use('/mail',mailRouter);
 app.use('/login',loginRouter);
 app.use('/signup',signupRouter);
 app.use('/phonecode',phoneRouter);
+app.use('/uploadMP3',uploadMP3Router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

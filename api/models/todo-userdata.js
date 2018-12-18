@@ -61,7 +61,16 @@ class TodoUserData{
          callback(false,results);
       })
   };
-
+  getUserDetail(name,callback){
+     const sql = 'select user.*,count(followid),count(fansid),anthology.anthologyname from user left join anthology on user.userid = anthology.userid left join fans on user.userid = fans.userid left join follow on user.userid = follow.userid where user.username = ? group by (userid)';
+     db.query(sql, [name], (err, res)=>{
+       if(err){
+         callback(true);
+         return ;
+       }
+       callback(false, res);
+     })
+   }
   deleteone(id, callback) {
     const sql = 'DELETE from user where userid = ?';
 

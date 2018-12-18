@@ -37,3 +37,6 @@ date:2018/12/18/9:50
 
 date:2018/12/18/11:12
 修改了pages中home my yuanchuang tuwen savewenji的样式
+
+date:2018/12/18/14.05
+修改了api的notedata和userdata文件，增加了获取用户详情和文集详情的接口 
