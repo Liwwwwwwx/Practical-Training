@@ -51,6 +51,25 @@ router.post('/login', function (req, res) {
     }
     console.log(typeof result)
   })
+
+  loginData.getOne(name,  (err,data)=>{
+    let password = '' + data[0].password;
+    if(err) {
+      console.log(err);
+      res.send(JSON.stringify({
+        isLogin:false,
+        msg:'错误',
+        status:'101'
+      }));
+    }else{
+      if(psw !== password){
+        res.send(false)
+      }else{
+        res.send(true)
+      }
+
+    }
+  })
 });
 
 router.post('/land', function(req, res){

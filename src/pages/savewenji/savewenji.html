@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ul>
-    <li>默认文集</li>
+    <li *ngFor="let item of data">{{item.anthologyname}}</li>
     <li (click)="goNew()">+新建文集</li>
   </ul>
 </ion-content>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <img src="assets/imgs/logo.png" alt="" style="width:50px;height:50px;">
+    <ion-title text-center>
+      首页
+      <ion-icon name="add" class="add" (click)="go()"></ion-icon>
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  
+  
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh"
+    refreshingSpinner="circles"
+    refreshingText="刷新"></ion-refresher-content>
+  </ion-refresher>     -->
+  <ion-slides>
+    <ion-slide *ngFor="let item of data; let i = index">
+      <div class="card">
+        <div class="content" (click)="FullScreen(i)">
+
+          <div>
+            <img src="{{item.noteimg}}" ngClass="{{item.noteimg?image:2}}">
+          </div>
+          <!-- <div  ngClass="{{item.noteimg?1:image}}"></div> -->
+          <div ngClass="{{item.noteimg?note_content:notecontent}}">
+            <p [innerHTML]="textcontent[i]"></p>
+          </div>
+          <div class="foot">
+            <div class="category">#{{item.notecategory}}</div>
+            <div class="msg">
+              <div class="collection">收藏 &nbsp;<span>{{item.collectionCount}}</span>&nbsp;感悟&nbsp;<span>{{item.commentCount}}</span></div>
+              <div class="avater"><span>{{item.username}}</span> 创建于 <span>{{item.anthologyname}}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>
