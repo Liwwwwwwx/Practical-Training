@@ -83,4 +83,10 @@ export class MyPage {
   goWenji() {
     this.navCtrl.push(WenjiPage);
   }
+  gocontact(){
+    this.navCtrl.push(ContactPage);
+  }
+  goAdvice(){
+    this.navCtrl.push(AdvicePage);
+  }
 }

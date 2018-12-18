@@ -27,9 +27,6 @@ export class ShezhiPage {
   go(){
     this.navCtrl.push(WePage);
   }
-  goTo(){
-    this.navCtrl.push(AdvicePage);
-  }
   goto(){
     this.navCtrl.push(NumPage);
   }
