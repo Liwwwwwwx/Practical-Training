@@ -52,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PwordsPage } from '../pages/pwords/pwords';
 import { PphotoPage } from '../pages/pphoto/pphoto';
 import { PmusicPage } from '../pages/pmusic/pmusic';
-import { CollectiondetailPage } from '../pages/collectiondetail/collectiondetail';
+import { CommentPage } from '../pages/comment/comment';
+import { RespondPage} from '../pages/respond/respond';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { CollectiondetailPage } from '../pages/collectiondetail/collectiondetail
     LovePage,
     SearchPage,
     DetailPage,
-    CollectiondetailPage
+    CommentPage,
+    RespondPage
   ],
   imports: [
     BrowserModule,
@@ -160,7 +162,8 @@ import { CollectiondetailPage } from '../pages/collectiondetail/collectiondetail
     LovePage,
     SearchPage,
     DetailPage,
-    CollectiondetailPage
+    CommentPage,
+    RespondPage
   ],
   providers: [
     StatusBar,
