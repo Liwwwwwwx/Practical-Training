@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component} from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { ShezhiPage } from "../shezhi/shezhi";
 import { FanPage } from "../fan/fan";
@@ -29,9 +29,8 @@ import { MyPicturesPage } from "../my-pictures/my-pictures";
 })
 export class MyPage {
   username;
-  data;
-  @ViewChild("ac") ac;
-  icons: string = "wenji";
+  data ={};
+  avatar
 
   constructor(
     public http: HttpClient,
@@ -60,28 +59,34 @@ export class MyPage {
       that.http.post("/userdata/userdetail",{name:that.username}).subscribe(result => {
         console.log(result);
         that.data = result[0];
+        for(let key in result[0]){
+          that.data[key] = result[0][key]
+      }
+      
       });
     }
     var p = new Promise((resolve) => {
       resolve();
     });
     p.then(getName).then(getUserInfo).catch(reason => {console.log(reason);});
-    
   }
+  
   go() {
     this.navCtrl.push(ShezhiPage);
+    console.log(this.data)
   }
   goto() {
     this.navCtrl.push(FanPage);
   }
   goTo() {
-    this.navCtrl.push(UserPage);
+    this.navCtrl.push(UserPage,this.data);
   }
   goSign() {
     this.navCtrl.push(SignPage);
   }
   goGuanzhu() {
     this.navCtrl.push(GuanzhuPage);
+    
   }
   goCollect() {
     this.navCtrl.push(CollectPage);

@@ -2,11 +2,11 @@
     <div class="header">
         <!-- <i id="setup"  class="iconfont" (click)="go()">&#xe604;</i> -->
         <div class="head"  (click)="goTo()" >
-            <img src="assets/imgs/my.jpg" alt="">
+            <img src="{{data.avatar}}" alt="">
         </div>
     
-        <p text-center class="name">The one</p>
-        <p text-center class="qm" (click)="goSign()">视线所及只剩生活<i class="iconfont">&#xe608;</i></p>
+        <p text-center class="name">{{data.username}}</p>
+        <p text-center class="qm" (click)="goSign()">{{data.autograph}}<i class="iconfont">&#xe608;</i></p>
     </div>
         
     <div class="funs">

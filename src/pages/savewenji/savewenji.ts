@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams, ModalController } from "ionic-angular";
+import { NavController, NavParams, ModalController, ToastController, Events } from "ionic-angular";
 import { NewPage } from "../new/new";
 import { Storage } from "@ionic/storage";
 import { HttpClient } from "@angular/common/http";
@@ -25,51 +25,70 @@ export class SavewenjiPage {
     public storage: Storage,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
-    public navParams: NavParams
+    public params: NavParams,
+    public toastCtrl: ToastController,
+    public events: Events
   ) {}
-
+  datas = this.params.data;
   ionViewDidLoad() {
-    console.log("ionViewDidLoad SavewenjiPage");
+    console.log(this.datas);
+    this.events.subscribe('reloadNotePage', () => {
+      this.username = this.datas.username;
+      this.http
+      .post("/notedata/anthologydetail", { name: this.username })
+      .subscribe(result => {
+        console.log(result);
+        this.data = result;
+        console.log('刷新后的数据：',this.data);
+      });
+    });
   }
   ngOnInit() {
-    var that = this;
-    function getName() {
-      return new Promise(resolve => {
-        that.storage.get("USER_INFO").then(value => {
-          console.log(value);
-          console.log(JSON.parse(value));
-          that.username = JSON.parse(value).username;
-          console.log("storage:", that.storage);
-          resolve(that.username);
-        });
-      });
-    }
-    function getUserInfo() {
-      that.http
-        .post("/notedata/anthologydetail", { name: that.username })
-        .subscribe(result => {
-          console.log(result);
-          that.data = result;
-          console.log(that.data);
-        });
-    }
-    var p = new Promise(resolve => {
-      resolve();
-    });
-    p.then(getName)
-      .then(getUserInfo)
-      .catch(reason => {
-        console.log(reason);
+    // 获取文集
+    this.username = this.datas.username;
+    console.log(this.username);
+    this.http
+      .post("/notedata/anthologydetail", { name: this.username })
+      .subscribe(result => {
+        console.log(result);
+        this.data = result;
+        console.log(this.data);
       });
   }
+
+  // 传入数据库
+  transferDetails() {
+    if(!this.selectValue) {
+      this.showToast('middle','请选择文集!');
+      return ;
+    }
+    console.log(this.datas);
+    this.http.post('/notedata/newPhoto',this.datas).subscribe(result => {
+      console.log(result);
+    });
+    // 返回根目录并刷新
+    this.navCtrl.popToRoot().then(()=>{
+      this.events.publish('reloadNotePage');
+    });
+  }
+
   goNew() {
-    let modal = this.modalCtrl.create(NewPage, { userId: 8675309 });
-    modal.onDidDismiss(data => {
-      console.log(data);
-    });
-    modal.present();
+    this.navCtrl.push(NewPage, { username: this.username });
   }
+
   langSelect() {
+    this.datas.anthologyname = this.selectValue;
     console.log("langSelect: " + this.selectValue);
+    console.log('datas:',this.datas);
+  }
+
+  // 提示信息
+  showToast(position: string, message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      position: position
+    });
+    toast.present(toast);
   }
 }

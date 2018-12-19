@@ -27,18 +27,18 @@
     <ion-list>
       <ion-item>
         <span class="left">昵称</span>
-        <textarea name="" id="text"></textarea>
+        <input type="text" value='{{data.username}}' id="text"/>
       </ion-item>
     <ion-item>
-      <form action="" method="get"> 
+      <form action="" method="get" > 
         <span class="left">性别</span>
-        <input name="Sex" type="radio" value="" />男 
-        <input name="Sex" type="radio" value="" />女 
+        <input name="Sex" type="radio" value="男" />男 
+        <input name="Sex" type="radio" value="女" />女 
       </form> 
     </ion-item>
     <ion-item>
         <span class="left">生日</span>
-        <input name="" type="date" value="" />
+        <input type="text" value="{{data.birth}}" />
       </ion-item>
   </ion-list>
 

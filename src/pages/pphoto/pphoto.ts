@@ -5,6 +5,7 @@ import { PublishPage } from '../publish/publish';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import $ from 'jquery';
+import { SavewenjiPage } from '../savewenji/savewenji';
 /**
  * Generated class for the PphotoPage page.
  *
@@ -98,35 +99,33 @@ export class PphotoPage {
     }
     // 获取文字内容
     function getDetails(datas) {
-      return new Promise((resolve) => {
-        console.log(datas.username);
-        console.log(that.content);
-        datas.isOriginal = that.isOriginal;
-        datas.isPrivate = that.isPrivate;
-        datas.content = that.content;
-        console.log('datas:', datas);
-        resolve(datas);
-      });
+      console.log(datas.username);
+      console.log(that.content);
+      datas.isOriginal = that.isOriginal;
+      datas.isPrivate = that.isPrivate;
+      datas.notecategory = '图片';
+      datas.content = that.content;
+      console.log('datas:', datas);
+      that.navCtrl.push(SavewenjiPage,datas);
     }
     
 
     // 传入数据库
-    function transferDetails(datas) {
-      datas.anthologyname = '默认文集';
-      datas.notecategory = '文字';
-      console.log(datas);
-      var formData = new FormData($("#myForm")[0]);
-      console.log(formData);
-      datas.formData = formData;
-      that.http.post('/notedata/newPhoto',datas).subscribe(result => {
-        console.log(result);
-      });
-    }
+    // function transferDetails(datas) {
+    //   // datas.anthologyname = '默认文集';
+    //   console.log(datas);
+    //   var formData = new FormData($("#myForm")[0]);
+    //   console.log(formData);
+    //   datas.formData = formData;
+    //   that.http.post('/notedata/newPhoto',datas).subscribe(result => {
+    //     console.log(result);
+    //   });
+    // }
 
     var p = new Promise((resolve) => {
       resolve();
     });
-    p.then(uploadByForm).then(getName).then(getDetails).then(transferDetails).catch(reason => {console.log(reason);});
+    p.then(uploadByForm).then(getName).then(getDetails).catch(reason => {console.log(reason);});
   }
 
 }

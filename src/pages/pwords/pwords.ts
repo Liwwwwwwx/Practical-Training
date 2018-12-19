@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PublishPage } from '../publish/publish';
-// import { SavewenjiPage } from '../savewenji/savewenji';
+import { SavewenjiPage } from '../savewenji/savewenji';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 /**
@@ -25,7 +25,7 @@ export class PwordsPage {
     username: '',
     content: '',
     anthologyname: '',
-    notecategory: '',
+    notecategory: '文字',
     isOriginal: false,
     isPrivate: false
   };
@@ -55,36 +55,19 @@ export class PwordsPage {
     }
     // 获取内容
     function getDetails(datas) {
-      return new Promise((resolve) => {
         console.log(that.datas.username);
         console.log(that.content);
+        datas.newPath = null;
         datas.isOriginal = that.isOriginal;
         datas.isPrivate = that.isPrivate;
         datas.content = that.content;
         console.log('datas:', datas);
-        resolve(datas);
-      });
+        that.navCtrl.push(SavewenjiPage,datas);
     }
-    
-    // function getDetails(datas) {
-    //   return new Promise((resolve) => {
-    //   })
-    // }
 
-    // 传入数据库
-    function transferDetails(datas) {
-      datas.anthologyname = '默认文集';
-      datas.notecategory = '文字';
-      console.log(datas);
-      that.http.post('/notedata/newWords',datas).subscribe(result => {
-        console.log(result);
-      });
-    }
-    // this.navCtrl.push(SavewenjiPage);
     var p = new Promise((resolve) => {
-      
       resolve();
     });
-    p.then(getName).then(getDetails).then(transferDetails).catch(reason => {console.log(reason);});
+    p.then(getName).then(getDetails).catch(reason => {console.log(reason);});
   }
 }

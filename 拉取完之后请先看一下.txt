@@ -56,3 +56,6 @@ date:2018/12/19/10:26
 
 date:2018/12/19/10:45
 修改my、粉丝、关注、反馈、消息、设置、签名、编辑资料页面样式，新增my-anthology、my-collection、my-pictures、my-songs页面
+
+date:2018/12/19/20.05
+修改my，my-anthology，user，home，pphoto，pwords，new，head，headetail页面

@@ -14,8 +14,9 @@ import {HeaddetailPage } from '../headdetail/headdetail';
   templateUrl: 'head.html',
 })
 export class HeadPage {
-
+  avatar
   constructor(public modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams) {
+    this.avatar = navParams.data
   }
 
   // ionViewDidLoad() {

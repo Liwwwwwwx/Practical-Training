@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController,  } from 'ionic-angular';
+import { ModalController, NavController, Events,  } from 'ionic-angular';
 import { PublishPage } from '../publish/publish';
 import { DetailPage } from '../detail/detail'
 import { HttpClient,  } from "@angular/common/http";
@@ -14,7 +14,7 @@ export class HomePage {
   image='image'
   note_content = 'note_content'
   notecontent = 'note-content'
-  constructor(public http:HttpClient,public modalCtrl: ModalController,public navCtrl: NavController) {
+  constructor(public http:HttpClient,public modalCtrl: ModalController,public navCtrl: NavController,public events: Events) {
 
   }
   isClick:Boolean = false;
@@ -25,6 +25,15 @@ export class HomePage {
       this.textcontent = this.data.map(function(item){
         return item.notecontent.replace(/(\r\n)|(\n)/g,'<br/>')
       })
+      this.events.subscribe('reloadNotePage', () => {
+        this.http.get('/notedata').subscribe(data => {
+          console.log('刷新后的数据：',data);
+          this.data = data; 
+          this.textcontent = this.data.map(function(item){
+            return item.notecontent.replace(/(\r\n)|(\n)/g,'<br/>')
+          })
+        })
+      });
     })
   }
   // doRefresh(refresher) {

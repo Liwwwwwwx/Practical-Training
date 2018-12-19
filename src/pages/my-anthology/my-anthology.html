@@ -7,9 +7,12 @@
 <ion-content>
   <div class="anthology">
     <ul>
-      <li>
-        <img src="../../assets/imgs/tongxin.jpg">
-        默认文集
+      <li *ngFor="let item of data; let i = index" (click)="go(i)">
+        <p>{{item.anthologyname}}</p>
+      </li>
+     
+      <li (click)="goNew()">
+        <p>+新建文集</p>
       </li>
     </ul>
   </div>

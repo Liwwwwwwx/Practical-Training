@@ -1,31 +1,47 @@
 page-my-anthology {
-    ion-title{
-        padding-left: 24%;
-    }
-    ion-content{
-        background-color:#f6f6f6!important;
-        .anthology{
-            width: 100%;
-            height: auto;
-            ul{
-                padding: 0%;
-                margin: 0%;
-                width: 100%;
-                height: auto;
-                img{
-                    width: 100%;
-                    height: auto;
-                }
-                li{
-                    width: 44%;
-                    height: auto;
-                    margin-top: 3%;
-                    margin-left: 4%;
-                    text-align: center;
-                    background-color: white;
-                    border:1px solid gray; 
-                }
-            }
+  ion-title {
+    padding-left: 24%;
+  }
+
+  ion-content {
+    background-color: #f6f6f6 !important;
+
+    .anthology {
+      width: 100%;
+      height: auto;
+
+      ul {
+        padding: 0%;
+        margin: 0%;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        img {
+          width: 100%;
+          height: auto;
         }
+
+        li {
+          width: 44%;
+          height: 10rem;
+          margin-top: 3%;
+          margin-left: 4%;
+          text-align: center;
+          background-color: white;
+          border: 1px solid gray;
+          background: url(../../assets/imgs/anthology.png) no-repeat 100% ; 
+
+          p {
+            margin: 0;
+            height: 10rem;
+            line-height: 10rem;
+            color: #ffffff;
+          }
+        }
+      }
     }
+  }
 }
