@@ -21,7 +21,7 @@ export class LovePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LovePage');
   }
-  // goTog(){
-  //   this.navCtrl.popToRoot();
-  // }
+  goAbout(){
+    this.navCtrl.popToRoot();
+  }
 }

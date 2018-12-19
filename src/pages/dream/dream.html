@@ -4,36 +4,37 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header text-center no-border>
+<!-- <ion-header text-center no-border>
   <ion-navbar color="tit">
     <ion-title>理想</ion-title>
     <div class="div1"></div>
   </ion-navbar>
 
-</ion-header> 
+</ion-header>  -->
 
 
 <ion-content no-border>
-      <div class="div1">   
-    <ion-slides pager="true" autoplay="1000" loop="true" class="sli">
-      <ion-slide>
-        <img src="assets/imgs/lixiang7.jpg" alt="">
-      </ion-slide>
-      <ion-slide>
-        <img src="assets/imgs/lixiang4.jpg" alt="">
-      </ion-slide>
-      <ion-slide>
-        <img src="assets/imgs/lixiang8.png" alt="">
-      </ion-slide>
-    </ion-slides>
- 
-    
-  </div>
-  <p>理想是石，敲出星星之火;<br/>
-    &nbsp;&nbsp;&nbsp;理想是火，点亮熄灭的灯;<br/>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;理想是灯，照亮夜行的路;<br/>
-    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;理想是路，引你走到黎明。
-  </p>
-
-</ion-content>
+    <i class="iconfont" (click)="goAbout()" style="font-size:25px;position:relative;color:#fff;z-index:99;margin-left:16px;
+    bottom: -10px;">&#xe642;</i>
+    <img src="assets/imgs/dream2.jpg" alt="" class="im1">
+    <p class="title">路的尽头仍是路，只要你肯愿意走</p>
+   <ul>
+      <li>
+        <img src="assets/imgs/lixiang4.jpg" alt="" class="im2">
+        <div class="li_content">
+          <p class="li_content_p">文章内容</p> 
+         <div class="li_content_author">李薇</div>
+         <div class="li_content_date">2018年12月18日</div>
+       </div>
+      </li>
+      <li>
+         <img src="assets/imgs/lixiang5.jpg" alt="" class="im2">
+         <div class="li_content">
+           <p class="li_content_p">文章内容</p> 
+          <div class="li_content_author">李薇</div>
+          <div class="li_content_date">2018年12月18日</div>
+        </div>
+       </li>
+    </ul>
+ </ion-content>
 

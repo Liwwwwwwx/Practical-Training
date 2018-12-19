@@ -7,9 +7,9 @@ page-about {
         margin-top: 5px;
     }
     ion-content{
-        background-color:#ece5da !important;
+        background-color:#e4e2e2 !important;
         .title{
-            background-color:rgba(217, 186, 138, 0.4)!important;
+            background-color:rgb(255, 255, 255)!important;
             height: 40px;
             width: 95%;
             margin: 5px auto;
@@ -19,10 +19,10 @@ page-about {
             }
         }
         .zhuan{
-            background-color:rgba(217, 186, 138, 0.4);
-            height: 40px;
+            background-color:rgb(255, 255, 255);
+            height: 38px;
             width: 95%;
-            margin-top: 225px;
+            margin-top: 220px;
             margin-left: 2.5%;
             i{
                 margin-left: 15px;  
@@ -32,7 +32,8 @@ page-about {
             
         }
         .goods1{
-            padding: 0 ;
+            padding: 0 ;     
+            background-color:hsl(0, 0%, 100%) !important;
             img{
                 width: 100%;
                 height: 90px;
@@ -59,23 +60,27 @@ page-about {
         .goods2{
             padding: 0 ;
             img{
-                width: 100%;
+                width: 96%;
                 height: 150px;
+                margin-left: 2%;
+                margin-top: 2%;
             }
             li{
+                background-color:hsl(0, 0%, 100%) !important;
                 position: relative;
                 width: 94%;
                 float: left;
-                margin: 2px 0 2px 3%;
+                margin: 7px 0 2px 3%;
+                height: 205px;
                 p{
                     // position: absolute;
                     width: 100%;
                     bottom:4px;
                     font-size: 15px;
-                    margin: 0;
+                    margin-left: 2%;
                     color: rgb(94, 77, 77);
                     height: 30px;
-                    line-height: 25px;
+                    line-height: 15px;
                   
                    
                 }
