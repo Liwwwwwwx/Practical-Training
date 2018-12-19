@@ -1,13 +1,13 @@
 page-contact {
     ion-title{
-        text-align: center;
+        padding-left: 30%;
     }
     .navList{
         padding-left: 0!important;
         margin: 0;
         height: 44px;
         line-height: 44px;
-        background-color: #ece5da !important;
+        background-color: /*#ece5da*/rgb(246,246,246) !important;
         .first{
             border-bottom:2px solid #ffdb2c;
         }
@@ -19,10 +19,10 @@ page-contact {
         }
     }
     ion-content{
-        background-color: #ece5da !important;
+        background-color: /*#ece5da*/ rgb(246,246,246)!important;
         .repeat {
             border-bottom:0.1px solid gray;
-            background-color: rgba(239, 236, 198,0.6)!important;
+            background-color: /*rgba(239, 236, 198,0.6)*/rgb(246,246,246)!important;
             ul{
                 padding: 0;
                 margin:0;
@@ -79,7 +79,7 @@ page-contact {
                 margin: 10px auto;
                 width: 90%;
                 height: 60px;
-                background-color: #f8b840 !important;
+                background-color: /*#f8b840*/white !important;
                 border: none;
                 img {
                     height: 60px;
@@ -95,7 +95,7 @@ page-contact {
             width: 100%;
             height: 60px;
             border-bottom:0.1px solid gray;
-            background-color: rgba(239, 236, 198,0.6)!important;
+            background-color: /*rgba(239, 236, 198,0.6)*/white!important;
             .head{
                 width: 40px;
                 height:40px;

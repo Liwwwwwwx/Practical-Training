@@ -8,21 +8,18 @@ page-my {
         .header{
             height: 34%;
             background-image: url(../../assets/imgs/lixiang8.png);
-
+            padding-top: 20px;
             .head{
                 width: 102px;
                 height:102px;
                 border-radius:100%;
                 overflow: hidden;
-                margin:10px auto;
-            }
-            #setup{
-                font-size: 25px;
-                padding-left: 90%;
+                margin:  auto;
+                
             }
         }
         .name{
-            margin-top: -15px;
+            margin-top: 5px;
             font-size: 22px;
             font-family: '宋体';
             font-weight: bolder;
