@@ -22,10 +22,7 @@
             <div class="year">2018</div>
           </div>
         </div>
-        <div class="like">
-          <img src="{{isClick?srclike:srcdis}}" (click)="like()" />
-          <div>{{clickCount}}</div>
-        </div>
+        
       </div>
       <div class="nav">
         <img src="../../assets/imgs/logo.png" class="image">
@@ -46,16 +43,20 @@
       <span>#{{item.notecategory}}</span>
       <!-- <ion-icon (click)="close()" name="md-close"></ion-icon> -->
       <i class="iconfont" (click)="close()" style="padding-left: 10px;color: #bbbbbb;">&#xe642;</i>
-      <div class="collection">
-        <img src="../../assets/imgs/shoucang@dis.png" (click)="goCollect()">
+      <div class="collection" (click)="collection()">
+        <img src="{{isCol?colsrc:discolsrc}}" >
         <p>收藏</p>
         <p>({{item.collectionCount}})</p>
       </div>
       <div class="sentiment" (click)="goComment()">
         <i class="iconfont" style="font-size:10px;color:rgb(51, 50, 50);" >&#xe63b;</i>
           &nbsp;&nbsp;
-        <p>收藏</p>
+        <p>评论</p>
         <p>({{item.commentCount}})</p>
+      </div>
+      <div class="like">
+        <img src="{{isClick?srclike:srcdis}}" (click)="like()" />
+        <div>{{clickCount}}</div>
       </div>
     </div>
 
