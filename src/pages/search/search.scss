@@ -1,6 +1,6 @@
 page-search {
     ion-content{
-        background-color:#ece5da!important;
+        background-color:#e4e2e2!important;
          .searchbar-md .searchbar-input {
             font-weight: 400;
             line-height: 2.5rem;
@@ -9,9 +9,33 @@ page-search {
         } 
     }
     div{
-        color:rgb(217, 186, 138);
+        color:rgb(173, 120, 120);
         float: left;
         font-size: 16px;
         margin-left: 2px;
+    }
+    .search{
+        width: 100%;
+        height: 100px;
+        //border: 1px soild red; 
+        text-align: center;
+        p{
+            width: 30%;
+            height: 25px;
+            //border: 1px soild rgba(0, 89, 255, 0.438);
+            box-shadow: 1px 1px 5px rgb(173, 120, 120);
+            margin-left: 10px;
+           
+        }
+        li{
+            width: 20%;
+            height: 25px;
+           // border: 1px soild rgb(72, 255, 0);
+            float:left;
+            box-shadow: 1px 1px 5px rgb(173, 120, 120);
+            margin-right: 20px;
+            margin-top: 5px;
+            margin-left: -10px;
+        }
     }
 }

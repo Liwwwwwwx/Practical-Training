@@ -58,7 +58,13 @@ import { MyPicturesPage } from '../pages/my-pictures/my-pictures';
 import { MySongsPage } from '../pages/my-songs/my-songs';
 import { CollectiondetailPage } from '../pages/collectiondetail/collectiondetail';
 import { ReplydetailPage } from '../pages/replydetail/replydetail';
+import { AboutlyricsPage } from '../pages/aboutlyrics/aboutlyrics';
+import { AboutnarrationPage } from '../pages/aboutnarration/aboutnarration';
+import { AboutsceneryPage } from '../pages/aboutscenery/aboutscenery';
+import { AboutstorytellingPage } from '../pages/aboutstorytelling/aboutstorytelling';
+import { AboutappearancePage } from '../pages/aboutappearance/aboutappearance';
 
+@NgModule({
 @NgModule({
   declarations: [
     MyApp,
@@ -111,7 +117,12 @@ import { ReplydetailPage } from '../pages/replydetail/replydetail';
     MyAnthologyPage,
     MyCollectionPage,
     MyPicturesPage,
-    MySongsPage
+    MySongsPage,
+    AboutlyricsPage,
+    AboutnarrationPage,
+    AboutsceneryPage,
+    AboutstorytellingPage,
+    AboutappearancePage
   ],
   imports: [
     BrowserModule,
@@ -175,7 +186,12 @@ import { ReplydetailPage } from '../pages/replydetail/replydetail';
     MyAnthologyPage,
     MyCollectionPage,
     MyPicturesPage,
-    MySongsPage
+    MySongsPage,
+    AboutlyricsPage,
+    AboutnarrationPage,
+    AboutsceneryPage,
+    AboutstorytellingPage,
+    AboutappearancePage
   ],
   providers: [
     StatusBar,
