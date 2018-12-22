@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams ,ModalController} from 'ionic-angular';
+import { NavController, NavParams,ActionSheetController} from 'ionic-angular';
 import {HeaddetailPage } from '../headdetail/headdetail';
 /**
  * Generated class for the HeadPage page.
@@ -14,20 +14,46 @@ import {HeaddetailPage } from '../headdetail/headdetail';
   templateUrl: 'head.html',
 })
 export class HeadPage {
-  avatar
-  constructor(public modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams) {
-    this.avatar = navParams.data
+
+  constructor(public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad HeadPage');
   // }
   presentModal(){
-    let modal = this.modalCtrl.create(HeaddetailPage,{userId:8675309});
-    modal.onDidDismiss(data=>{
-      console.log(data);
-    })
-    modal.present();
+    const actionSheet = this.actionSheetCtrl.create({
+      // title: 'Modify your album',
+      buttons: [
+        {
+          text: '查看历史头像',
+          cssClass: 'zm-action-button',
+          role: 'destructive',
+          handler: () => {
+           
+          }
+        },{
+          text: '拍照',
+          cssClass: 'zm-action-button',
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        },{
+          text: '从相册选择照片',
+          cssClass: 'zm-action-button',
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        },{
+          text: '取消',
+          cssClass: 'zm-action-button',
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
 }

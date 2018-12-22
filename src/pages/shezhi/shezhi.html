@@ -4,27 +4,27 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-  <ion-navbar color="dark">
+<ion-header  no-border>
+  <ion-navbar>
     <ion-title text-center>设置</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-    <ion-item (click)="goto()">
+  <ul>
+    <li (click)="goto()">
       <span class="left">账号与安全</span>
-      <i class="iconfont" style="float:right;">&#xe603;</i>
-    </ion-item>
-    <ion-item  (click)="go()">
+      <i class="iconfont" style="float:right;margin-right:10px;color:rgb(148, 145, 145)">&#xe603;</i>
+    </li>
+    <li (click)="go()">
       <span class="left">关于我们</span>
-      <i class="iconfont" style="float:right;">&#xe603;</i>
-    </ion-item>
-    <ion-item>
+      <i class="iconfont" style="float:right;margin-right:10px;color:rgb(148, 145, 145)">&#xe603;</i>
+    </li>
+    <li>
       <span class="left">清除缓存</span>
       <span class="right">666.6KB</span>
-    </ion-item>
-  </ion-list>
+    </li>
+  </ul>
   <div class="login" (click)="goLogin()">
-    退出登录
+    退出所及
   </div>
 </ion-content>

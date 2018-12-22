@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams ,ModalController} from 'ionic-angular';
+import {  NavController, NavParams,ActionSheetController} from 'ionic-angular';
 import { WePage } from '../we/we';
 import { AdvicePage } from '../advice/advice';
 import { NumPage } from '../num/num';
 import { TologinPage } from '../tologin/tologin';
+import { LoginPage } from '../login/login';
 /**
  * Generated class for the ShezhiPage page.
  *
@@ -18,7 +19,7 @@ import { TologinPage } from '../tologin/tologin';
 })
 export class ShezhiPage {
 
-  constructor(public modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -31,10 +32,25 @@ export class ShezhiPage {
     this.navCtrl.push(NumPage);
   }
   goLogin(){
-    let modal = this.modalCtrl.create(TologinPage,{userId:8675309});
-    modal.onDidDismiss(data=>{
-      console.log(data);
-    })
-    modal.present();
+    const actionSheet = this.actionSheetCtrl.create({
+      // title: 'Modify your album',
+      buttons: [
+        {
+          text: '确认退出登录',
+          cssClass: 'zm-action-button',
+          role: 'destructive',
+          handler: () => {
+            this.navCtrl.push(LoginPage);
+          }
+        },{
+          text: '取消',
+          cssClass: 'zm-action-button',
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 }

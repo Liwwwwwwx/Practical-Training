@@ -4,9 +4,9 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header no-border>
 
-  <ion-navbar color="dark">
+  <ion-navbar>
     <ion-title text-center>账号与安全</ion-title>
   </ion-navbar>
 
@@ -14,29 +14,27 @@
 
 
 <ion-content>
-    <ion-list>
-        <ion-item (click)="goto()">
+    <ul>
+        <li>
           <span class="left">手机号</span>
-          <i class="iconfont" style="float:right;"> <font>未绑定</font>&#xe603;</i>
-        </ion-item>
-        <ion-item  (click)="go()">
-          <span class="left">登录密码</span>
-          <i class="iconfont" style="float:right;"><font>未设置</font>&#xe603;</i>
-        </ion-item>
-     </ion-list>
-     <ion-list>
-        <ion-item (click)="goto()">
+          <input type="text">
+          <font class="right">15123456789</font>
+        </li>
+        <li>
+          <span class="left">邮箱账号</span>
+          <input type="text">
+          <font class="right">123@163.com</font>
+        </li>
+        <li>
           <span class="left">微信账号</span>
-          <i class="iconfont" style="float:right;"><font>未绑定</font>&#xe603;</i>
-        </ion-item>
-        <ion-item  (click)="go()">
-          <span class="left">微博账号</span>
-          <i class="iconfont" style="float:right;"><font>未绑定</font>&#xe603;</i>
-        </ion-item>
-        <ion-item  (click)="go()">
+          <input type="text">
+          <font class="right">ddd123</font>
+        </li>
+        <li>
             <span class="left">QQ账号</span>
-            <i class="iconfont" style="float:right;"><font>未绑定</font>&#xe603;</i>
-          </ion-item>
-     </ion-list>
+            <input type="text">
+            <font class="right">2335644789</font>
+        </li>
+      </ul>
 
 </ion-content>

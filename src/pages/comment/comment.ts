@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams,ModalController } from 'ionic-angular';
 import { RespondPage } from '../respond/respond';
+import { ReplydetailPage } from '../replydetail/replydetail';
 /**
  * Generated class for the CommentPage page.
  *
@@ -24,7 +25,12 @@ export class CommentPage {
     //   // console.log(this.content[0].userid)
     // })
   }
-
+   //是否点赞
+   isClick;
+   priIsClick;
+   clickCount = 0;
+   srcdis = "../../assets/imgs/zan1.png";
+   srclike = "../../assets/imgs/zan0.png";
   ionViewDidLoad() {
     console.log('ionViewDidLoad CommentPage');
   }
@@ -35,5 +41,11 @@ export class CommentPage {
     })
     modal.present();
   }
-
+  goDetail(){
+    this.navCtrl.push(ReplydetailPage);
+  }
+  like() {
+    this.clickCount = this.isClick ? this.clickCount - 1 : this.clickCount + 1;
+    this.isClick = !this.isClick;
+  }
 }

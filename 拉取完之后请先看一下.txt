@@ -65,3 +65,8 @@ date:2018/12/21/9:50
 
 date:2018/12/22 18:29
 修改了detail和my的ts文件 以及my-collection文件
+
+date:2018/12/22 21:30
+修改了head,shezhi，num，we页面，删除了tologin,headdetail页面
+修改了comment页面，添加了replydeatil页面
+添加了两张点赞的图片，修改了图标库
