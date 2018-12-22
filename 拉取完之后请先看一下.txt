@@ -70,3 +70,6 @@ date:2018/12/22 21:30
 修改了head,shezhi，num，we页面，删除了tologin,headdetail页面
 修改了comment页面，添加了replydeatil页面
 添加了两张点赞的图片，修改了图标库
+
+date:2018/12/22 21:56
+重新修改了head,shezhi页面，修改了app文件，加了collectiondetail页面

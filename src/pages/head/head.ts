@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,ActionSheetController} from 'ionic-angular';
-import {HeaddetailPage } from '../headdetail/headdetail';
 /**
  * Generated class for the HeadPage page.
  *

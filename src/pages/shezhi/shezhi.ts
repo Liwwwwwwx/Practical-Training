@@ -3,7 +3,6 @@ import {  NavController, NavParams,ActionSheetController} from 'ionic-angular';
 import { WePage } from '../we/we';
 import { AdvicePage } from '../advice/advice';
 import { NumPage } from '../num/num';
-import { TologinPage } from '../tologin/tologin';
 import { LoginPage } from '../login/login';
 /**
  * Generated class for the ShezhiPage page.

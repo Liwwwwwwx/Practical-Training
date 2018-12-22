@@ -19,7 +19,6 @@ import { SignupPage } from '../pages/signup/signup';
 import { SignupmobilePage } from '../pages/signupmobile/signupmobile';
 import { MyPage } from '../pages/my/my';
 import { ShezhiPage } from '../pages/shezhi/shezhi';
-import { TologinPage } from '../pages/tologin/tologin';
 import { WePage } from '../pages/we/we';
 import { FunPage } from '../pages/fun/fun';
 import { HelpPage } from '../pages/help/help';
@@ -30,7 +29,6 @@ import {FanPage } from '../pages/fan/fan';
 import {GuanzhuPage } from '../pages/guanzhu/guanzhu';
 import {UserPage } from '../pages/user/user';
 import {HeadPage } from '../pages/head/head';
-import {HeaddetailPage } from '../pages/headdetail/headdetail';
 import {SignPage } from '../pages/sign/sign';
 import {CollectPage } from '../pages/collect/collect';
 import {WenjiPage } from '../pages/wenji/wenji';
@@ -54,6 +52,12 @@ import { PphotoPage } from '../pages/pphoto/pphoto';
 import { PmusicPage } from '../pages/pmusic/pmusic';
 import { CommentPage } from '../pages/comment/comment';
 import { RespondPage} from '../pages/respond/respond';
+import { MyAnthologyPage } from '../pages/my-anthology/my-anthology';
+import { MyCollectionPage } from '../pages/my-collection/my-collection';
+import { MyPicturesPage } from '../pages/my-pictures/my-pictures';
+import { MySongsPage } from '../pages/my-songs/my-songs';
+import { CollectiondetailPage } from '../pages/collectiondetail/collectiondetail';
+import { ReplydetailPage } from '../pages/replydetail/replydetail';
 
 @NgModule({
   declarations: [
@@ -69,7 +73,6 @@ import { RespondPage} from '../pages/respond/respond';
     TabsPage,
     MyPage,
     ShezhiPage,
-    TologinPage,
     WePage,
     FunPage,
     HelpPage,
@@ -81,8 +84,8 @@ import { RespondPage} from '../pages/respond/respond';
     UserPage,
     HeadPage,
     SignPage,
-    HeaddetailPage,
     CollectPage,
+    CollectiondetailPage,
     WenjiPage,
     NewPage,
     ChangepasswordPage,
@@ -103,7 +106,12 @@ import { RespondPage} from '../pages/respond/respond';
     SearchPage,
     DetailPage,
     CommentPage,
-    RespondPage
+    RespondPage,
+    ReplydetailPage,
+    MyAnthologyPage,
+    MyCollectionPage,
+    MyPicturesPage,
+    MySongsPage
   ],
   imports: [
     BrowserModule,
@@ -129,7 +137,6 @@ import { RespondPage} from '../pages/respond/respond';
     TabsPage,
     MyPage,
     ShezhiPage,
-    TologinPage,
     WePage,
     FunPage,
     HelpPage,
@@ -141,8 +148,8 @@ import { RespondPage} from '../pages/respond/respond';
     UserPage,
     HeadPage,
     SignPage,
-    HeaddetailPage,
     CollectPage,
+    CollectiondetailPage,
     WenjiPage,
     NewPage,
     ChangepasswordPage,
@@ -163,7 +170,12 @@ import { RespondPage} from '../pages/respond/respond';
     SearchPage,
     DetailPage,
     CommentPage,
-    RespondPage
+    RespondPage,
+    ReplydetailPage,
+    MyAnthologyPage,
+    MyCollectionPage,
+    MyPicturesPage,
+    MySongsPage
   ],
   providers: [
     StatusBar,
