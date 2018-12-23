@@ -59,7 +59,28 @@ class TodoNoteData{
         callback(false,results);
       })
   }
-
+  //获取文集
+  getAnthologyDetail(name, callback){
+    const sql = 'select * from anthology where userid = (select userid from user where username = ?)'
+      db.query(sql, [name], (err,results)=>{
+        if(err){
+          callback(true);
+          return ;
+        }
+        callback(false,results);
+      })
+  }
+  //创建文集
+  createAnthology(name, Aname, callback) {
+    const sql = 'insert into anthology(userid , anthologyname) values ((select userid from user where username = ?),?)';
+    db.query(sql, [name, Aname], (err, results) => {
+      if(err) {
+        callback(true);
+        return ;
+      }
+      callback(false, results);
+    });
+  }
   deleteone(id, callback) {
     const sql = 'DELETE from note where noteid = ?';
 

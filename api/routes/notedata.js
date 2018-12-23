@@ -83,6 +83,41 @@ router.post('/newNote', (req, res) => {
   res.send(req.body);
 });
 
+//获取文集
+router.post('/anthologydetail', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var name = req.body.name;
+  todonotedata.getAnthologyDetail(name, (err, data)=>{
+    if(err) {
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+    }
+    res.status(200).send(JSON.stringify(data));
+  })
+})
+//新建文集
+router.post('/newAnthology', (req,res) => {
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body);
+  var name = req.body.name;
+  var Aname = req.body.anthologyName;
+  todonotedata.createAnthology(name, Aname, (err, data) => {
+    if(err) {
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }));
+    }
+    res.send(JSON.stringify({
+        status:'200',
+        msg:'成功'
+      }));
+  });
+});
 
 //数据分页
 

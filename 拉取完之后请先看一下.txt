@@ -81,3 +81,6 @@ date:2018/12/22 22:42
 
 date:2018/12/23/20:54
 修改了pages中的pwords pphoto pmusic savewenji head user my页面，api中的notedata，userdata，todo-userdata和todo-notedata
+
+date:2018/12/23/21:27
+更新了pages的new页面，api中的notedata和todo-notedata
