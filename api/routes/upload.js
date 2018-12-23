@@ -49,7 +49,7 @@ var fs = require('fs'),
         console.log("newPath",newPath);
         fs.renameSync(files.fulAvatar.path, newPath);
         res.json({
-          "newPath":showUrl
+          "imgPath":showUrl
         })
       })
     })
