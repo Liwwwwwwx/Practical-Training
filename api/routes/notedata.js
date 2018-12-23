@@ -98,6 +98,25 @@ router.post('/anthologydetail', (req, res)=>{
     res.status(200).send(JSON.stringify(data));
   })
 })
+
+//文集详情
+router.post('/getanthologynote', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body);
+  var anthologyid = req.body.anthologyid;
+  todonotedata.getAnthologyNote(anthologyid, (err, data)=>{
+    if(err) {
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+    }
+    console.log(data)
+    res.status(200).send(data)
+  })
+})
+
 //新建文集
 router.post('/newAnthology', (req,res) => {
   res.header('Access-Control-Allow-Origin','*');
@@ -118,6 +137,148 @@ router.post('/newAnthology', (req,res) => {
       }));
   });
 });
+
+router.post('/isclick', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  console.log(req.body)
+  var name = req.body.name;
+  console.log(noteid,name)
+  todonotedata.isClick(noteid, name, (err,result)=>{
+    if(err) {
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+router.post('/clickcount', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  todonotedata.getClickCount(noteid, (err,result)=>{
+    if(err) {
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+router.post('/click', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body)
+  var noteid =req.body.noteid;
+  var name = req.body.name;
+  todonotedata.Click(noteid, name, (err, result)=>{
+    if(err) {
+      console.log(err);
+      return ;
+    }
+    console.log(result);
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'点赞成功'
+    }))
+  })
+})
+
+router.post('/disclick', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  var name = req.body.name;
+  todonotedata.disClick(noteid, name, (err,result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'取消点赞'
+    }))
+  })
+})
+
+router.post('/isCollection', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  var name = req.body.name;
+  todonotedata.isCollect(noteid, name, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+router.post('/CollectionCount', (req,res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  todonotedata.CollectionCount(noteid, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+router.post('/Collection', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  var name = req.body.name;
+  todonotedata.Collection(noteid, name, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'收藏成功'
+    }))
+  })
+})
+
+router.post('/disCollection', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  var name = req.body.name;
+  todonotedata.disCollection(noteid, name, (err,result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'取消收藏'
+    }))
+  })
+})
+
+router.post('/mycollection', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var userid = req.body.userid;
+  todonotedata.myCollection(userid, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+router.post('/getcomment', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  todonotedata.getComment(noteid, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
 
 //数据分页
 

@@ -92,6 +92,54 @@ class TodoUserData{
        callback(false, result);
     });
   }
+
+  //获取粉丝详情
+  getFuns(userid, callback){
+    const sql = 'select username,userid,avatar,autograph from user where userid in (select fansid from fans where userid = ?)';
+    db.query(sql, [userid], (err, results)=>{
+      if(err){
+        callback(true);
+        return ;
+      }
+      callback(false, results)
+    })
+  }
+  
+  //成为粉丝
+  becFans(userid, fansid, callback){
+    const sql = 'insert fans values (?,?)';
+    db.query(sql, [userid, fansid], (err, results)=>{
+      if(err){
+        callback(true);
+        return ;
+      }
+      callback(false, results);
+    })
+  }
+
+
+  //获取关注人详情
+  getFollow(userid, callback){
+    const sql = 'select username,userid,avatar,autograph from user where userid in (select userid from fans where fansid = ?);';
+    db.query(sql, [userid], (err, results)=>{
+      if(err){
+        callback(true);
+        return ;
+      }
+      callback(false, results)
+    })
+  }
+ //取消关注
+  disFollow(userid, fansid, callback){
+    const sql = 'delete from fans where userid = ? and fansid = ?';
+    db.query(sql, [userid, fansid], (err, results)=>{
+      if(err){
+        callback(true);
+        return ;
+      }
+      callback(false,results)
+    })
+  }
 };
 
 module.exports = TodoUserData;
