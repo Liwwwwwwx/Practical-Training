@@ -2,7 +2,7 @@ const db = require('./database.js');
 
 class TodoNoteData{
   getAll(callback){
-    const sql = 'select notes.*,count(clickid) clickCount,count(commentid) commentCount,count(collectionid) collectionCount from (select note.*,user.avatar,user.username,anthology.anthologyname from note,user,anthology where anthology.userid = user.userid and note.anthologyid = anthology.anthologyid) as notes left join click on notes.noteid = click.noteid left join comment on notes.noteid = comment.noteid left join collection on notes.noteid = collection.cocontent group by (noteid);';
+     const sql = 'select notes.*,count(replyid) commentCount,count(userid) collectionCount from (select note.*,user.avatar,user.username,anthology.anthologyname from note,user,anthology where anthology.userid = user.userid and note.anthologyid = anthology.anthologyid and note.isnoteprivate = 0) as notes left join comment on notes.noteid = comment.noteid left join collection on notes.noteid = collection.noteid group by (noteid) order by notedate desc;'
     var datas = [];
 
     db.query(sql, (err,results)=>{
