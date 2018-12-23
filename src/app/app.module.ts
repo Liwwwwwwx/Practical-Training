@@ -65,7 +65,6 @@ import { AboutstorytellingPage } from '../pages/aboutstorytelling/aboutstorytell
 import { AboutappearancePage } from '../pages/aboutappearance/aboutappearance';
 
 @NgModule({
-@NgModule({
   declarations: [
     MyApp,
     AboutPage,
