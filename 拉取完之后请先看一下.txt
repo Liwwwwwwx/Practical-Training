@@ -78,3 +78,6 @@ date:2018/12/22 21:56
 date:2018/12/22 22:42
 重新修改了about，search页面，修改了app文件
 增加aboutstorytelling, aboutnarration, aboutscenery, aboutappearance,aboutlyrics记人叙事写景状物抒情页面
+
+date:2018/12/23/20:54
+修改了pages中的pwords pphoto pmusic savewenji head user my页面，api中的notedata，userdata，todo-userdata和todo-notedata

@@ -81,6 +81,17 @@ class TodoUserData{
       callback(false, results);
     });
   }
+  //更新头像
+  updateAvatar(userid, avatar, callback) {
+    const sql = 'UPDATE user SET avatar = ? WHERE userid = ?';
+    db.query(sql, [avatar, userid], (err, result) => {
+      if(err){
+         callback(true);
+         return ;
+       }
+       callback(false, result);
+    });
+  }
 };
 
 module.exports = TodoUserData;

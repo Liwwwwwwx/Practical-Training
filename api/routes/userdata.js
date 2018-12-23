@@ -4,7 +4,29 @@ var express = require('express');
 var router = express.Router();
 
 var todouserdata = new TodoUserData();
-
+//上传头像
+router.post('/uploadHead',(req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  console.log(req.body);
+  var userid = req.body.userid;
+  var avatar = req.body.imgPath;
+  todouserdata.updateAvatar(userid, avatar, (err, result) => {
+    if(err) {
+      console.error(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+      return;
+    }
+    console.log(result);
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'成功',
+      data:result
+    }));
+  });
+});
 //获取所有数据
 router.get('/',(req,res)=>{
   res.header('Access-Control-Allow-Origin', '*');

@@ -57,7 +57,8 @@ export class PwordsPage {
     function getDetails(datas) {
         console.log(that.datas.username);
         console.log(that.content);
-        datas.newPath = null;
+        datas.imgPath = null;
+        datas.musicPath = null;
         datas.isOriginal = that.isOriginal;
         datas.isPrivate = that.isPrivate;
         datas.content = that.content;

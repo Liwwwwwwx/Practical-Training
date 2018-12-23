@@ -26,7 +26,18 @@ page-pmusic {
             border-top: 1px dashed #888888;
             position: absolute;
             margin-top: -80px;
-            
+            #showImg {
+                width: 60px;
+                height: 60px;
+                margin: 10px;
+            }
+            #showAudio {
+                position: absolute;
+                margin: 10px;
+                top: 0px;
+                right: 5px;
+                width: 80px;
+            }
         }
         .cercle{
             height: 60px;
@@ -34,6 +45,13 @@ page-pmusic {
             line-height: 60px;
             margin: auto;
             margin-top: 10px;
+            ion-fab {
+                // position: absolute;
+                top: 10px;
+            }
+            form {
+                display: none;
+            }
         }
 
         .icon_family{

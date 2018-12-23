@@ -69,23 +69,11 @@ router.post('/notecategory',(req, res)=>{
   })
 })
 
-router.post('/newWords', (req, res) => {
+//发表内容
+router.post('/newNote', (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   console.log(req.body);
-  todonotedata.insertOneWords(req.body, (err ,result) => {
-    if(err) {
-      console.error(err);
-      return ;
-    }
-    console.log(result);
-  });
-  res.send(req.body);
-});
-
-router.post('/newPhoto', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  console.log(req.body);
-  todonotedata.insertOnePhoto(req.body, (err ,result) => {
+  todonotedata.insertOneNote(req.body, (err ,result) => {
     if(err) {
       console.error(err);
       return ;

@@ -18,13 +18,14 @@ export class UserPage {
   data;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
       this.data = navParams.data
+      console.log(this.data);
   }
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad UserPage');
   // }
   go() {
-    this.navCtrl.push(HeadPage,this.data.avatar);
+    this.navCtrl.push(HeadPage,{userid: this.data.userid, avatar: this.data.avatar});
   }
   goto() {
     this.navCtrl.push(SignPage,this.data.autograph);

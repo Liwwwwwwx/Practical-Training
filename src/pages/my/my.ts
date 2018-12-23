@@ -1,5 +1,5 @@
 import { Component} from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import { NavController, NavParams, Events } from "ionic-angular";
 import { ShezhiPage } from "../shezhi/shezhi";
 import { FanPage } from "../fan/fan";
 import { UserPage } from "../user/user";
@@ -36,7 +36,8 @@ export class MyPage {
     public http: HttpClient,
     public storage: Storage,
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public events: Events
   ) {}
 
   ionViewDidLoad() {
@@ -70,6 +71,10 @@ export class MyPage {
       resolve();
     });
     p.then(getName).then(getUserInfo).catch(reason => {console.log(reason);});
+    // 刷新后重新加载
+    this.events.subscribe('reloadMyPage', () => {
+      p.then(getName).then(getUserInfo).catch(reason => {console.log(reason);});
+    });
   }
   
   go() {

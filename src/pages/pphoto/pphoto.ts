@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PublishPage } from '../publish/publish';
-// import { SavewenjiPage } from '../savewenji/savewenji';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import $ from 'jquery';
@@ -101,6 +100,7 @@ export class PphotoPage {
     function getDetails(datas) {
       console.log(datas.username);
       console.log(that.content);
+      datas.musicPath = null;
       datas.isOriginal = that.isOriginal;
       datas.isPrivate = that.isPrivate;
       datas.notecategory = '图片';
@@ -108,19 +108,6 @@ export class PphotoPage {
       console.log('datas:', datas);
       that.navCtrl.push(SavewenjiPage,datas);
     }
-    
-
-    // 传入数据库
-    // function transferDetails(datas) {
-    //   // datas.anthologyname = '默认文集';
-    //   console.log(datas);
-    //   var formData = new FormData($("#myForm")[0]);
-    //   console.log(formData);
-    //   datas.formData = formData;
-    //   that.http.post('/notedata/newPhoto',datas).subscribe(result => {
-    //     console.log(result);
-    //   });
-    // }
 
     var p = new Promise((resolve) => {
       resolve();

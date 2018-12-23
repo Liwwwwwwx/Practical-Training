@@ -63,7 +63,7 @@ export class SavewenjiPage {
       return ;
     }
     console.log(this.datas);
-    this.http.post('/notedata/newPhoto',this.datas).subscribe(result => {
+    this.http.post('/notedata/newNote',this.datas).subscribe(result => {
       console.log(result);
     });
     // 返回根目录并刷新
