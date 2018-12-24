@@ -27,19 +27,16 @@
     <ion-list>
       <ion-item>
         <span class="left">昵称</span>
-        <input type="text" value='{{data.username}}' id="text"/>
+        <input type="text" value='{{data.username}}' id="text" #name/>
       </ion-item>
-    <ion-item>
-      <form action="" method="get" > 
-        <span class="left">性别</span>
-        <input name="Sex" type="radio" value="男" />男 
-        <input name="Sex" type="radio" value="女" />女 
-      </form> 
+    <ion-item (click)="changeSex()">
+      <span class="left">性别</span>
+      <span style="margin-left:50px;" #sex>{{data.sex}}</span>
     </ion-item>
     <ion-item>
         <span class="left">生日</span>
-        <input type="text" value="{{data.birth}}" />
+        <input type="date" value="{{data.birth}}" (change)="changeBirthDate(date)" #date/>
       </ion-item>
   </ion-list>
-
+  <button class="save" (click)="saveUser(sex,date)">保存</button>
 </ion-content>

@@ -27,6 +27,28 @@ router.post('/uploadHead',(req, res) => {
     }));
   });
 });
+//更新用户信息
+router.post('/uploadUser',(req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  console.log(req.body);
+  todouserdata.updateUser(req.body.userid, req.body.sex, req.body.birth, (err, result) => {
+    console.log('I have done');
+    if(err) {
+      console.error(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+      return;
+    }
+    console.log(result);
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'成功',
+      data:result
+    }));
+  });
+});
 //获取所有数据
 router.get('/',(req,res)=>{
   res.header('Access-Control-Allow-Origin', '*');

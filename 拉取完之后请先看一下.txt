@@ -94,3 +94,6 @@ date:2018/12/24/17:02
 
 date:2018/12/24/17:29
 增加了关注，取消关注的接口在userdata.js中，修改了fans，guanzhu，my页的内容
+
+date:2018/12/24/17:55
+更新了pages中的user页面，api的userdata和todo-userdata新增了用户信息的上传功能
