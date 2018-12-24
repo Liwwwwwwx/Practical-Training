@@ -25,12 +25,6 @@ export class CommentPage {
     //   // console.log(this.content[0].userid)
     // })
   }
-   //是否点赞
-   isClick;
-   priIsClick;
-   clickCount = 0;
-   srcdis = "../../assets/imgs/zan1.png";
-   srclike = "../../assets/imgs/zan0.png";
   ionViewDidLoad() {
     console.log('ionViewDidLoad CommentPage');
   }
@@ -43,9 +37,5 @@ export class CommentPage {
   }
   goDetail(){
     this.navCtrl.push(ReplydetailPage);
-  }
-  like() {
-    this.clickCount = this.isClick ? this.clickCount - 1 : this.clickCount + 1;
-    this.isClick = !this.isClick;
   }
 }

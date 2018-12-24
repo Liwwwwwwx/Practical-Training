@@ -36,15 +36,13 @@ page-replydetail {
                 margin-left: 5.5rem;
             }
             .reply{
-                display: inline-flex;
-                flex-direction: row;
                 float: right;
                 margin-right: 10px;
                 margin-top: -40px;
-                img {
-                    width: 14px;
-                    height: 14px;
-                 }
+                font{
+                    color: gray;
+                    font-size: 10px;
+                }
             }
         }
         ul{
@@ -78,17 +76,6 @@ page-replydetail {
                 .content{
                     margin-left: 5.5rem;
                     border-bottom: 0.3px solid lightgray;
-                }
-                .reply{
-                    display: inline-flex;
-                    flex-direction: row;
-                    float: right;
-                    margin-right: 10px;
-                    margin-top: -40px;
-                    img {
-                      width: 14px;
-                      height: 14px;
-                    }
                 }
             }
         }
