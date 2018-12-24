@@ -91,3 +91,6 @@ date:2018/12/24/16:17
 
 date:2018/12/24/17:02
 更新了pages的comment,replydetail页面
+
+date:2018/12/24/17:29
+增加了关注，取消关注的接口在userdata.js中，修改了fans，guanzhu，my页的内容

@@ -2,7 +2,7 @@ const db = require('./database.js');
 
 class TodoNoteData{
   getAll(callback){
-     const sql = 'select notes.*,count(replyid) commentCount,count(userid) collectionCount from (select note.*,user.avatar,user.username,anthology.anthologyname from note,user,anthology where anthology.userid = user.userid and note.anthologyid = anthology.anthologyid and note.isnoteprivate = 0) as notes left join comment on notes.noteid = comment.noteid left join collection on notes.noteid = collection.noteid group by (noteid) order by notedate desc;'
+    const sql = 'select notes.*,count(replyid) commentCount,count(userid) collectionCount from (select note.*,user.avatar,user.username,anthology.anthologyname from note,user,anthology where anthology.userid = user.userid and note.anthologyid = anthology.anthologyid and note.isnoteprivate = 0) as notes left join comment on notes.noteid = comment.noteid left join collection on notes.noteid = collection.noteid group by (noteid) order by notedate desc;'
     var datas = [];
 
     db.query(sql, (err,results)=>{
@@ -195,7 +195,7 @@ class TodoNoteData{
   
   //我的收藏
   myCollection(userid, callback){
-    const sql = 'select notes.anthologyname,count(replyid) commentCount,notes.username,notes.noteImg,notes.notecontent,notes.notedate, count(*) collectionCount,collection.noteid from (select note.*,anthology.anthologyname,username from anthology left join note on note.anthologyid = anthology.anthologyid left join user on user.userid = anthology.userid where noteid in (select noteid from collection where userid = ?)) as notes left join collection on notes.noteid = collection.noteid left join comment on comment.noteid = notes.noteid group by (noteid);'
+    const sql = 'select notes.anthologyname,count(replyid) commentCount,notes.username,notes.noteImg,notes.notecontent,notes.notedate, count(*) collectionCount,collection.noteid from (select note.*,anthology.anthologyname,username from anthology left join note on note.anthologyid = anthology.anthologyid left join user on user.userid = anthology.userid where noteid in (select noteid from collection where userid = ?)) as notes left join collection on notes.noteid = collection.noteid left join comment on comment.noteid = notes.noteid group by (noteid) order by (notes.notedate) desc;'
     db.query(sql, [userid], (err, results)=>{
       if(err) {
         callback(true);

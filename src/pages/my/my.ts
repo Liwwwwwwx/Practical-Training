@@ -82,7 +82,7 @@ export class MyPage {
     console.log(this.data)
   }
   goto() {
-    this.navCtrl.push(FanPage);
+    this.navCtrl.push(FanPage,this.userid);
   }
   goTo() {
     this.navCtrl.push(UserPage,this.data);
@@ -91,7 +91,7 @@ export class MyPage {
     this.navCtrl.push(SignPage);
   }
   goGuanzhu() {
-    this.navCtrl.push(GuanzhuPage);
+    this.navCtrl.push(GuanzhuPage,this.userid);
     
   }
   goCollect() {

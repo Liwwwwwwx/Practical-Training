@@ -62,8 +62,8 @@ class TodoUserData{
       })
   };
   getUserDetail(name,callback){
-     const sql = 'select user.*,count(followid),count(fansid),anthology.anthologyname from user left join anthology on user.userid = anthology.userid left join fans on user.userid = fans.userid left join follow on user.userid = follow.userid where user.username = ? group by (userid)';
-     db.query(sql, [name], (err, res)=>{
+     const sql = 'select user.*,anthology.anthologyname from user left join anthology on user.userid = anthology.userid where user.username = ?  group by (userid)';
+     db.query(sql, [name,name], (err, res)=>{
        if(err){
          callback(true);
          return ;
@@ -95,8 +95,8 @@ class TodoUserData{
 
   //获取粉丝详情
   getFuns(userid, callback){
-    const sql = 'select username,userid,avatar,autograph from user where userid in (select fansid from fans where userid = ?)';
-    db.query(sql, [userid], (err, results)=>{
+    const sql = 'select fun.*,count(funs.userid) Mutual from (select userid,username,avatar,autograph from user where userid in (select fansid from fans where userid = 4)) as fun left join (select * from fans where userid in (select fansid from fans where userid = 4) and fansid = 4) as funs on fun.userid = funs.userid group by (funs.userid);'
+    db.query(sql, [userid,userid,userid], (err, results)=>{
       if(err){
         callback(true);
         return ;
@@ -120,8 +120,8 @@ class TodoUserData{
 
   //获取关注人详情
   getFollow(userid, callback){
-    const sql = 'select username,userid,avatar,autograph from user where userid in (select userid from fans where fansid = ?);';
-    db.query(sql, [userid], (err, results)=>{
+    const sql = 'select a.*,count(b.fansid) Mutual from (select userid,username,avatar,autograph from user where userid in (select userid from fans where fansid = ?)) as a left join (select * from fans where fansid in (select userid from fans where fansid = ?) and userid = ?) as b on a.userid = b.fansid group by (a.userid);'
+    db.query(sql, [userid, userid, userid], (err, results)=>{
       if(err){
         callback(true);
         return ;
