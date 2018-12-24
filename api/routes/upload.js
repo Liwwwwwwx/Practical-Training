@@ -43,7 +43,7 @@ var fs = require('fs'),
           res.locals.error = '只支持png和jpg格式图片';
           return;
         }
-        var avatarName = Math.random() + '.' + extName;
+        var avatarName = Math.floor(Math.random()*10000+1) + '.' + extName;
         var newPath = form.uploadDir + avatarName;
         var showUrl = domain + AVATAR_UPLOAD_FOLDER + avatarName;
         console.log("newPath",newPath);
