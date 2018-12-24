@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PublishPage } from '../publish/publish';
 import { SavewenjiPage } from '../savewenji/savewenji';
 import { Storage } from '@ionic/storage';
@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-pwords',
   templateUrl: 'pwords.html',

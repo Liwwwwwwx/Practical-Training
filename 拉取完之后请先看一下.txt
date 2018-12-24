@@ -84,3 +84,7 @@ date:2018/12/23/20:54
 
 date:2018/12/23/21:27
 更新了pages的new页面，api中的notedata和todo-notedata
+
+
+date:2018/12/24/16:17
+更新了pages的publish,pphoto,pmusic,pwords页面

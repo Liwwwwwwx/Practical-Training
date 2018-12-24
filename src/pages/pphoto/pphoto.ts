@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PublishPage } from '../publish/publish';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
@@ -12,7 +12,7 @@ import { SavewenjiPage } from '../savewenji/savewenji';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-pphoto',
   templateUrl: 'pphoto.html',
