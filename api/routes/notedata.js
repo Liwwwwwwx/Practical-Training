@@ -1,4 +1,4 @@
-const TodoNoteData = require('../models/todo-notedata');
+﻿const TodoNoteData = require('../models/todo-notedata');
 const db = require('../models/database.js');
 var express = require('express');
 var router = express.Router();
@@ -260,6 +260,52 @@ router.post('/mycollection', (req, res)=>{
   res.header('Access-Control-Allow-Origin','*');
   var userid = req.body.userid;
   todonotedata.myCollection(userid, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+//发表文章评论
+router.post('/insertcomment', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body)
+  var noteid = req.body.noteid,
+      username = req.body.username,
+      content = req.body.content;
+  todonotedata.insertComment(noteid, username, content, (err, result)=>{
+    if(err) {
+      console.log(err);
+      return ;
+    }
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'发表成功'
+    }))
+  })
+})
+
+//获取评论人名称
+router.post('/getcommentname', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body)
+  var noteid = req.body.noteid;
+  todonotedata.getCommentName(noteid, (err, result)=>{
+    if(err) {
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+//获取评论的评论
+router.post('/getcommentsdetail', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var replyid = req.body.replyid;
+  todonotedata.getCommentDetail(replyid, (err, result)=>{
     if(err){
       console.log(err);
       return ;

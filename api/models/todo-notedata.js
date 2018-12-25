@@ -1,4 +1,4 @@
-const db = require('./database.js');
+﻿const db = require('./database.js');
 
 class TodoNoteData{
   getAll(callback){
@@ -217,7 +217,7 @@ class TodoNoteData{
   }
   
   getComment(noteid, callback) {
-    const sql = 'select comment.*,user.avatar,user.username from comment,user where comment.conameid = user.userid and comment.noteid = ?'
+    const sql = 'select count(b.com_replyid) commentCount, a.* from (select comment.*, username,avatar from comment left join user on user.userid = comment.conameid where com_replyid is NULL) as a left join (select * from comment where com_replyid is not null) as b on a.replyid = b.com_replyid where a.noteid = ? group by (a.replyid);'
       db.query(sql, [noteid], (err, results)=>{
         if(err){
           callback(true);
@@ -238,6 +238,42 @@ class TodoNoteData{
       callback(false, results);
     });
   } 
+//发表文章的评论
+  insertComment(noteid, username, content, callback) {
+    const sql = "insert into comment (noteid,conameid,ccontent) values (?,(select userid from user where username = ?),?);";
+    db.query(sql, [noteid, username, content], (err, results)=>{
+      if(err) {
+        callback(true);
+        return ;
+      }
+      callback(false, results);
+    });
+  }
+
+ //获取评论人名称
+  getCommentName(noteid, callback) {
+    const sql = 'select username,com_replyid from user right join comment on user.userid = comment.conameid where com_replyid is not null and noteid = ?;'
+      db.query(sql, [noteid], (err, results)=>{
+        if(err){
+          callback(true);
+          return ;
+        }
+        callback(false, results);
+      })
+  }
+
+  //获取评论的评论详情
+  getCommentDetail(replyid, callback){
+    const sql = 'select comment.*, username,avatar from comment left join user on user.userid = comment.conameid where com_replyid = ?;';
+    db.query(sql, [replyid], (err, results)=>{
+      if(err){
+        callback(true);
+        return ;
+      }
+      callback(false, results);
+    })
+  }
+
 };
 
 module.exports = TodoNoteData;
