@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>我的文集</ion-title>
+    <ion-icon name="add" ios="ios-add" md="md-add" (click)="goNew()"></ion-icon>
   </ion-navbar>
 </ion-header>
 
@@ -9,10 +10,6 @@
     <ul>
       <li *ngFor="let item of data; let i = index" (click)="go(i)">
         <p>{{item.anthologyname}}</p>
-      </li>
-     
-      <li (click)="goNew()">
-        <p>+新建文集</p>
       </li>
     </ul>
   </div>

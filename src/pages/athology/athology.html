@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-icon ios="ios-add" md="md-add"></ion-icon>
+    <ion-title>
+      {{anthologyname}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ul>
+    <li (click)="goTog(i)" class="li1" *ngFor="let item of data;let i = index">
+        <img src="{{item.noteimg}}"  ngClass="{{item.noteimg?imgs:2}}"alt="">
+        <div  ngClass="{{item.noteimg?li_content:licontent}}">
+            <div class="li_content_p">{{item.notecontent.length>20?item.notecontent.substr(0,20):item.notecontent}}...</div>
+            <div class="li_content_date">{{item.notedate.substr(0,10)}}</div>
+        </div>
+    </li>
+  </ul>
+</ion-content>
