@@ -35,16 +35,16 @@ export class MyAnthologyPage {
   datas = this.params.data;
   ionViewDidLoad() {
     console.log(this.datas);
-    this.events.subscribe('reloadNotePage', () => {
-      this.username = this.datas.username;
-      this.http
-      .post("/notedata/anthologydetail", { name: this.username })
-      .subscribe(result => {
-        console.log(result);
-        this.data = result;
-        console.log('刷新后的数据：',this.data);
-      });
-    });
+    // this.events.subscribe('reloadNotePage', () => {
+    //   this.username = this.datas.username;
+    //   this.http
+    //   .post("/notedata/anthologydetail", { name: this.username })
+    //   .subscribe(result => {
+    //     console.log(result);
+    //     this.data = result;
+    //     console.log('刷新后的数据：',this.data);
+    //   });
+    // });
   }
   ngOnInit() {
     // 获取文集
@@ -99,7 +99,7 @@ export class MyAnthologyPage {
       anthologyid:this.data[i].anthologyid,
       anthologyname:this.data[i].anthologyname,
       userid:this.data[i].userid,
-      username:this.data[i].username,
+      username:this.username,
     });
   }
 

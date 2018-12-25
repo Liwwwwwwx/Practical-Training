@@ -26,6 +26,7 @@ export class MyCollectionPage {
   imgs = "imgs";
   li_content = "li_content";
   licontent = "licontent";
+  index
   constructor(
     public http: HttpClient,
     public modalCtrl: ModalController,
@@ -45,17 +46,13 @@ export class MyCollectionPage {
         console.log(this.data);
       });
     this.events.subscribe('ReloadMyCollection', ()=>{
-      this.http
-      .post("/notedata/mycollection", { userid: this.userid })
-      .subscribe(result => {
-        this.data = result;
-        console.log(this.data);
-      });
+      this.data.splice(this.index,1)
     })
     
   }
   goTog(i) {
     console.log(this.data[i]);
+    this.index = i
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
       note: this.data[i]

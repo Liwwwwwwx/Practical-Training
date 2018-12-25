@@ -120,6 +120,9 @@ export class DetailPage {
     p.then(getName).then(isClick).then(isCollection);
   }
   ionViewDidLoad() {
+    this.events.subscribe("ChangeCommentCount",()=>{
+      this.item.commentCount = this.item.commentCount  + 1
+    })
     console.log("ionViewDidLoad DetailPage");
   }
   close() {
@@ -139,7 +142,7 @@ export class DetailPage {
     }
     
     this.navCtrl.pop().then(()=>{
-      this.events.publish('ReloadMyCollection');
+      this.events.publish('ReloadMyCollection'); 
     });
   }
   like() {
@@ -158,7 +161,7 @@ export class DetailPage {
   }
 
   goComment() {
-    this.navCtrl.push(CommentPage,this.item.noteid);
+    this.navCtrl.push(CommentPage,{noteid:this.item.noteid,commentCount:this.item.commentCount});
   }
   goCollect() {
     this.navCtrl.push(CollectPage);

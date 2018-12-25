@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams, ModalController } from "ionic-angular";
+import { NavController, NavParams,Events, ModalController,ToastController } from "ionic-angular";
 import { HttpClient } from "@angular/common/http";
 import { Storage } from "@ionic/storage";
 import { RespondPage } from "../respond/respond";
@@ -22,13 +22,16 @@ export class CommentPage {
   content
   username
   constructor(
+    public events:Events,
     public storage: Storage,
+    public toastCtrl: ToastController,
     public http: HttpClient,
     public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams
   ) {
-    this.noteid = navParams.data
+    this.noteid = navParams.data.noteid
+   
   }
   ngOnInit() {
     this.http.post("/notedata/getcomment", { noteid: this.noteid }).subscribe(data => {
@@ -56,7 +59,8 @@ export class CommentPage {
   submit(){
     console.log(this.content)
     if(this.content == undefined){
-      console.log('评论不能为空')
+      this.showToast('bottom','评论内容不能为空');
+      return false;
     }else{
       this.http.post('/notedata/insertcomment',{noteid:this.noteid,username:this.username,content:this.content}).subscribe(data=>{
         console.log(data)
@@ -65,7 +69,18 @@ export class CommentPage {
         console.log(data);
         this.items = data
       });
+      this.content = '' 
+      this.events.publish('ChangeCommentCount'); 
     }
 
+  }
+  // 提示信息
+  showToast(position: string, message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      position: position
+    });
+    toast.present(toast);
   }
 }

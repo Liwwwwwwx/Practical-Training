@@ -18,8 +18,8 @@
             <div class="line"></div>
           </div>
           <div class="date-container">
-            <div class="month">十二月</div>
-            <div class="year">2018</div>
+            <div class="month">{{item.notedate.substr(5,2)}}月</div>
+            <div class="year">{{item.notedate.substr(0,4)}}</div>
           </div>
         </div>
         
@@ -43,13 +43,13 @@
       <span>#{{item.notecategory}}</span>
       <!-- <ion-icon (click)="close()" name="md-close"></ion-icon> -->
       <i class="iconfont" (click)="close()" style="padding-left: 10px;color: #bbbbbb;">&#xe642;</i>
-      <div class="collection" (click)="collection()">
-        <img src="{{isCol?colsrc:discolsrc}}" >
+      <div  (click)="collection()">
+        <img class="collection" src="{{isCol?colsrc:discolsrc}}" >
         <p>收藏</p>
         <p>({{item.collectionCount}})</p>
       </div>
       <div class="sentiment" (click)="goComment()">
-        <i class="iconfont" style="font-size:10px;color:rgb(51, 50, 50);" >&#xe63b;</i>
+        <i class="iconfont" style="font-size:15px;color:rgb(51, 50, 50);" >&#xe63b;</i>
           &nbsp;&nbsp;
         <p>评论</p>
         <p>({{item.commentCount}})</p>

@@ -8,7 +8,7 @@ page-detail {
   }
   .player{
     position: absolute;
-    top: 19%;
+    top: 17%;
     width: 10rem;
     height: 10rem;
   }
@@ -188,7 +188,7 @@ page-detail {
   }
 
   .foot {
-    height: 3rem;
+    height: 4rem;
     border-top: 1px solid #bbbbbb;
     display: flex;
     flex-direction: row;
@@ -203,8 +203,8 @@ page-detail {
       position: absolute;
       right: 5px;
       img {
-        width: 16px;
-        height: 16px;
+        width: 20px;
+        height: 20px;
       }
 
       div {
@@ -230,14 +230,14 @@ page-detail {
       padding-left: 1rem;
 
       img {
-        width: 2rem;
-        height: 2rem;
+        width: 3rem;
+        height: 3rem;
       }
 
       p {
         margin: 0;
         color: #bbbbbb;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 2rem;
         padding: 2px 0 0 2px;
       }
