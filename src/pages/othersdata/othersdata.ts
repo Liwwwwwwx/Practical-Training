@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { OthersdataPage } from '../othersdata/othersdata';
 
 /**
- * Generated class for the OtheruserPage page.
+ * Generated class for the OthersdataPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,21 +10,16 @@ import { OthersdataPage } from '../othersdata/othersdata';
 
 @IonicPage()
 @Component({
-  selector: 'page-otheruser',
-  templateUrl: 'otheruser.html',
+  selector: 'page-othersdata',
+  templateUrl: 'othersdata.html',
 })
-export class OtheruserPage {
+export class OthersdataPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OtheruserPage');
+    console.log('ionViewDidLoad OthersdataPage');
   }
-  goLast(){
-    this.navCtrl.pop();
-  }
-  godata(){
-    this.navCtrl.push(OthersdataPage);
-  }
+
 }

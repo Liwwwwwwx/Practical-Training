@@ -10,10 +10,10 @@
 <ion-content>
     <div class="header">
         <i class="iconfont" style="font-size:25px;margin-left: 10px;" (click)="goLast()">&#xe642;</i>
-        <div class="head">
+        <div class="head" (click)="godata()">
             
         </div>
-        <p text-center class="name"></p>
+        <p text-center class="name">Sure</p>
         <p text-center class="qm"><i class="iconfont">&#xe608;</i></p>
     </div>
     <div class="funs">
@@ -28,9 +28,11 @@
         <li>默认文集</li>
         <li>默认文集</li>
     </ul>
-  </div>
-    <div class="addgz">
-        <button ion-button full>+关注</button>
     </div>
-    
+    <!-- <div class="addgz">
+        <button ion-button full>+关注</button>
+    </div>  -->
+    <button class="guanzhu">
+        <span>关注</span>
+    </button> 
 </ion-content>

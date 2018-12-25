@@ -62,6 +62,8 @@ import { AboutsceneryPage } from '../pages/aboutscenery/aboutscenery';
 import { AboutstorytellingPage } from '../pages/aboutstorytelling/aboutstorytelling';
 import { AboutappearancePage } from '../pages/aboutappearance/aboutappearance';
 import { AthologyPage } from '../pages/athology/athology';
+import { OtheruserPage } from '../pages/otheruser/otheruser';
+import { OthersdataPage } from '../pages/othersdata/othersdata';
 
 @NgModule({
   declarations: [
@@ -120,6 +122,8 @@ import { AthologyPage } from '../pages/athology/athology';
     AboutstorytellingPage,
     AboutappearancePage,
     AthologyPage,
+    OtheruserPage,
+    OthersdataPage,
   ],
   imports: [
     BrowserModule,
@@ -187,7 +191,9 @@ import { AthologyPage } from '../pages/athology/athology';
     AboutsceneryPage,
     AboutstorytellingPage,
     AboutappearancePage,
-    AthologyPage
+    AthologyPage,
+    OtheruserPage,
+    OthersdataPage,
   ],
   providers: [
     StatusBar,
