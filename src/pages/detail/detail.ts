@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import { NavController, NavParams, Events } from "ionic-angular";
 import { HttpClient } from "@angular/common/http";
 import { Storage } from "@ionic/storage";
 import { CommentPage } from "../comment/comment";
@@ -53,6 +53,7 @@ export class DetailPage {
   //用户名
   username = "";
   constructor(
+    public events:Events,
     public params: NavParams,
     public http: HttpClient,
     public storage: Storage,
@@ -136,7 +137,10 @@ export class DetailPage {
     if (this.priIsCol == true && this.isCol == false) {
       this.disCollection();
     }
-    this.navCtrl.pop();
+    
+    this.navCtrl.pop().then(()=>{
+      this.events.publish('ReloadMyCollection');
+    });
   }
   like() {
     this.clickCount = this.isClick ? this.clickCount - 1 : this.clickCount + 1;
@@ -154,7 +158,7 @@ export class DetailPage {
   }
 
   goComment() {
-    this.navCtrl.push(CommentPage);
+    this.navCtrl.push(CommentPage,this.item.noteid);
   }
   goCollect() {
     this.navCtrl.push(CollectPage);

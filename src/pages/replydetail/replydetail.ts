@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component } from "@angular/core";
+import { NavController, NavParams } from "ionic-angular";
+import { HttpClient } from "@angular/common/http";
 
 /**
  * Generated class for the ReplydetailPage page.
@@ -10,26 +11,29 @@ import { NavController, NavParams } from 'ionic-angular';
 
 // @IonicPage()
 @Component({
-  selector: 'page-replydetail',
-  templateUrl: 'replydetail.html',
+  selector: "page-replydetail",
+  templateUrl: "replydetail.html"
 })
 export class ReplydetailPage {
-  //是否点赞
-  isClick;
-  priIsClick;
-  clickCount = 0;
-  srcdis = "../../assets/imgs/zan1.png";
-  srclike = "../../assets/imgs/zan0.png";
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  replyid;
+  items;
+  comment;
+  constructor(
+    public http: HttpClient,
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+    this.replyid = navParams.data.replyid;
+    this.comment = navParams.data;
+    console.log(this.comment)
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ReplydetailPage');
+    this.http
+      .post("/notedata/getcommentsdetail", { replyid: this.replyid })
+      .subscribe(data => {
+        console.log(data);
+        this.items = data;
+      });
   }
-  like() {
-    this.clickCount = this.isClick ? this.clickCount - 1 : this.clickCount + 1;
-    this.isClick = !this.isClick;
-  }
-
 }

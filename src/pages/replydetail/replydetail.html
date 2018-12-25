@@ -15,49 +15,30 @@
 
 <ion-content>
     <div class="comment">
-      <img src="assets/imgs/my.jpg" alt="" class="image">
-      <div class="user">葛舒悦</div>
+      <img src="{{comment.avatar}}" alt="" class="image">
+      <div class="user">{{comment.username}}</div>
       <div class="date">
-          2018-12-21 10:22
+            {{comment.commentdate.substr(0,10)}} {{comment.commentdate.substr(11,5)}}
       </div>
       <div class="reply">
         <font>回复</font>
       </div>
       <div class="content">
-        <p>我也很喜欢这句话</p>
+        <p>{{comment.ccontent}}</p>
       </div>
     </div> 
     <ul> 
-        <li>
-            <img src="assets/imgs/my.jpg" alt="" class="image">
-            <div class="user">李薇</div>
+        <li *ngFor="let item of items">
+            <img src="{{item.avatar}}" alt="" class="image">
+            <div class="user">{{item.username}}</div>
             <div class="date">
-                2018-12-21 10:22
+                {{item.commentdate.substr(0,10)}}&nbsp;{{item.commentdate.substr(11,5)}}
             </div>
             <div class="content">
-              <p>我特别喜欢你</p>
+              <p>{{item.ccontent}}</p>
             </div>
         </li>
-        <li>
-            <img src="assets/imgs/my.jpg" alt="" class="image">
-            <div class="user">葛舒悦</div>
-            <div class="date">
-                2018-12-21 10:22
-            </div>
-            <div class="content">
-              <p>我特别喜欢你</p>
-            </div>
-        </li>
-        <li>
-            <img src="assets/imgs/my.jpg" alt="" class="image">
-            <div class="user">李薇</div>
-            <div class="date">
-                2018-12-21 10:22
-            </div>
-            <div class="content">
-              <p>我特别喜欢你</p>
-            </div>
-        </li>
+        
     </ul>
 </ion-content>
 <ion-footer>

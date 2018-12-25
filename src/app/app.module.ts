@@ -63,6 +63,7 @@ import { AboutnarrationPage } from '../pages/aboutnarration/aboutnarration';
 import { AboutsceneryPage } from '../pages/aboutscenery/aboutscenery';
 import { AboutstorytellingPage } from '../pages/aboutstorytelling/aboutstorytelling';
 import { AboutappearancePage } from '../pages/aboutappearance/aboutappearance';
+import { OtheruserPage } from '../pages/otheruser/otheruser'
 
 @NgModule({
   declarations: [
@@ -121,7 +122,8 @@ import { AboutappearancePage } from '../pages/aboutappearance/aboutappearance';
     AboutnarrationPage,
     AboutsceneryPage,
     AboutstorytellingPage,
-    AboutappearancePage
+    AboutappearancePage,
+    OtheruserPage
   ],
   imports: [
     BrowserModule,
@@ -190,7 +192,8 @@ import { AboutappearancePage } from '../pages/aboutappearance/aboutappearance';
     AboutnarrationPage,
     AboutsceneryPage,
     AboutstorytellingPage,
-    AboutappearancePage
+    AboutappearancePage,
+    OtheruserPage
   ],
   providers: [
     StatusBar,

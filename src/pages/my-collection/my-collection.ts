@@ -44,6 +44,14 @@ export class MyCollectionPage {
         this.data = result;
         console.log(this.data);
       });
+    this.events.subscribe('ReloadMyCollection', ()=>{
+      this.http
+      .post("/notedata/mycollection", { userid: this.userid })
+      .subscribe(result => {
+        this.data = result;
+        console.log(this.data);
+      });
+    })
     
   }
   goTog(i) {
