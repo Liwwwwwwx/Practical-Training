@@ -106,3 +106,6 @@ date:2018/12/25/10:26
 
 date:2018/12/25/13:55
 修改了detail，my-collection，comment，replydetail页面，添加ohtheruser
+
+date:2018/12/25/13:29
+修改了my页面：“删除了mypictures 和 mymusic页面“

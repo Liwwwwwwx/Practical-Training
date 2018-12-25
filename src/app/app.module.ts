@@ -54,8 +54,6 @@ import { CommentPage } from '../pages/comment/comment';
 import { RespondPage} from '../pages/respond/respond';
 import { MyAnthologyPage } from '../pages/my-anthology/my-anthology';
 import { MyCollectionPage } from '../pages/my-collection/my-collection';
-import { MyPicturesPage } from '../pages/my-pictures/my-pictures';
-import { MySongsPage } from '../pages/my-songs/my-songs';
 import { CollectiondetailPage } from '../pages/collectiondetail/collectiondetail';
 import { ReplydetailPage } from '../pages/replydetail/replydetail';
 import { AboutlyricsPage } from '../pages/aboutlyrics/aboutlyrics';
@@ -63,7 +61,7 @@ import { AboutnarrationPage } from '../pages/aboutnarration/aboutnarration';
 import { AboutsceneryPage } from '../pages/aboutscenery/aboutscenery';
 import { AboutstorytellingPage } from '../pages/aboutstorytelling/aboutstorytelling';
 import { AboutappearancePage } from '../pages/aboutappearance/aboutappearance';
-import { OtheruserPage } from '../pages/otheruser/otheruser'
+import { AthologyPage } from '../pages/athology/athology';
 
 @NgModule({
   declarations: [
@@ -116,14 +114,12 @@ import { OtheruserPage } from '../pages/otheruser/otheruser'
     ReplydetailPage,
     MyAnthologyPage,
     MyCollectionPage,
-    MyPicturesPage,
-    MySongsPage,
     AboutlyricsPage,
     AboutnarrationPage,
     AboutsceneryPage,
     AboutstorytellingPage,
     AboutappearancePage,
-    OtheruserPage
+    AthologyPage,
   ],
   imports: [
     BrowserModule,
@@ -186,14 +182,12 @@ import { OtheruserPage } from '../pages/otheruser/otheruser'
     ReplydetailPage,
     MyAnthologyPage,
     MyCollectionPage,
-    MyPicturesPage,
-    MySongsPage,
     AboutlyricsPage,
     AboutnarrationPage,
     AboutsceneryPage,
     AboutstorytellingPage,
     AboutappearancePage,
-    OtheruserPage
+    AthologyPage
   ],
   providers: [
     StatusBar,

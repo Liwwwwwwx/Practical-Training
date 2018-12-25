@@ -13,8 +13,6 @@ import { ContactPage } from "../contact/contact";
 import { AdvicePage } from "../advice/advice";
 import { MyAnthologyPage } from "../my-anthology/my-anthology";
 import { MyCollectionPage } from "../my-collection/my-collection";
-import { MySongsPage } from "../my-songs/my-songs";
-import { MyPicturesPage } from "../my-pictures/my-pictures";
 /**
  * Generated class for the MyPage page.
  *
@@ -113,11 +111,5 @@ export class MyPage {
   }
   goCollection(){
     this.navCtrl.push(MyCollectionPage,this.userid);
-  }
-  goSongs(){
-    this.navCtrl.push(MySongsPage);
-  }
-  goPictures(){
-    this.navCtrl.push(MyPicturesPage);
   }
 }
