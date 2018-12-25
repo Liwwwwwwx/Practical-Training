@@ -21,7 +21,7 @@ export class PmusicPage {
   isOriginal: boolean = false;
   isPrivate: boolean = false;
   content: string = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public storage: Storage, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -71,10 +71,26 @@ export class PmusicPage {
   
   // 下一步
   go(){
+    var that = this;
     var datas = {};
+    // 判断发表内容
+    function checkContent() {
+      return new Promise((resolve) => {
+        if(that.content == '') {// 判断字数
+          that.showToast('文章内容不能为空！');
+        } else if(that.content.length > 200) {
+          that.showToast('字数不能超过200字！');
+        } else if(! $('#photo_upload')[0].value) {// 判断是否上传图片
+          that.showToast('请上传图片！');
+        } else if(! $('#music_upload').val()) {// 判断是否上传音乐
+          that.showToast('请上传音乐！');
+        } else {
+          resolve();
+        }
+      });
+    }
     // 上传图片
     function uploadPhotoByForm() {
-      //用form 表单直接 构造formData 对象; 就不需要下面的append 方法来为表单进行赋值了。
       return new Promise((resolve) => {
         var formData = new FormData($("#photoForm")[0]);
         console.log(formData);
@@ -89,7 +105,6 @@ export class PmusicPage {
     }
     // 上传音乐
     function uploadMusicByForm(datas) {
-      //用form 表单直接 构造formData 对象; 就不需要下面的append 方法来为表单进行赋值了。
       return new Promise((resolve) => {
         var formData = new FormData($("#musicForm")[0]);
         console.log(formData);
@@ -99,10 +114,8 @@ export class PmusicPage {
           resolve(datas);
         });
       });
-      
     }
     // 获取用户名
-    var that = this;
     function getName(datas) {
       return new Promise((resolve) => {
         that.storage.get('USER_INFO').then((value) =>{
@@ -130,6 +143,14 @@ export class PmusicPage {
 
       resolve();
     });
-    p.then(uploadPhotoByForm).then(uploadMusicByForm).then(getName).then(getDetails).catch(reason => {console.log(reason);});
+    p.then(checkContent).then(uploadPhotoByForm).then(uploadMusicByForm).then(getName).then(getDetails).catch(reason => {console.log(reason);});
+  }
+  showToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      position: 'middle',
+      duration: 2000
+    })
+    toast.present();
   }
 }
