@@ -17,32 +17,15 @@
       <ion-refresher (ionRefresh)="doRefresh($event)">
           <ion-refresher-content></ion-refresher-content>
         </ion-refresher> 
-      <ul>
-          <li (click)="goTog()">
-              <img src="assets/imgs/img4.jpg" alt="">
+        <ul>
+          <li (click)="goTog()" *ngFor="let item of data;let i=index;">
+            <img src="assets/imgs/img3.jpg" alt="">
             <div class="li_content">
-              <div class="li_content_p">文章内容</div>
-              <div class="li_content_author">李薇</div>
-              <div class="li_content_date">2018/1/12</div>
+              <div class="li_content_p">{{item.notecontent.substr(0,15)}}......</div>
+              <div class="li_content_author">{{item.username}}</div>
+              <div class="li_content_date">{{item.notedate.substr(0,10)}}</div>
             </div>
         </li>
-          <li (click)="goTog()" class="li1">
-              <div class="li_content">
-                  <div class="li_content_p">文章内容</div>
-                  <div class="li_content_author">李薇</div>
-                  <div class="li_content_date">2018/1/12</div>
-                </div>
-          </li>
-          <li (click)="goTog()">
-                <img src="assets/imgs/img3.jpg" alt="">
-              <div class="li_content">
-                <div class="li_content_p">文章内容</div>
-                <div class="li_content_author">李薇</div>
-                <div class="li_content_date">2018/1/12</div>
-              </div>
-          </li>
-         
-  
-        </ul>
+      </ul>
   </ion-content>
   

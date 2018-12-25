@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { DetailPage } from '../detail/detail';
+import { ModalController, NavController,NavParams } from "ionic-angular";
+import { DetailPage } from "../detail/detail";
+import { HttpClient } from "@angular/common/http";
 
 /**
  * Generated class for the AboutlyricsPage page.
@@ -15,14 +16,38 @@ import { DetailPage } from '../detail/detail';
   templateUrl: 'aboutlyrics.html',
 })
 export class AboutlyricsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  data;
+  constructor(public modalCtrl: ModalController,   public http: HttpClient,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutlyricsPage');
+    console.log('ionViewDidLoad AboutappearancePage');
   }
-  goTog(){
-    this.navCtrl.push(DetailPage);
+  goTog(i){
+    console.log(this.data[i]);
+    let profileModal = this.modalCtrl.create(DetailPage, {
+      index: i,
+      note: this.data[i]
+    });
+    profileModal.present();
+  }
+  doRefresh(refresher) {
+    console.log("Begin async operation", refresher);
+    setTimeout(() => {
+      console.log("Async operation has ended");
+      refresher.complete();
+    }, 2000);
+  }
+  ngOnInit() {
+    this.http.get("/notedata").subscribe(data => {
+      this.data = data;
+      var note = [];
+      this.data.map(function(item) {
+        if (item.notestyle == "抒情") {
+          note.push(item);
+        }
+      });
+      this.data = note;
+    });
   }
 }

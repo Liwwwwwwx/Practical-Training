@@ -122,3 +122,7 @@ date:2018/12/25/16:57
 
 date:2018/12/15/17:30
 修改了otheruser页面，新增othersdata页面
+
+ate:2018/12/15/17:42
+修改了aboutstorytelling, aboutnarration, aboutscenery, aboutappearance,aboutlyrics页面
+yuanchuang、tuwen、music、love、about、tongxin、dream页面的背景色
