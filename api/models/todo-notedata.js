@@ -2,7 +2,7 @@
 
 class TodoNoteData{
   getAll(callback){
-    const sql = 'select notes.*,count(replyid) commentCount,count(userid) collectionCount from (select note.*,user.avatar,user.username,anthology.anthologyname from note,user,anthology where anthology.userid = user.userid and note.anthologyid = anthology.anthologyid and note.isnoteprivate = 0) as notes left join comment on notes.noteid = comment.noteid left join collection on notes.noteid = collection.noteid group by (noteid) order by notedate desc;'
+   const sql = 'select * from (select note.*,avatar,username,anthologyname from note,user,anthology where anthology.userid = user.userid and note.anthologyid = anthology.anthologyid and note.isnoteprivate = 0) as c left join ( select a.noteid,commentCount,collectionCount from (select count(replyid) commentCount,note.noteid from note left join comment on note.noteid = comment.noteid group by (note.noteid)) as a left join (select count(collection.userid) collectionCount,note.noteid from note left join collection on note.noteid = collection.noteid group by (note.noteid)) as b on a.noteid = b.noteid ) as d on c.noteid = d.noteid order by (c.notedate) desc;'
     var datas = [];
 
     db.query(sql, (err,results)=>{
@@ -195,7 +195,7 @@ class TodoNoteData{
   
   //我的收藏
   myCollection(userid, callback){
-    const sql = 'select notes.anthologyname,count(replyid) commentCount,notes.username,notes.noteImg,notes.notecontent,notes.notedate, count(*) collectionCount,collection.noteid from (select note.*,anthology.anthologyname,username from anthology left join note on note.anthologyid = anthology.anthologyid left join user on user.userid = anthology.userid where noteid in (select noteid from collection where userid = ?)) as notes left join collection on notes.noteid = collection.noteid left join comment on comment.noteid = notes.noteid group by (noteid) order by (notes.notedate) desc;'
+    const sql = 'select * from (select anthology.anthologyname,note.*,username from note left join anthology on note.anthologyid = anthology.anthologyid left join user on anthology.userid = user.userid where noteid in (select noteid from collection where userid = ?)) as notes left join (select a.*,count(conameid) commentCount from (select count(userid) collectionCount,noteid,codate from collection group by (noteid)) as a left join comment  as b on a.noteid = b.noteid group by (a.noteid)) as count on notes.noteid = count.noteid order by (count.codate) desc'
     db.query(sql, [userid], (err, results)=>{
       if(err) {
         callback(true);
@@ -206,7 +206,7 @@ class TodoNoteData{
   }
 
   getAnthologyNote(anthologyid, callback) {
-    const sql = 'select note.* from note where anthologyid = (select anthologyid from anthology where anthologyid = ?);'
+      const sql = 'select a.*,c.commentCount,b.collectionCount from (select * from note where anthologyid = (select anthologyid from anthology where anthologyid = ?)) as a left join (select count(userid) collectionCount,note.noteid from note left join collection on note.noteid = collection.noteid group by (noteid)) as b on a.noteid = b.noteid left join (select count(replyid) commentCount,note.noteid from note left join comment on note.noteid = comment.noteid group by (note.noteid)) as c on a.noteid = c.noteid order by (a.notedate) desc;';
     db.query(sql, [anthologyid], (err, results)=>{
       if(err) {
         callback(true);

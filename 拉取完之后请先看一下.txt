@@ -115,3 +115,7 @@ date:2018/12/25/13:38
 
 date:2018/12/25/16:47
 添加了发布的字数限制
+
+date:2018/12/25/16:57
+修改detail页面，my-anthology,my-collection,athologyname,comment
+修改api的todo-notedata
