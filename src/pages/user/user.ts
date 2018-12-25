@@ -73,6 +73,6 @@ export class UserPage {
     this.navCtrl.push(HeadPage,{userid: this.data.userid, avatar: this.data.avatar});
   }
   goto() {
-    this.navCtrl.push(SignPage,this.data.autograph);
+    this.navCtrl.push(SignPage,{userid:this.data.userid,autograph:this.data.autograph});
   }
 }

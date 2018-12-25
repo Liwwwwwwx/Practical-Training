@@ -32,6 +32,7 @@ export class MyPage {
   data ={};
   avatar
   userid;
+  autograph;
   constructor(
     public http: HttpClient,
     public storage: Storage,
@@ -60,7 +61,8 @@ export class MyPage {
       that.http.post("/userdata/userdetail",{name:that.username}).subscribe(result => {
         console.log(result);
         that.data = result[0];
-        that.userid = result[0].userid
+        that.userid = result[0].userid;
+        that.autograph = result[0].autograph;
         for(let key in result[0]){
           that.data[key] = result[0][key]
       }
@@ -82,16 +84,16 @@ export class MyPage {
     console.log(this.data)
   }
   goto() {
-    this.navCtrl.push(FanPage,this.userid);
+    this.navCtrl.push(FanPage);
   }
   goTo() {
     this.navCtrl.push(UserPage,this.data);
   }
   goSign() {
-    this.navCtrl.push(SignPage);
+    this.navCtrl.push(SignPage, {userid:this.userid,autograph:this.autograph});
   }
   goGuanzhu() {
-    this.navCtrl.push(GuanzhuPage,this.userid);
+    this.navCtrl.push(GuanzhuPage);
     
   }
   goCollect() {
@@ -107,7 +109,7 @@ export class MyPage {
     this.navCtrl.push(AdvicePage);
   }
   goAnthology(){
-    this.navCtrl.push(MyAnthologyPage);
+    this.navCtrl.push(MyAnthologyPage,this.data);
   }
   goCollection(){
     this.navCtrl.push(MyCollectionPage,this.userid);

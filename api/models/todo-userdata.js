@@ -103,6 +103,17 @@ class TodoUserData{
        callback(false, result);
     });
   }
+  //更新签名
+  updateSign(userid, autograph, callback) {
+    const sql = 'UPDATE user SET autograph = ? where userid = ?';
+    db.query(sql, [autograph, userid], (err, result) => {
+      if(err){
+         callback(true);
+         return ;
+       }
+       callback(false, result);
+    });
+  }
   //获取粉丝详情
   getFuns(userid, callback){
     const sql = 'select fun.*,count(funs.userid) Mutual from (select userid,username,avatar,autograph from user where userid in (select fansid from fans where userid = 4)) as fun left join (select * from fans where userid in (select fansid from fans where userid = 4) and fansid = 4) as funs on fun.userid = funs.userid group by (funs.userid);'

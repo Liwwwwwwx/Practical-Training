@@ -27,6 +27,27 @@ router.post('/uploadHead',(req, res) => {
     }));
   });
 });
+//更新用户签名
+router.post('/uploadSign',(req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  console.log(req.body);
+  todouserdata.updateSign(req.body.userid, req.body.autograph, (err, result) => {
+    if(err) {
+      console.error(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+      return;
+    }
+    console.log(result);
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'成功',
+      data:result
+    }));
+  })
+});
 //更新用户信息
 router.post('/uploadUser',(req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
