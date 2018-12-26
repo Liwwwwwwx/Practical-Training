@@ -27,13 +27,15 @@ export class HomePage {
       })
       this.events.subscribe('reloadNotePage', () => {
         this.http.get('/notedata').subscribe(data => {
-          console.log('刷新后的数据：',data);
           this.data = data; 
           this.textcontent = this.data.map(function(item){
             return item.notecontent.replace(/(\r\n)|(\n)/g,'<br/>')
           })
         })
       });
+      this.events.subscribe('reloadCollectionCount',(i)=>{
+        this.data[i].collectionCount = this.data[i].collectionCount-1;
+      })
     })
   }
   // doRefresh(refresher) {

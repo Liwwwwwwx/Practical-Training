@@ -139,6 +139,7 @@ export class DetailPage {
     }
     if (this.priIsCol == true && this.isCol == false) {
       this.disCollection();
+      this.events.publish('reloadCollectionCount',this.index);
     }
     
     this.navCtrl.pop().then(()=>{
