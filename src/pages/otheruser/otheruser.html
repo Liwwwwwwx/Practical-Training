@@ -11,10 +11,10 @@
     <div class="header">
         <i class="iconfont" style="font-size:25px;margin-left: 10px;" (click)="goLast()">&#xe642;</i>
         <div class="head" (click)="godata()">
-            
+            <img src="{{avatar}}">
         </div>
-        <p text-center class="name">Sure</p>
-        <p text-center class="qm"><i class="iconfont">&#xe608;</i></p>
+        <p text-center class="name">{{username}}</p>
+        <p text-center class="qm">{{autograph}}</p>
     </div>
     <div class="funs">
         <ul>
@@ -23,16 +23,17 @@
         </ul>
     </div>
     <div>
-    <ul class="wenji">
-        <li>默认文集</li>
-        <li>默认文集</li>
-        <li>默认文集</li>
-    </ul>
+        <ul class="wenji">
+            <li *ngFor="let item of array; let i = index" (click)="gotoathology(i)">
+                <p>{{item.anthologyname}}</p>
+            </li>
+        </ul>
     </div>
-    <!-- <div class="addgz">
-        <button ion-button full>+关注</button>
-    </div>  -->
-    <button class="guanzhu">
-        <span>关注</span>
-    </button> 
+    <ion-footer>
+        <ion-toolbar>
+            <button ion-button full>
+                关注
+            </button>
+        </ion-toolbar>
+    </ion-footer>
 </ion-content>

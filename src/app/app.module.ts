@@ -64,6 +64,7 @@ import { AboutappearancePage } from '../pages/aboutappearance/aboutappearance';
 import { AthologyPage } from '../pages/athology/athology';
 import { OtheruserPage } from '../pages/otheruser/otheruser';
 import { OthersdataPage } from '../pages/othersdata/othersdata';
+import { OtherathologyPage } from '../pages/otherathology/otherathology';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import { OthersdataPage } from '../pages/othersdata/othersdata';
     AthologyPage,
     OtheruserPage,
     OthersdataPage,
+    OtherathologyPage,
   ],
   imports: [
     BrowserModule,
@@ -194,6 +196,7 @@ import { OthersdataPage } from '../pages/othersdata/othersdata';
     AthologyPage,
     OtheruserPage,
     OthersdataPage,
+    OtherathologyPage,
   ],
   providers: [
     StatusBar,
