@@ -1,10 +1,10 @@
 page-new {
     ion-content{
-        background-color:#ece5da!important;
+        background-color:#ffffff!important;
         span{
             float: right;
             font-size: 18px;
-            color: rgba(0, 26, 255, 0.61);
+            color: rgb(80, 70, 78);
         }
         .div1{
             text-align: center;
@@ -12,19 +12,20 @@ page-new {
             height: 120px;
             line-height: 120px;
             margin: auto;
-            background-color: rgba(235, 231, 175, 0.712)!important;
+            background-color: rgba(185, 184, 184, 0.555)!important;
             p{
-                color: #fff;
+                color: rgb(223, 215, 215);
                 text-shadow: 1px 1px 3px black;
             }
         }        
         #text{
             opacity: 0.7;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 13px;
             text-align:center;
+            text-shadow: 1px 1px 1px black;
+            font-size: 15px;
             border:0;
-            background-color: #ece5da!important;
         }
     }
 }

@@ -21,5 +21,7 @@ export class DreamPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DreamPage');
   }
-
+  goAbout(){
+    this.navCtrl.popToRoot();
+  }
 }

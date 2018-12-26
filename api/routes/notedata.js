@@ -1,4 +1,4 @@
-const TodoNoteData = require('../models/todo-notedata');
+﻿const TodoNoteData = require('../models/todo-notedata');
 const db = require('../models/database.js');
 var express = require('express');
 var router = express.Router();
@@ -69,10 +69,11 @@ router.post('/notecategory',(req, res)=>{
   })
 })
 
-router.post('/newWords', (req, res) => {
+//发表内容
+router.post('/newNote', (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   console.log(req.body);
-  todonotedata.insertOneWords(req.body, (err ,result) => {
+  todonotedata.insertOneNote(req.body, (err ,result) => {
     if(err) {
       console.error(err);
       return ;
@@ -82,19 +83,248 @@ router.post('/newWords', (req, res) => {
   res.send(req.body);
 });
 
-router.post('/newPhoto', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  console.log(req.body);
-  todonotedata.insertOnePhoto(req.body, (err ,result) => {
+//获取文集
+router.post('/anthologydetail', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var name = req.body.name;
+  todonotedata.getAnthologyDetail(name, (err, data)=>{
     if(err) {
-      console.error(err);
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+    }
+    res.status(200).send(JSON.stringify(data));
+  })
+})
+
+//文集详情
+router.post('/getanthologynote', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body);
+  var anthologyid = req.body.anthologyid;
+  todonotedata.getAnthologyNote(anthologyid, (err, data)=>{
+    if(err) {
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+    }
+    console.log(data)
+    res.status(200).send(data)
+  })
+})
+
+//新建文集
+router.post('/newAnthology', (req,res) => {
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body);
+  var name = req.body.name;
+  var Aname = req.body.anthologyName;
+  todonotedata.createAnthology(name, Aname, (err, data) => {
+    if(err) {
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }));
+    }
+    res.send(JSON.stringify({
+        status:'200',
+        msg:'成功'
+      }));
+  });
+});
+
+router.post('/isclick', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  console.log(req.body)
+  var name = req.body.name;
+  console.log(noteid,name)
+  todonotedata.isClick(noteid, name, (err,result)=>{
+    if(err) {
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+router.post('/clickcount', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  todonotedata.getClickCount(noteid, (err,result)=>{
+    if(err) {
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+router.post('/click', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body)
+  var noteid =req.body.noteid;
+  var name = req.body.name;
+  todonotedata.Click(noteid, name, (err, result)=>{
+    if(err) {
+      console.log(err);
       return ;
     }
     console.log(result);
-  });
-  res.send(req.body);
-});
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'点赞成功'
+    }))
+  })
+})
 
+router.post('/disclick', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  var name = req.body.name;
+  todonotedata.disClick(noteid, name, (err,result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'取消点赞'
+    }))
+  })
+})
+
+router.post('/isCollection', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  var name = req.body.name;
+  todonotedata.isCollect(noteid, name, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+router.post('/CollectionCount', (req,res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  todonotedata.CollectionCount(noteid, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+router.post('/Collection', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  var name = req.body.name;
+  todonotedata.Collection(noteid, name, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'收藏成功'
+    }))
+  })
+})
+
+router.post('/disCollection', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  var name = req.body.name;
+  todonotedata.disCollection(noteid, name, (err,result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'取消收藏'
+    }))
+  })
+})
+
+router.post('/mycollection', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var userid = req.body.userid;
+  todonotedata.myCollection(userid, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+//发表文章评论
+router.post('/insertcomment', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body)
+  var noteid = req.body.noteid,
+      username = req.body.username,
+      content = req.body.content;
+  todonotedata.insertComment(noteid, username, content, (err, result)=>{
+    if(err) {
+      console.log(err);
+      return ;
+    }
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'发表成功'
+    }))
+  })
+})
+
+//获取评论人名称
+router.post('/getcommentname', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body)
+  var noteid = req.body.noteid;
+  todonotedata.getCommentName(noteid, (err, result)=>{
+    if(err) {
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+//获取评论的评论
+router.post('/getcommentsdetail', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var replyid = req.body.replyid;
+  todonotedata.getCommentDetail(replyid, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+router.post('/getcomment', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  todonotedata.getComment(noteid, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
 
 //数据分页
 

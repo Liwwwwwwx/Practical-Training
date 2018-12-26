@@ -9,8 +9,10 @@
   <i class="iconfont" (click)="goPublish()" style="font-size:25px;">&#xe642;</i>
   <span class="title">心灵语录</span>
   <!-- 分享文字内容（多行文本框） -->
-    <textarea class="addtext" placeholder="分享你的视线所及"></textarea>
+  <div class="div1">
+    <textarea class="addtext" placeholder="分享你的视线所及" [(ngModel)]="content"></textarea>
     <div class="photo">
+        <img id="showImg" src="" alt="">
         <div class="cercle">
           <ion-fab>
             <button ion-fab color="bg"><ion-icon name="add"></ion-icon></button>
@@ -18,14 +20,22 @@
               <button ion-fab color="bg"><i class="iconfont">&#xe622;</i></button>
             </ion-fab-list>
             <ion-fab-list side="right">
-              <button ion-fab color="bg"><i class="iconfont">&#xe620;</i></button>
+              <button ion-fab color="bg" (click)="openPhoto()"><i class="iconfont">&#xe620;</i></button>
+              <form role="form" id="photoForm" action="/" method="post" enctype="multipart/form-data">
+                <input type="file" name="fulAvatar" id="photo_upload" value="" class="form-control" (change)="showPhoto($event)">
+              </form>
             </ion-fab-list>
             <ion-fab-list side="top">
-                <button ion-fab color="bg"><ion-icon name="musical-note"></ion-icon></button>
-              </ion-fab-list>
+              <button ion-fab color="bg" (click)="openMusic()"><ion-icon name="musical-note"></ion-icon></button>
+              <form role="form" id="musicForm" action="/" method="post" enctype="multipart/form-data">
+                <input type="file" name="fulAvatar" id="music_upload" value="" class="form-control" (change)="showMusic($event)">
+              </form>
+            </ion-fab-list>
           </ion-fab>
         </div>
+        <p id="showAudio"></p>
     </div>
+  </div> 
   <!-- 字体&表情&字数限制 -->
     <div class="icon_family">
     <i class="iconfont">&#xe6ec;</i>
@@ -36,19 +46,12 @@
     <div class="wordlimit">
       输入文字在200字以内
     </div>
-  <!-- 是否原创 -->
-  <ion-list>
-    <ion-item>
-        <ion-label>是否原创</ion-label>
-        <ion-checkbox color="dark" checked="false"></ion-checkbox>
-    </ion-item>
+   <!-- 是否原创 --> <!-- 是否私密发布 -->
+   <div class="isoriginal">
+    <input name="" type="checkbox" value="" />     是否原创  <br>
+    <input name="" type="checkbox" value="" />     是否私密发布
+ </div>
 
-  <!-- 是否私密发布 -->
-  <ion-item>
-      <ion-label>是否私密发布</ion-label>
-      <ion-checkbox color="dark" checked="false"></ion-checkbox>
-  </ion-item>
-  </ion-list>
   <button ion-button  round  (click)="go()">&nbsp;下&nbsp;一&nbsp;步</button>
 </ion-content>
 

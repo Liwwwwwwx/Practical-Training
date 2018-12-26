@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>我的文集</ion-title>
+    <ion-icon name="add" ios="ios-add" md="md-add" (click)="goNew()"></ion-icon>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="anthology">
+    <ul>
+      <li *ngFor="let item of data; let i = index" (click)="go(i)">
+        <p>{{item.anthologyname}}</p>
+      </li>
+    </ul>
+  </div>
+</ion-content>

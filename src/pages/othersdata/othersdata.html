@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>他人资料</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item>
+        <span class="left">昵称</span>
+        <!-- <input type="text" value='{{data.username}}' id="text" #name/> -->
+      </ion-item>
+    <ion-item (click)="changeSex()">
+      <span class="left">性别</span>
+      <!-- <span style="margin-left:50px;" #sex>{{data.sex}}</span> -->
+    </ion-item>
+    <ion-item>
+        <span class="left">生日</span>
+        <!-- <input type="date" value="{{data.birth}}" (change)="changeBirthDate(date)" #date/> -->
+      </ion-item>
+  </ion-list>
+</ion-content>

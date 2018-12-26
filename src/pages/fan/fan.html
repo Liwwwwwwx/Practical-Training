@@ -14,58 +14,19 @@
 
 
 <ion-content no-border>
-  <ul class="navList">
-    <li *ngFor="let item of arr;let idx=index;" (click)="isClick(idx)" [class.first]="isActive==idx">
-        {{item}}
-    </li>
-  </ul>
-  <div [ngSwitch]="isActive">
-    <div *ngSwitchCase="0">
-        <ul>
-            <li class="head">
-                <img src="assets/imgs/my.jpg" alt="">
-            </li>
-            <li class="name">
-                <span>啦啦啦</span>
-            </li>
-            <li class="word">
-                <span>哈哈哈</span>
-            </li>
-            <li class="btn">
-              <button>+关注</button>
-            </li>
-          </ul>
-    </div>
-    <div *ngSwitchCase="1">
-        <ul>
-            <li class="head">
-                <img src="assets/imgs/my.jpg" alt="">
-            </li>
-            <li class="name">
-                <span>啦啦啦</span>
-            </li>
-            <li class="word">
-                <span>哈哈哈</span>
-            </li>
-            <li class="btn">
-              <button>+关注</button>
-            </li>
-          </ul>
-          <ul>
-              <li class="head">
-                  <img src="assets/imgs/my.jpg" alt="">
-              </li>
-              <li class="name">
-                  <span>啦啦啦</span>
-              </li>
-              <li class="word">
-                  <span>哈哈哈</span>
-              </li>
-              <li class="btn1">
-                <button><i class="iconfont">&#xe610;</i>互相关注</button>
-              </li>
-          </ul>
-    </div>
-  </div>
-
+    <ul *ngFor="let item of items;let i = index">
+        <li class="head">
+          <img src="{{item.avatar}}" alt="">
+        </li>
+        <li class="name">
+          <span>{{item.username}}</span>
+        </li>
+        <li class="word">
+          <span>{{item.autograph}}</span>
+        </li>
+        <li class="btn">
+          <button (click)="Follow(i)" [innerHTML]="isMutual[i]?mutual:follow"></button>
+        </li>
+      </ul>
+  
 </ion-content>

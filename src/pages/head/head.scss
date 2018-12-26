@@ -1,9 +1,12 @@
 page-head {
+    ion-header{
+        border-bottom:0.2px solid;
+    }
     .toolbar-title-md {
-        margin-left: -25px;
+        margin-left: -20px;
     }
     ion-content{
-        background-color:#ece5da!important;
+        background-color:/*#ece5da*/rgb(246,246,246)!important;
         .head{
             width: 102px;
             height:102px;
@@ -11,6 +14,13 @@ page-head {
             border: 1px solid ;
             overflow: hidden;
             margin:40px auto;
+			img{
+				width:100%;
+				height:100%;
+			}
+        }
+        form {
+            display: none;
         }
     }
 }

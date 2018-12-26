@@ -1,23 +1,31 @@
 page-savewenji {
-        .toolbar-title-md {
-            margin-left: -25px;
-        }
-        ion-content{
-            background-color:#ece5da!important;
-            ul{
-                margin: 20px auto;
-                padding: 0;
-                width: 100%;
-                li{
-                    text-align: center;
-                    line-height: 90px;
-                    width: 45%;
-                    height: 90px;
-                    float: left;
-                    margin: 5px 0 5px 4%;
-                    background-color: rgb(240, 236, 185)!important;
-                }
-            }
-        }
-    
+  .toolbar-title-md {
+    margin-left: -25px;
+  }
+
+  ion-content {
+    background-color: #ece5da !important;
+
+    ion-list {
+      margin: 20px auto;
+      padding: 0;
+      width: 100%;
+
+      ion-item {
+        line-height: 90px;
+        height: 90px;
+        background-color: rgb(240, 236, 185) !important;
+      }
+      .item-md{
+          width: 45%;
+          margin: 5px;
+          float: left;
+      }
+      .label-md{
+        text-align: center
+      }
+    }
+  }
+
+
 }

@@ -4,38 +4,63 @@
     <i class="iconfont">&#xe62f;&nbsp;<font style="font-size:16px;letter-spacing:1px;color:#42413f;">分类</font></i>  
   </div>
   <ul class="goods1">
-    <li (click)="goToa()">
-      <img src="assets/imgs/img4.jpg" alt="">
+    <div class="first">
+      <li (click)="goToa()">
+      <!-- <img src="assets/imgs/img4.jpg" alt=""> -->
       <p>[ 原创 ]</p>
     </li>
-    <li (click)="goTob()">
-      <img src="assets/imgs/img2.jpg" alt="">
+    <li (click)="goTob()" >
+      <!-- <img src="assets/imgs/img2.jpg" alt=""> -->
       <p>[ 图文 ]</p>
     </li>
-    <li (click)="goToc()">
-      <img src="assets/imgs/img3.jpg" alt="">
+    <li (click)="goToc()"  >
+      <!-- <img src="assets/imgs/img3.jpg" alt=""> -->
       <p>[ 音乐 ]</p>
     </li>
+  </div>
+  <div class="second"> 
     <li (click)="goTod()">
-      <img src="assets/imgs/img1.jpg" alt="">
-      <p>[ 全部 ] </p>
+      <!-- <img src="assets/imgs/img1.jpg" alt=""> -->
+      <p>[ 记人 ] </p>
     </li>
+    <li (click)="goTom()" >
+      <!-- <img src="assets/imgs/img4.jpg" alt=""> -->
+      <p>[ 叙事 ]</p>
+    </li>
+    <li (click)="goToi()"  >
+      <!-- <img src="assets/imgs/img2.jpg" alt=""> -->
+      <p>[ 写景 ]</p>
+    </li>
+    <li (click)="goToj()"  >
+      <!-- <img src="assets/imgs/img3.jpg" alt=""> -->
+      <p>[ 状物 ]</p>
+    </li>
+  </div>  
+  <div class="third">
+    <li (click)="goTok()"  >
+      <!-- <img src="assets/imgs/img1.jpg" alt=""> -->
+      <p>[ 抒情 ] </p>
+    </li>
+  </div>  
+  <!-- 记人,叙事,写景,状物,抒情 
+  Storytelling, Narration, Scenery, Appearance, Lyrics  -->
+  
   </ul>
   <div class="zhuan">
     <i class="iconfont">&#xe66c;&nbsp;<font style="font-size:16px;letter-spacing:1px;color:#42413f;">专题</font></i>  
   </div>
   <ul class="goods2">
       <li (click)="goToe()">
-        <img src="assets/imgs/img5.jpg" alt="">
-        <p>童心已逝，童心未泯</p>
+        <img src="assets/imgs/tongxin.jpg" alt="">
+        <p>但愿你有一颗童心</p>
       </li>
       <li (click)="goTof()">
-          <img src="assets/imgs/img6.jpg" alt="">
-          <p>理想是灯，照亮夜行的路</p>
+          <img src="assets/imgs/dream.jpg" alt="">
+          <p>路的尽头仍是路，只要你肯愿意走</p>
       </li>
       <li (click)="goTog()">
-          <img src="assets/imgs/aiqing5.jpg" alt="">
-          <p>有的爱情，活在你心里</p>
+          <img src="assets/imgs/love.jpg" alt="">
+          <p>一起携手到老，得一知心人，岁月静好</p>
       </li>
   </ul> 
 </ion-content>

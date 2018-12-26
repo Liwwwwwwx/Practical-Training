@@ -4,7 +4,72 @@ var express = require('express');
 var router = express.Router();
 
 var todouserdata = new TodoUserData();
-
+//上传头像
+router.post('/uploadHead',(req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  console.log(req.body);
+  var userid = req.body.userid;
+  var avatar = req.body.imgPath;
+  todouserdata.updateAvatar(userid, avatar, (err, result) => {
+    if(err) {
+      console.error(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+      return;
+    }
+    console.log(result);
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'成功',
+      data:result
+    }));
+  });
+});
+//更新用户签名
+router.post('/uploadSign',(req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  console.log(req.body);
+  todouserdata.updateSign(req.body.userid, req.body.autograph, (err, result) => {
+    if(err) {
+      console.error(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+      return;
+    }
+    console.log(result);
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'成功',
+      data:result
+    }));
+  })
+});
+//更新用户信息
+router.post('/uploadUser',(req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  console.log(req.body);
+  todouserdata.updateUser(req.body.userid, req.body.sex, req.body.birth, (err, result) => {
+    console.log('I have done');
+    if(err) {
+      console.error(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+      return;
+    }
+    console.log(result);
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'成功',
+      data:result
+    }));
+  });
+});
 //获取所有数据
 router.get('/',(req,res)=>{
   res.header('Access-Control-Allow-Origin', '*');
@@ -118,6 +183,96 @@ router.post('/del',(req, res)=>{
       }))
     }
   });
+})
+
+//用户详情
+router.post('/userdetail', (req,res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var name = req.body.name;
+  todouserdata.getUserDetail(name, (err,data)=>{
+    if(err){
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+    }
+    res.send(JSON.stringify(data))
+  })
+})
+
+//粉丝详情
+router.post('/fandetail', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var userid = req.body.userid;
+  todouserdata.getFuns(userid, (err, results)=>{
+    if(err){
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+    }
+    res.status(200).send(results);
+  })
+})
+
+//成为粉丝
+router.post('/becomeFans', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var userid = req.body.userid;
+  var fansid = req.body.fansid;
+  todouserdata.becFans(userid, fansid, (err, results)=>{
+    if(err){
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+    }
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'成为粉丝'
+    }))
+  })
+})
+
+
+//获取关注详情
+router.post('/followdetail', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var userid = req.body.userid;
+  console.log(userid)
+  todouserdata.getFollow(userid, (err, results)=>{
+    if(err){
+      console.log(err);
+      res.send(JSON,stringify({
+        status:'102',
+        msg:'失败'
+      }))
+    }
+    res.status(200).send(results);
+  })
+})
+
+//取消关注
+router.post('/disfollow', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var userid = req.body.userid;
+  var fansid = req.body.fansid;
+  todouserdata.disFollow(userid, fansid, (err, results)=>{
+    if(err){
+      console.log(err);
+      res.send(JSON.stringify({
+        status:'102',
+        msg:'失败'
+      }))
+    }
+    res.send(JSON.stringify({
+      status:'200',
+      msg:'取消关注'
+    }))
+  })
 })
 
 //数据分页

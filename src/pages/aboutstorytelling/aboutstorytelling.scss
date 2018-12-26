@@ -1,0 +1,77 @@
+page-aboutstorytelling {
+    ion-header{
+        ion-navbar{
+            .toolbar-title-md {
+                padding: 0 12px;
+                font-size: 2rem;
+                font-weight: 550;
+                color: #424242;
+                margin-left: -27px;
+            }
+        }
+    }
+   
+    ion-content{
+        background-color:rgb(246,246,246)!important;
+        ul{
+            margin: 0 !important;
+            padding: 0 !important;
+            li{
+                background-color:#ffffff !important;
+                width: 95%;
+                height: 65px;
+                margin: 0 auto;
+                margin-top: 3%;
+                padding-left: 3%;
+                box-shadow:1px 1px 2px #cec2ae;
+                img{
+                    width: 20%;
+                    height: 70%;
+                    float: left;
+                    margin-top: 3%;
+                }
+                .li_content{
+                    margin-top: 4%;
+                    margin-right: 5% !important;
+                    float: right;
+                    width:70%;
+                    .li_content_p{
+                        color: #424242;
+                    }
+                    .li_content_author{
+                        margin-top: 3%;
+                        font-size: 11px;
+                        color: #aaaaaa;
+                        float: left;
+                    }
+                    .li_content_date{
+                        font-size: 11px;
+                        color: #aaaaaa;
+                        margin-left: 10%!important;
+                        float: right;
+                        margin-top: 4% !important;
+                    }
+                }
+            }
+            .li1{
+                 height: 100px;
+                .li_content{
+                    margin-top: 4%;
+                    margin-right: 5% !important;
+                    float: right;
+                    width:95%;
+                    .li_content_p{
+                        height: 56px;
+                        width: 95%;
+                        color: #424242;
+                    }
+                   
+                }
+            }
+        }
+       
+
+    }
+}
+
+

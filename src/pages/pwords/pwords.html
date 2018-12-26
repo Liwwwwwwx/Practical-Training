@@ -23,19 +23,12 @@
     <div class="wordlimit">
       输入文字在200字以内
     </div>
-   <!-- 是否原创 -->
-   <ion-list>
-    <ion-item>
-        <ion-label>是否原创</ion-label>
-        <ion-checkbox color="dark" checked="false" [(ngModel)]="isOriginal"></ion-checkbox>
-    </ion-item>
-  
-  <!-- 是否私密发布 -->
-  <ion-item>
-      <ion-label>是否私密发布</ion-label>
-      <ion-checkbox color="dark" checked="false" [(ngModel)]="isPrivate"></ion-checkbox>
-  </ion-item>
-  </ion-list>
+    <!-- 是否原创 --> <!-- 是否私密发布 -->
+  <div class="isoriginal">
+    <input name="" type="checkbox" value="" />     是否原创  <br>
+    <input name="" type="checkbox" value="" />     是否私密发布
+ </div>
+
   <button ion-button  round (click)="go()" >&nbsp;下&nbsp;一&nbsp;步</button>
    
   

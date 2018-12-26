@@ -6,9 +6,9 @@
 -->
 <ion-content padding>
     <ion-icon ios="ios-close" md="md-close" (click)="go()"></ion-icon>
-    <span>完成</span>
+    <span (click)="goToa(anthologyName)">完成</span>
     <div class="div1">
         <p>+封面图(可无)</p>
     </div>
-    <textarea name="" id="text" placeholder="文集名"></textarea>
+    <textarea name="" id="text" placeholder="文集名" #anthologyName></textarea>
 </ion-content>

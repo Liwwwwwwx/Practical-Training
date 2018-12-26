@@ -1,0 +1,41 @@
+<!--
+  Generated template for the CommentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border style="border-bottom:0.1px solid gray;">
+
+  <ion-navbar color="head">
+    <ion-title text-center>评论</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<!-- 评论内容 -->
+<ion-content>
+  <ul>
+    <li *ngFor="let item of items;let i = index">
+      <img src="{{item.avatar}}" alt="" class="image">
+      <div class="user">{{item.username}}</div>
+      <div class="reply">
+        <font (click)="goRespond()">回复</font>
+      </div>
+      <div class="content">
+        <p>{{item.ccontent}}</p>
+      </div>
+      <div class="respond" *ngIf="item.commentCount">
+        <span (click)=" goDetail(i)">共{{item.commentCount}}条回复&nbsp;></span>
+      </div>
+      <div class="date">
+        {{item.commentdate.substr(0,10)}}&nbsp;{{item.commentdate.substr(11,5)}}
+      </div>
+    </li>
+  </ul>
+</ion-content>
+
+<!-- 发表评论 -->
+<ion-footer>
+  <input type="text" [(ngModel)]="content" id="text" placeholder="写评论...">
+  <input type="submit" value="发送" id="send" (click)="submit()" />
+</ion-footer>

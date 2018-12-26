@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PublishPage } from '../publish/publish';
-// import { SavewenjiPage } from '../savewenji/savewenji';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import $ from 'jquery';
+import { SavewenjiPage } from '../savewenji/savewenji';
 /**
  * Generated class for the PphotoPage page.
  *
@@ -12,7 +12,7 @@ import $ from 'jquery';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-pphoto',
   templateUrl: 'pphoto.html',
@@ -31,7 +31,7 @@ export class PphotoPage {
   //   isPrivate: false
   // };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public storage: Storage, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -67,10 +67,24 @@ export class PphotoPage {
 
   // 下一步
   go(){
+    var that = this;
     var datas;
+    // 判断发表内容
+    function checkContent() {
+      return new Promise((resolve) => {
+        if(that.content == '') {// 判断字数
+          that.showToast('文章内容不能为空！');
+        } else if(that.content.length > 200) {
+          that.showToast('字数不能超过200字！');
+        } else if(! $('#file_upload')[0].value) {// 判断是否上传图片
+          that.showToast('请上传图片！');
+        } else {
+          resolve();
+        }
+      });
+    }
     // 上传图片
     function uploadByForm() {
-      //用form 表单直接 构造formData 对象; 就不需要下面的append 方法来为表单进行赋值了。
       return new Promise((resolve) => {
         var formData = new FormData($("#myForm")[0]);
         console.log(formData);
@@ -84,7 +98,6 @@ export class PphotoPage {
     }
 
     // 获取用户名
-    var that = this;
     function getName(datas) {
       return new Promise((resolve) => {
         that.storage.get('USER_INFO').then((value) =>{
@@ -98,35 +111,28 @@ export class PphotoPage {
     }
     // 获取文字内容
     function getDetails(datas) {
-      return new Promise((resolve) => {
-        console.log(datas.username);
-        console.log(that.content);
-        datas.isOriginal = that.isOriginal;
-        datas.isPrivate = that.isPrivate;
-        datas.content = that.content;
-        console.log('datas:', datas);
-        resolve(datas);
-      });
-    }
-    
-
-    // 传入数据库
-    function transferDetails(datas) {
-      datas.anthologyname = '默认文集';
-      datas.notecategory = '文字';
-      console.log(datas);
-      var formData = new FormData($("#myForm")[0]);
-      console.log(formData);
-      datas.formData = formData;
-      that.http.post('/notedata/newPhoto',datas).subscribe(result => {
-        console.log(result);
-      });
+      console.log(datas.username);
+      console.log(that.content);
+      datas.musicPath = null;
+      datas.isOriginal = that.isOriginal;
+      datas.isPrivate = that.isPrivate;
+      datas.notecategory = '图片';
+      datas.content = that.content;
+      console.log('datas:', datas);
+      that.navCtrl.push(SavewenjiPage,datas);
     }
 
     var p = new Promise((resolve) => {
       resolve();
     });
-    p.then(uploadByForm).then(getName).then(getDetails).then(transferDetails).catch(reason => {console.log(reason);});
+    p.then(checkContent).then(uploadByForm).then(getName).then(getDetails).catch(reason => {console.log(reason);});
   }
-
+  showToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      position: 'middle',
+      duration: 2000
+    })
+    toast.present();
+  }
 }

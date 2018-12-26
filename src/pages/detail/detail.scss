@@ -1,4 +1,42 @@
 page-detail {
+  .container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+  }
+  .player{
+    position: absolute;
+    top: 17%;
+    width: 10rem;
+    height: 10rem;
+  }
+  .displayer{
+    display: none;
+  }
+  .imgsplay{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+  }
+  .rotation{
+    -webkit-transform: rotate(360deg);
+    animation: rotation 12s linear infinite;
+    -moz-animation: rotation 12s linear infinite;
+    -webkit-animation: rotation 12s linear infinite;
+    -o-animation: rotation 12s linear infinite;
+  }
+  
+  @-webkit-keyframes rotation{
+    from {
+      -webkit-transform: rotate(0deg);
+    }
+  
+    to{
+      -webkit-transform: rotate(360deg);
+    }
+  }
   .slide-zoom {
     text-align: center;
     display: flex;
@@ -63,27 +101,7 @@ page-detail {
 
     }
 
-    .like {
-      display: inline-flex;
-      flex-direction: row;
-      padding: 6px;
-      width: 45px;
-      margin-right: 5px;
-
-      img {
-        width: 16px;
-        height: 16px;
-      }
-
-      div {
-        font-size: 12px;
-        line-height: 12px;
-        color: #bbbbbb;
-        position: relative;
-        bottom: 5px;
-        left: 3px;
-      }
-    }
+    
   }
 
   .nav {
@@ -92,7 +110,7 @@ page-detail {
     display: flex;
     flex-direction: row;
     align-items: center;
-
+    position: relative;
     .image {
       width: 2rem;
       height: 2rem;
@@ -117,11 +135,12 @@ page-detail {
       color: rgb(13, 62, 95);
     }
   }
-
   .content {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .imgs {
-      height: 21rem;
+      height: 20rem;
       width: 100%;
     }
 
@@ -129,7 +148,7 @@ page-detail {
       width: 250px;
       margin: 0 auto;
       margin-top: 2rem;
-      height: 30rem;
+      height: 32rem;
       font-size: 12px;
 
       p {
@@ -150,7 +169,7 @@ page-detail {
       width: 250px;
       margin: 0 auto;
       margin-top: 2rem;
-      height: 50rem;
+      height: 52rem;
       font-size: 12px;
 
       p {
@@ -169,12 +188,34 @@ page-detail {
   }
 
   .foot {
-    height: 3rem;
+    height: 4rem;
     border-top: 1px solid #bbbbbb;
     display: flex;
     flex-direction: row;
     align-items: center;
     position: relative;
+    .like {
+      display: inline-flex;
+      flex-direction: row;
+      padding: 6px;
+      width: 45px;
+      margin-right: 5px;
+      position: absolute;
+      right: 5px;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+
+      div {
+        font-size: 12px;
+        line-height: 12px;
+        color: #bbbbbb;
+        position: relative;
+        bottom: 5px;
+        left: -3px;
+      }
+    }
     span {
       position: absolute;
       top:-2rem;
@@ -189,14 +230,14 @@ page-detail {
       padding-left: 1rem;
 
       img {
-        width: 2rem;
-        height: 2rem;
+        width: 3rem;
+        height: 3rem;
       }
 
       p {
         margin: 0;
         color: #bbbbbb;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 2rem;
         padding: 2px 0 0 2px;
       }

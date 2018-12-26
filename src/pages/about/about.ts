@@ -3,11 +3,17 @@ import { NavController } from 'ionic-angular';
 import { YuanchuangPage } from '../yuanchuang/yuanchuang';
 import {TuwenPage } from '../tuwen/tuwen';
 import {MusicPage } from '../music/music';
-import {AllPage } from '../all/all';
+//import {AllPage } from '../all/all';
 import { TongxinPage } from '../tongxin/tongxin';
 import { DreamPage } from '../dream/dream';
 import { LovePage } from '../love/love';
 import { SearchPage } from '../search/search';
+
+import { AboutlyricsPage } from '../aboutlyrics/aboutlyrics';
+import { AboutappearancePage } from '../aboutappearance/aboutappearance';
+import { AboutsceneryPage } from '../aboutscenery/aboutscenery';
+import { AboutnarrationPage } from '../aboutnarration/aboutnarration';
+import { AboutstorytellingPage } from '../aboutstorytelling/aboutstorytelling';
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
@@ -26,9 +32,7 @@ export class AboutPage {
   goToc(){
     this.navCtrl.push(MusicPage);
   }
-  goTod(){
-    this.navCtrl.push(AllPage);
-  }
+  
   goToe(){
     this.navCtrl.push(TongxinPage);
   }
@@ -40,5 +44,20 @@ export class AboutPage {
   }
   goToh(){
     this.navCtrl.push(SearchPage);
+  }
+  goToi(){
+    this.navCtrl.push(AboutsceneryPage);
+  }
+  goToj(){
+    this.navCtrl.push(AboutappearancePage);
+  }
+  goTok(){
+    this.navCtrl.push(AboutlyricsPage);
+  }
+  goTom(){
+    this.navCtrl.push(AboutnarrationPage);
+  }
+  goTod(){
+    this.navCtrl.push(AboutstorytellingPage);
   }
 }

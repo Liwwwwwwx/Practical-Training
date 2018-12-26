@@ -3,24 +3,24 @@ page-problem {
         margin-left: -25px;
     }
     ion-content{
-        background-color:#ece5da!important;
+        background-color:/*#ece5da*/rgb(246,246,246)!important;
         #text{
             width: 90%;
             height: 20%;
             display: block;
             margin: auto;
-            background-color:rgba(217, 186, 138, 0.8);
+            background-color:/*rgba(217, 186, 138, 0.8)*/white;
             border-radius: 5px;
         }
-        input{
+        button{
             text-align: center;
             display: block;
             margin: auto;
             line-height: 40px;
-            width: 90%;
+            width: 60%;
             height: 40px;
             font-size:20px;
-            background-color:rgba(217, 186, 138, 0.5);
+            background-color:/*rgba(217, 186, 138, 0.5)*/rgb(237, 240, 224);
             border-radius: 5px;
         }
     }

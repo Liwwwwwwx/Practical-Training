@@ -14,8 +14,10 @@
 
 
 <ion-content padding>
-    <div class="head" (click)="presentModal()">
-        <img src="" alt="">
+    <div class="head" (click)="presentActionSheet()">
+        <img src="{{avatar}}" alt="">
     </div>
-
+    <form role="form" id="headForm" action="/" method="post" enctype="multipart/form-data">
+      <input type="file" name="fulAvatar" id="file_upload" value="" class="form-control" (change)="showPhoto($event)">
+    </form>
 </ion-content>

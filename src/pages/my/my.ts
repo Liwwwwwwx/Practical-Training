@@ -1,5 +1,5 @@
-import { Component, ViewChild } from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import { Component} from "@angular/core";
+import { NavController, NavParams, Events } from "ionic-angular";
 import { ShezhiPage } from "../shezhi/shezhi";
 import { FanPage } from "../fan/fan";
 import { UserPage } from "../user/user";
@@ -9,6 +9,10 @@ import { CollectPage } from "../collect/collect";
 import { WenjiPage } from "../wenji/wenji";
 import { Storage } from "@ionic/storage";
 import { HttpClient } from "@angular/common/http";
+import { ContactPage } from "../contact/contact";
+import { AdvicePage } from "../advice/advice";
+import { MyAnthologyPage } from "../my-anthology/my-anthology";
+import { MyCollectionPage } from "../my-collection/my-collection";
 /**
  * Generated class for the MyPage page.
  *
@@ -23,15 +27,16 @@ import { HttpClient } from "@angular/common/http";
 })
 export class MyPage {
   username;
-  data;
-  @ViewChild("ac") ac;
-  icons: string = "wenji";
-
+  data ={};
+  avatar
+  userid;
+  autograph;
   constructor(
     public http: HttpClient,
     public storage: Storage,
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public events: Events
   ) {}
 
   ionViewDidLoad() {
@@ -54,33 +59,57 @@ export class MyPage {
       that.http.post("/userdata/userdetail",{name:that.username}).subscribe(result => {
         console.log(result);
         that.data = result[0];
+        that.userid = result[0].userid;
+        that.autograph = result[0].autograph;
+        for(let key in result[0]){
+          that.data[key] = result[0][key]
+      }
+      
       });
     }
     var p = new Promise((resolve) => {
       resolve();
     });
     p.then(getName).then(getUserInfo).catch(reason => {console.log(reason);});
-    
+    // 刷新后重新加载
+    this.events.subscribe('reloadMyPage', () => {
+      p.then(getName).then(getUserInfo).catch(reason => {console.log(reason);});
+    });
   }
+  
   go() {
     this.navCtrl.push(ShezhiPage);
+    console.log(this.data)
   }
   goto() {
-    this.navCtrl.push(FanPage);
+    this.navCtrl.push(FanPage,this.userid);
   }
   goTo() {
-    this.navCtrl.push(UserPage);
+    this.navCtrl.push(UserPage,this.data);
   }
   goSign() {
-    this.navCtrl.push(SignPage);
+    this.navCtrl.push(SignPage, {userid:this.userid,autograph:this.autograph});
   }
   goGuanzhu() {
-    this.navCtrl.push(GuanzhuPage);
+    this.navCtrl.push(GuanzhuPage,this.userid);
+    
   }
   goCollect() {
     this.navCtrl.push(CollectPage);
   }
   goWenji() {
     this.navCtrl.push(WenjiPage);
+  }
+  gocontact(){
+    this.navCtrl.push(ContactPage);
+  }
+  goAdvice(){
+    this.navCtrl.push(AdvicePage);
+  }
+  goAnthology(){
+    this.navCtrl.push(MyAnthologyPage,this.data);
+  }
+  goCollection(){
+    this.navCtrl.push(MyCollectionPage,this.userid);
   }
 }
