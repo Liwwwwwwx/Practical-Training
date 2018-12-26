@@ -29,7 +29,12 @@ export class PwordsPage {
     isOriginal: false,
     isPrivate: false
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public http: HttpClient, public toastCtrl: ToastController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public storage: Storage, 
+    public http: HttpClient, 
+    public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {

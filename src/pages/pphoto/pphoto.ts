@@ -31,7 +31,12 @@ export class PphotoPage {
   //   isPrivate: false
   // };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public storage: Storage, public toastCtrl: ToastController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public http: HttpClient, 
+    public storage: Storage, 
+    public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
