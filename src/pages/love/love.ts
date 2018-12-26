@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams } from 'ionic-angular';
+import { DetailPage } from '../detail/detail';
 
 /**
  * Generated class for the LovePage page.
@@ -24,4 +25,7 @@ export class LovePage {
   goAbout(){
     this.navCtrl.popToRoot();
   }
+  goTog(i) {
+    this.navCtrl.push(DetailPage);
+   }
 }

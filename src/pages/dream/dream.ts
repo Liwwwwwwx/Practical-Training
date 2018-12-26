@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { DetailPage } from '../detail/detail';
 
 /**
  * Generated class for the DreamPage page.
@@ -24,4 +25,7 @@ export class DreamPage {
   goAbout(){
     this.navCtrl.popToRoot();
   }
+  goTog() {
+    this.navCtrl.push(DetailPage);
+   }
 }
