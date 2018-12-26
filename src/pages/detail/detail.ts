@@ -3,7 +3,7 @@ import { NavController, NavParams, Events } from "ionic-angular";
 import { HttpClient } from "@angular/common/http";
 import { Storage } from "@ionic/storage";
 import { CommentPage } from "../comment/comment";
-import { CollectPage } from "../collect/collect";
+import { OtheruserPage } from "../otheruser/otheruser"
 /**
  * Generated class for the DetailPage page.
  *
@@ -18,27 +18,30 @@ import { CollectPage } from "../collect/collect";
 })
 export class DetailPage {
   //文章数据
+  noteid: number;
   item;
-  index;
+  datas = {};
+  index: any;
   //文章内容换行
-  contentdetail;
+  contentdetail: any;
 
   //点赞数量
   clickCount = 0;
-
+  commentCount = 0;
+  collectionCount = 0;
   //文章图片
   imgs = "";
   notecontent = "note-content";
 
   //是否点赞
-  isClick;
-  priIsClick;
+  isClick: boolean;
+  priIsClick: boolean;
   srcdis = "assets/imgs/like@dis.png";
   srclike = "../../assets/imgs/like.png";
 
   //收藏
-  isCol;
-  priIsCol;
+  isCol: boolean;
+  priIsCol: boolean;
   discolsrc = "assets/imgs/shoucang@dis.png";
   colsrc = "assets/imgs/shoucang.png";
 
@@ -53,107 +56,137 @@ export class DetailPage {
   //用户名
   username = "";
   constructor(
-    public events:Events,
+    public events: Events,
     public params: NavParams,
     public http: HttpClient,
     public storage: Storage,
     public navCtrl: NavController
   ) {
-    console.log(params.data.note);
-    this.item = params.data.note;
     this.index = params.data.index;
-    this.contentdetail = params.data.note.notecontent.replace(
-      /(\r\n)|(\n)/g,
-      "<br/>"
-    );
-    if (this.item.notemusic && this.item.noteimg) {
-      this.imgs = "imgsplay";
-      this.notecontent = "note_content";
-    } else if (this.item.noteimg) {
-      this.imgs = "imgs";
-      this.notecontent = "note_content";
-    }
+    this.username = params.data.username;
+    this.noteid = params.data.noteid;
   }
   ngOnInit() {
+    //文章详情
     this.http
-      .post("/notedata/clickcount", { noteid: this.item.noteid })
+      .post("/notedata/notedetail", { noteid: this.noteid })
+      .subscribe(data => {
+        this.item = data;
+        this.contentdetail = this.item[0].notecontent.replace(
+          /(\r\n)|(\n)/g,
+          "<br/>"
+        );
+        if (this.item[0].notemusic && this.item[0].noteimg) {
+          this.imgs = "imgsplay";
+          this.notecontent = "note_content";
+        } else if (this.item[0].noteimg) {
+          this.imgs = "imgs";
+          this.notecontent = "note_content";
+        }
+        console.log(this.datas);
+      });
+    //点赞数量
+    this.http
+      .post("/notedata/clickcount", { noteid: this.noteid })
       .subscribe(data => {
         if (data[0] !== undefined) this.clickCount = data[0].clickCount;
       });
-      
-    var that = this;
-    function getName() {
-      return new Promise(resolve => {
-        that.storage.get("USER_INFO").then(value => {
-          that.username = JSON.parse(value).username;
-          resolve(that.username);
-        });
+    //收藏数量
+    this.http
+      .post("/notedata/collectionCount", { noteid: this.noteid })
+      .subscribe(data => {
+        if (data[0] !== undefined)
+          this.collectionCount = data[0].CollectionCount;
+        console.log(this.collectionCount);
       });
-    }
-    function isClick() {
-      that.http
-        .post("/notedata/isclick", {
-          noteid: that.item.noteid,
-          name: that.username
-        })
-        .subscribe(result => {
-          console.log(result);
-          that.isClick = result[0].count ? true : false;
-          that.priIsClick = result[0].count ? true : false;
-        });
-    }
-    function isCollection() {
-      that.http
-        .post("/notedata/isCollection", {
-          noteid: that.item.noteid,
-          name: that.username
-        })
-        .subscribe(result => {
-          console.log(result);
-          that.isCol = result[0].count ? true : false;
-          that.priIsCol = result[0].count ? true : false;
-        });
-    }
-    var p = new Promise(resolve => {
-      resolve();
+    //评论数量
+    this.http
+      .post("/notedata/commentCount", { noteid: this.noteid })
+      .subscribe(data => {
+        if (data[0] !== undefined) this.commentCount = data[0].commentCount;
+        console.log(this.commentCount);
+      });
+    //是否点赞
+    this.http
+      .post("/notedata/isclick", {
+        noteid: this.noteid,
+        name: this.username
+      })
+      .subscribe(result => {
+        console.log(result);
+        this.isClick = result[0].count ? true : false;
+        this.priIsClick = result[0].count ? true : false;
+      });
+    //是否收藏
+    this.http
+      .post("/notedata/isCollection", {
+        noteid: this.noteid,
+        name: this.username
+      })
+      .subscribe(result => {
+        console.log(result);
+        this.isCol = result[0].count ? true : false;
+        this.priIsCol = result[0].count ? true : false;
+      });
+    //评论后，评论数+1
+    this.events.subscribe("CommentCount", () => {
+      this.commentCount = this.commentCount + 1;
     });
-    p.then(getName).then(isClick).then(isCollection);
   }
   ionViewDidLoad() {
-    this.events.subscribe("ChangeCommentCount",()=>{
-      this.item.commentCount = this.item.commentCount  + 1
-    })
     console.log("ionViewDidLoad DetailPage");
   }
+
+  //离开页面
   close() {
     console.log(this.priIsClick, this.isClick);
     console.log(this.priIsCol, this.isCol);
+
+    //判断是否点赞
     if (this.priIsClick == false && this.isClick == true) {
       this.Click();
     }
     if (this.priIsClick == true && this.isClick == false) {
       this.disClick();
     }
+
+    //判断是否收藏
     if (this.priIsCol == false && this.isCol == true) {
       this.Collection();
+      //对应首页收藏数量+1
+      this.events.publish("reloadCollectionCount", this.index, this.isCol);
     }
     if (this.priIsCol == true && this.isCol == false) {
       this.disCollection();
-      this.events.publish('reloadCollectionCount',this.index);
+      //对应首页收藏数量-1
+      this.events.publish("reloadCollectionCount", this.index, this.isCol);
     }
-    
+    //重新加载我的收藏内容
     this.navCtrl.pop().then(()=>{
-      this.events.publish('ReloadMyCollection'); 
-    });
+      this.events.publish("ReloadMyCollection");
+    })
   }
+
+  //点赞数量加减
   like() {
     this.clickCount = this.isClick ? this.clickCount - 1 : this.clickCount + 1;
     this.isClick = !this.isClick;
   }
-  collection(){
-    this.item.collectionCount = this.isCol ? this.item.collectionCount - 1 : this.item.collectionCount + 1;
+
+  goother(){
+    this.navCtrl.push(OtheruserPage,{
+      username:this.username
+    });
+  }
+  //收藏数量加减
+  collection() {
+    this.collectionCount = this.isCol
+      ? this.collectionCount - 1
+      : this.collectionCount + 1;
     this.isCol = !this.isCol;
   }
+
+  //控制音乐播放
   play() {
     this.audio = document.querySelector("#audios");
     this.rotation = this.isPlaying ? "" : "rotation";
@@ -161,52 +194,57 @@ export class DetailPage {
     this.isPlaying = !this.isPlaying;
   }
 
+  //跳转评论页面
   goComment() {
-    this.navCtrl.push(CommentPage,{noteid:this.item.noteid,commentCount:this.item.commentCount});
+    this.navCtrl.push(CommentPage, {
+      noteid: this.noteid,
+      commentCount: this.commentCount,
+      index: this.index
+    });
   }
-  goCollect() {
-    this.navCtrl.push(CollectPage);
-  }
+  
+  //取消点赞
   disClick() {
     this.http
       .post("/notedata/disclick", {
-        noteid: this.item.noteid,
+        noteid: this.noteid,
         name: this.username
       })
       .subscribe(result => {
         console.log(result);
       });
   }
+  //点赞
   Click() {
     this.http
       .post("/notedata/click", {
-        noteid: this.item.noteid,
+        noteid: this.noteid,
         name: this.username
       })
       .subscribe(result => {
         console.log(result);
       });
   }
-  disCollection(){
+  //取消收藏
+  disCollection() {
     this.http
       .post("/notedata/disCollection", {
-        noteid: this.item.noteid,
+        noteid: this.noteid,
         name: this.username
       })
       .subscribe(result => {
         console.log(result);
       });
   }
-  Collection(){
+  //收藏
+  Collection() {
     this.http
       .post("/notedata/Collection", {
-        noteid: this.item.noteid,
+        noteid: this.noteid,
         name: this.username
       })
       .subscribe(result => {
         console.log(result);
       });
   }
-  
-  
 }

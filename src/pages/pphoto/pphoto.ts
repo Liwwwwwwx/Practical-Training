@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { PublishPage } from '../publish/publish';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
