@@ -12,7 +12,6 @@ import { HttpClient } from "@angular/common/http";
 export class HomePage {
   data;
   textcontent;
-  username;
   image = "image";
   note_content = "note_content";
   notecontent = "note-content";
@@ -30,9 +29,6 @@ export class HomePage {
       this.data = data;
       this.textcontent = this.data.map(function(item) {
         return item.notecontent.replace(/(\r\n)|(\n)/g, "<br/>");
-      });
-      this.storage.get("USER_INFO").then(value => {
-        this.username = JSON.parse(value).username;
       });
       this.events.subscribe("reloadNotePage", () => {
         this.http.get("/notedata").subscribe(data => {
@@ -67,7 +63,6 @@ export class HomePage {
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
       noteid:this.data[i].noteid,
-      username:this.username
     });
     profileModal.present();
   }

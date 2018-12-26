@@ -60,7 +60,7 @@ export class CommentPage {
     });
     console.log("ionViewDidLoad CommentPage");
   }
-  goDetail(i: string | number) {
+  goDetail(i) {
     this.navCtrl.push(ReplydetailPage, {
       item: this.items[i],
       username: this.username,

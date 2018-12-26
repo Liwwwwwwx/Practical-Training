@@ -71,9 +71,8 @@ export class ReplydetailPage {
           this.items = data;
         });
       this.content = "";
-      this.events.publish("ChangeCommentCount");
+      this.events.publish("ChangeCommentCount",this.index);
       this.events.publish("reloadCommentsCount",this.index);
-      this.events.publish("ChangeCommentCount", this.index);
       this.events.publish("CommentCount");
     }
   }

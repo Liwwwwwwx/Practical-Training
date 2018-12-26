@@ -3,7 +3,7 @@ import { NavController, NavParams, Events } from "ionic-angular";
 import { HttpClient } from "@angular/common/http";
 import { Storage } from "@ionic/storage";
 import { CommentPage } from "../comment/comment";
-import { OtheruserPage } from "../otheruser/otheruser"
+import { OtheruserPage } from "../otheruser/otheruser";
 /**
  * Generated class for the DetailPage page.
  *
@@ -63,7 +63,7 @@ export class DetailPage {
     public navCtrl: NavController
   ) {
     this.index = params.data.index;
-    this.username = params.data.username;
+
     this.noteid = params.data.noteid;
   }
   ngOnInit() {
@@ -106,34 +106,54 @@ export class DetailPage {
         if (data[0] !== undefined) this.commentCount = data[0].commentCount;
         console.log(this.commentCount);
       });
-    //是否点赞
-    this.http
-      .post("/notedata/isclick", {
-        noteid: this.noteid,
-        name: this.username
-      })
-      .subscribe(result => {
-        console.log(result);
-        this.isClick = result[0].count ? true : false;
-        this.priIsClick = result[0].count ? true : false;
-      });
-    //是否收藏
-    this.http
-      .post("/notedata/isCollection", {
-        noteid: this.noteid,
-        name: this.username
-      })
-      .subscribe(result => {
-        console.log(result);
-        this.isCol = result[0].count ? true : false;
-        this.priIsCol = result[0].count ? true : false;
-      });
     //评论后，评论数+1
     this.events.subscribe("CommentCount", () => {
       this.commentCount = this.commentCount + 1;
     });
   }
   ionViewDidLoad() {
+    var that = this;
+    //获取用户名
+    function getName() {
+      return new Promise(resolve => {
+        that.storage.get("USER_INFO").then(value => {
+          that.username = JSON.parse(value).username;
+          resolve(that.username);
+        });
+      });
+    }
+    //是否点赞
+    function isClick() {
+      that.http
+        .post("/notedata/isclick", {
+          noteid: that.noteid,
+          name: that.username
+        })
+        .subscribe(result => {
+          console.log(result);
+          that.isClick = result[0].count ? true : false;
+          that.priIsClick = result[0].count ? true : false;
+        });
+    }
+    //是否收藏
+    function isCollection() {
+      that.http
+        .post("/notedata/isCollection", {
+          noteid: that.noteid,
+          name: that.username
+        })
+        .subscribe(result => {
+          console.log(result);
+          that.isCol = result[0].count ? true : false;
+          that.priIsCol = result[0].count ? true : false;
+        });
+    }
+    var p = new Promise(resolve => {
+      resolve();
+    });
+    p.then(getName)
+      .then(isClick)
+      .then(isCollection);
     console.log("ionViewDidLoad DetailPage");
   }
 
@@ -159,12 +179,11 @@ export class DetailPage {
     if (this.priIsCol == true && this.isCol == false) {
       this.disCollection();
       //对应首页收藏数量-1
+      this.events.publish("ReloadMyCollection");
       this.events.publish("reloadCollectionCount", this.index, this.isCol);
     }
     //重新加载我的收藏内容
-    this.navCtrl.pop().then(()=>{
-      this.events.publish("ReloadMyCollection");
-    })
+    this.navCtrl.pop();
   }
 
   //点赞数量加减
@@ -173,9 +192,9 @@ export class DetailPage {
     this.isClick = !this.isClick;
   }
 
-  goother(){
-    this.navCtrl.push(OtheruserPage,{
-      username:this.username
+  goother() {
+    this.navCtrl.push(OtheruserPage, {
+      username: this.username
     });
   }
   //收藏数量加减
@@ -202,7 +221,7 @@ export class DetailPage {
       index: this.index
     });
   }
-  
+
   //取消点赞
   disClick() {
     this.http
