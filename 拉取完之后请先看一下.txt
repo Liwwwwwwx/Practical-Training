@@ -132,3 +132,7 @@ date:2018/12/25/17:53
 
 date:2018/12/26/15:12
 修改home页面，comment，detial，三个发布p
+
+
+date:2018/12/26/15:33
+修改replydetail页面

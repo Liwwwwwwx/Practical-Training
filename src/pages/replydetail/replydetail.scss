@@ -82,13 +82,24 @@ page-replydetail {
     }
     ion-footer{
         height: 4rem;
-         line-height: 4rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
         #text{
             width: 80%;
             height: 2.5rem;
             border:0;
-            margin-top:1rem;
             text-indent: 10px;
+        }
+        #send{
+            
+            margin-right: 10px;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            color: gray;
+            border:0;
+            background-color: #fff;
         }
     }
 }

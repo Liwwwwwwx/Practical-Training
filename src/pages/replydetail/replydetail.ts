@@ -1,5 +1,10 @@
 import { Component } from "@angular/core";
-import { NavController, NavParams } from "ionic-angular";
+import {
+  NavController,
+  NavParams,
+  Events,
+  ToastController
+} from "ionic-angular";
 import { HttpClient } from "@angular/common/http";
 
 /**
@@ -15,17 +20,24 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: "replydetail.html"
 })
 export class ReplydetailPage {
-  replyid;
-  items;
-  comment;
+  replyid: any;
+  items: Object;
+  comment: any;
+  content: any;
+  username: string;
+  index
   constructor(
+    public events: Events,
+    public toastCtrl: ToastController,
     public http: HttpClient,
     public navCtrl: NavController,
     public navParams: NavParams
   ) {
-    this.replyid = navParams.data.replyid;
-    this.comment = navParams.data;
-    console.log(this.comment)
+    this.replyid = navParams.data.item.replyid;
+    this.comment = navParams.data.item;
+    this.username = navParams.data.username;
+    this.index = navParams.data.index;
+    console.log(this.comment, this.username);
   }
 
   ionViewDidLoad() {
@@ -35,5 +47,43 @@ export class ReplydetailPage {
         console.log(data);
         this.items = data;
       });
+  }
+  submit() {
+    console.log(this.content);
+    if (this.content == undefined) {
+      this.showToast("bottom", "评论内容不能为空");
+      return false;
+    } else {
+      this.http
+        .post("/notedata/insertonecomments", {
+          noteid: this.comment.noteid,
+          username: this.username,
+          content: this.content,
+          replyid: this.replyid
+        })
+        .subscribe(data => {
+          console.log(data);
+        });
+      this.http
+        .post("/notedata/getcommentsdetail", { replyid: this.replyid })
+        .subscribe(data => {
+          console.log(data);
+          this.items = data;
+        });
+      this.content = "";
+      this.events.publish("ChangeCommentCount");
+      this.events.publish("reloadCommentsCount",this.index);
+      this.events.publish("ChangeCommentCount", this.index);
+      this.events.publish("CommentCount");
+    }
+  }
+  // 提示信息
+  showToast(position: string, message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      position: position
+    });
+    toast.present(toast);
   }
 }
