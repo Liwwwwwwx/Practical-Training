@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { PublishPage } from '../publish/publish';
 import { SavewenjiPage } from '../savewenji/savewenji';
 import { Storage } from '@ionic/storage';
@@ -29,7 +29,12 @@ export class PwordsPage {
     isOriginal: false,
     isPrivate: false
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public http: HttpClient, public toastCtrl: ToastController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public storage: Storage, 
+    public http: HttpClient, 
+    public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {

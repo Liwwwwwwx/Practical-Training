@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { PublishPage } from '../publish/publish';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
@@ -31,7 +31,12 @@ export class PphotoPage {
   //   isPrivate: false
   // };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public storage: Storage, public toastCtrl: ToastController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public http: HttpClient, 
+    public storage: Storage, 
+    public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
