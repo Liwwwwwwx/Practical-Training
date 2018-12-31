@@ -62,8 +62,9 @@ class TodoUserData{
       })
   };
   getUserDetail(name,callback){
-     const sql = 'select user.*,anthology.anthologyname from user left join anthology on user.userid = anthology.userid where user.username = ?  group by (userid)';
-     db.query(sql, [name,name], (err, res)=>{
+     //const sql = 'select user.*,anthology.anthologyname from user left join anthology on user.userid = anthology.userid where user.username = ?  group by (userid)';
+     const sql = 'select * from user where username = ?';
+     db.query(sql, [name], (err, res)=>{
        if(err){
          callback(true);
          return ;
