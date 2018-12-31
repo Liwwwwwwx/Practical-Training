@@ -1,0 +1,100 @@
+page-contact {
+    ion-title{
+        padding-left: 30%;
+    }
+    ion-content{
+        background-color: /*#ece5da*/ rgb(246,246,246)!important;
+        ul {
+            margin: 0;
+            padding: 0;
+            height: 44px;
+            line-height: 44px;
+            background-color: /*#ece5da*/rgb(246,246,246) !important;
+            li{
+                
+                width: 100%;
+                .head{
+                    width: 40px;
+                    height:40px;
+                    border-radius:100%;
+                    overflow: hidden;
+                    float: left;
+                    margin-left: 15px;
+                    margin-top: 10px;
+                    img {
+                        height: 40px;
+                    }
+                }
+                .follow {
+                    width: 100%;
+                    height: 60px;
+                    border-bottom:0.1px solid gray;
+                    background-color: /*rgba(239, 236, 198,0.6)*/white!important;     
+                    .cont {
+                        margin-left: 10px;
+                        margin-top: 8px;
+                        width: 70%;
+                        float: left;
+                    }
+                }
+                .click {
+                    .name{
+                        display: inline-block;
+                        margin-top: 5px;
+                        margin-left: 5px;
+                        height: 14px;
+                    }
+                    .date{
+                        display: inline-block;
+                        margin-top: 8px;
+                        margin-left: 5px;
+                    }
+                    .btn{
+                        width: 50px;
+                        height: 30px;
+                        float: right;
+                        margin-right: 20px;
+                        margin-top: -35px;
+                        button{
+                            width: 50px;
+                            height: 30px;
+                            border:1px solid  #42413f;
+                            border-radius: 10%;
+                            background-color: #ece5da;
+                        }
+                    }
+                    .btn1{
+                        width: 70px;
+                        height: 30px;
+                        float: right;
+                        margin-right: 20px;
+                        margin-top: -35px;
+                        a {
+                            color: #000000 !important;
+                            text-decoration: none;
+                        }
+                    }
+                    p {
+                        text-indent: 15px;
+                    }
+                    .content {
+                        margin: 10px auto;
+                        width: 90%;
+                        height: 60px;
+                        background-color: /*#f8b840*/white !important;
+                        border: none;
+                        img {
+                            height: 60px;
+                        }
+                        p {
+                            display: block;
+                            float: right;
+                            margin-right: 35px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+                
+}

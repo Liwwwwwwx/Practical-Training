@@ -29,16 +29,7 @@ export class GuanzhuPage {
   }
 
   ionViewDidLoad() {
-    this.http
-      .post("/userdata/followdetail", { userid: this.userid })
-      .subscribe(data => {
-        console.log(data);
-        this.items = data;
-        this.isMutual = this.items.map(item => {
-          return item.Mutual;
-        });
-        console.log(this.isMutual);
-      });
+    this.followdetail();
     console.log("ionViewDidLoad GuanzhuPage");
   }
   Follow(i) {
@@ -52,5 +43,18 @@ export class GuanzhuPage {
         console.log(data);
       });
     this.items.splice(i, 1);
+    this.followdetail();
+  }
+  followdetail(){
+    this.http
+      .post("/userdata/followdetail", { userid: this.userid })
+      .subscribe(data => {
+        console.log(data);
+        this.items = data;
+        this.isMutual = this.items.map(item => {
+          return item.Mutual;
+        });
+        console.log(this.isMutual);
+      });
   }
 }

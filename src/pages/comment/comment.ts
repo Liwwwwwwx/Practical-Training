@@ -8,7 +8,6 @@ import {
 } from "ionic-angular";
 import { HttpClient } from "@angular/common/http";
 import { Storage } from "@ionic/storage";
-import { RespondPage } from "../respond/respond";
 import { ReplydetailPage } from "../replydetail/replydetail";
 /**
  * Generated class for the CommentPage page.
@@ -55,7 +54,7 @@ export class CommentPage {
     });
   }
   ionViewDidLoad() {
-    this.events.subscribe("reloadCommentsCount", i => {
+    this.events.subscribe("reloadCommentsCount", (i) => {
       this.items[i].commentCount = this.items[i].commentCount + 1;
     });
     console.log("ionViewDidLoad CommentPage");
@@ -64,7 +63,8 @@ export class CommentPage {
     this.navCtrl.push(ReplydetailPage, {
       item: this.items[i],
       username: this.username,
-      index: i
+      index: i,
+      commentCount:this.items[i].commentCount
     });
   }
   submit() {

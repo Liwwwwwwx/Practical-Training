@@ -55,7 +55,7 @@ export class MyCollectionPage {
     this.index = i
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      note: this.data[i]
+      noteid: this.data[i].noteid
     });
     profileModal.present();
   }

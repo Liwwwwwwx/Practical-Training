@@ -1,4 +1,4 @@
-import { Component} from "@angular/core";
+import { Component } from "@angular/core";
 import { NavController, NavParams, Events } from "ionic-angular";
 import { ShezhiPage } from "../shezhi/shezhi";
 import { FanPage } from "../fan/fan";
@@ -27,8 +27,8 @@ import { MyCollectionPage } from "../my-collection/my-collection";
 })
 export class MyPage {
   username;
-  data ={};
-  avatar
+  data = {};
+  avatar;
   userid;
   autograph;
   constructor(
@@ -56,43 +56,54 @@ export class MyPage {
       });
     }
     function getUserInfo() {
-      that.http.post("/userdata/userdetail",{name:that.username}).subscribe(result => {
-        console.log(result);
-        that.data = result[0];
-        that.userid = result[0].userid;
-        that.autograph = result[0].autograph;
-        for(let key in result[0]){
-          that.data[key] = result[0][key]
-      }
-      
-      });
+      that.http
+        .post("/userdata/userdetail", { name: that.username })
+        .subscribe(result => {
+          console.log(result);
+          that.data = result[0];
+          that.userid = result[0].userid;
+          that.autograph = result[0].autograph;
+          for (let key in result[0]) {
+            that.data[key] = result[0][key];
+          }
+        });
     }
-    var p = new Promise((resolve) => {
+    var p = new Promise(resolve => {
       resolve();
     });
-    p.then(getName).then(getUserInfo).catch(reason => {console.log(reason);});
+    p.then(getName)
+      .then(getUserInfo)
+      .catch(reason => {
+        console.log(reason);
+      });
     // 刷新后重新加载
-    this.events.subscribe('reloadMyPage', () => {
-      p.then(getName).then(getUserInfo).catch(reason => {console.log(reason);});
+    this.events.subscribe("reloadMyPage", () => {
+      p.then(getName)
+        .then(getUserInfo)
+        .catch(reason => {
+          console.log(reason);
+        });
     });
   }
-  
+
   go() {
     this.navCtrl.push(ShezhiPage);
-    console.log(this.data)
+    console.log(this.data);
   }
   goto() {
-    this.navCtrl.push(FanPage,this.userid);
+    this.navCtrl.push(FanPage, this.userid);
   }
   goTo() {
-    this.navCtrl.push(UserPage,this.data);
+    this.navCtrl.push(UserPage, this.data);
   }
   goSign() {
-    this.navCtrl.push(SignPage, {userid:this.userid,autograph:this.autograph});
+    this.navCtrl.push(SignPage, {
+      userid: this.userid,
+      autograph: this.autograph
+    });
   }
   goGuanzhu() {
-    this.navCtrl.push(GuanzhuPage,this.userid);
-    
+    this.navCtrl.push(GuanzhuPage, this.userid);
   }
   goCollect() {
     this.navCtrl.push(CollectPage);
@@ -100,16 +111,19 @@ export class MyPage {
   goWenji() {
     this.navCtrl.push(WenjiPage);
   }
-  gocontact(){
-    this.navCtrl.push(ContactPage);
+  gocontact() {
+    this.navCtrl.push(ContactPage, {
+      userid: this.userid,
+      username: this.username
+    });
   }
-  goAdvice(){
+  goAdvice() {
     this.navCtrl.push(AdvicePage);
   }
-  goAnthology(){
-    this.navCtrl.push(MyAnthologyPage,this.data);
+  goAnthology() {
+    this.navCtrl.push(MyAnthologyPage, this.data);
   }
-  goCollection(){
-    this.navCtrl.push(MyCollectionPage,this.userid);
+  goCollection() {
+    this.navCtrl.push(MyCollectionPage, this.userid);
   }
 }

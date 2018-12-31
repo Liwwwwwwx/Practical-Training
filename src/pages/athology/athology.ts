@@ -66,7 +66,7 @@ export class AthologyPage {
     this.data[i].anthologyname = this.anthologyname;
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      note: this.data[i]
+      noteid: this.data[i].noteid
     });
     profileModal.present();
   }

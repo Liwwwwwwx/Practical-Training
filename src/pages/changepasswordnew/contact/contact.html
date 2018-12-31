@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>
+    消息
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ul class="navList">
+    <li *ngFor="let item of arr;let idx=index" [ngSwitch]="item">
+      <div *ngSwitchCase="0">
+        <div class="follow">
+          <div class="head">
+            <img src="assets/imgs/my.jpg" alt="">
+          </div>
+          <div class="cont">
+            <p>XXX关注了你</p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="1">
+        <div class="click">
+            <div>
+              <div class="head">
+                <img src="assets/imgs/my.jpg" alt="">
+              </div>
+              <span class="name">啦啦啦</span>
+              <div class="date">
+                <span>2018-12-12</span>
+              </div>
+              <div class="btn">
+                <a>回复</a>
+              </div>
+            </div>
+          <p>评论内容</p>
+          <div class="content">
+            <img src="assets/imgs/my.jpg" alt="">
+            <p>
+              balabalabalabalabalabalabalabala
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="2">
+        <div class="repeat">
+
+        </div>
+        <div class="head">
+          <img src="assets/imgs/my.jpg" alt="">
+        </div>
+        <div class="cont">
+          <p>lululu关注了你</p>
+        </div>
+      </div>
+      <!-- </div> -->
+    </li>
+  
+  </ul>
+
+</ion-content>
+  

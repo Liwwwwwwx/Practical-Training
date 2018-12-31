@@ -26,6 +26,8 @@ export class ReplydetailPage {
   content: any;
   username: string;
   index
+  commentCount
+
   constructor(
     public events: Events,
     public toastCtrl: ToastController,
@@ -37,6 +39,7 @@ export class ReplydetailPage {
     this.comment = navParams.data.item;
     this.username = navParams.data.username;
     this.index = navParams.data.index;
+    this.commentCount = navParams.data.commentCount;
     console.log(this.comment, this.username);
   }
 

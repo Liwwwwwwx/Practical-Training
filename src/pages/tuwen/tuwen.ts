@@ -23,7 +23,7 @@ export class TuwenPage {
       this.data = data;
       var note = [];
       this.data.map(function(item) {
-        if (item.notecategory == '图文') {
+        if (item.notecategory == '图片') {
           note.push(item);
           
         }
@@ -38,7 +38,7 @@ export class TuwenPage {
     console.log(this.data[i]);
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      note: this.data[i]
+      noteid: this.data[i].noteid
     });
     profileModal.present();
   }

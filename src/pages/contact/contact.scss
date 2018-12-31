@@ -1,119 +1,166 @@
 page-contact {
-    ion-title{
-        padding-left: 30%;
+  ion-title {
+    padding-left: 30%;
+  }
+
+  ion-content {
+    background-color:
+      /*#ece5da*/
+      rgb(246, 246, 246) !important;
+
+    ul {
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-top: 1rem;
+      }
     }
-    .navList{
-        padding-left: 0!important;
-        margin: 0;
-        height: 44px;
-        line-height: 44px;
-        background-color: /*#ece5da*/rgb(246,246,246) !important;
-        .first{
-            border-bottom:2px solid #ffdb2c;
+
+    .box {
+      background: #ffffff;
+
+      .head {
+        padding-top: 1rem;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+
+        .userInfo {
+          display: flex;
+          flex-direction: row;
+          align-content: center;
+          width: 40%;
+          padding-left: 5px;
+
+          img {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+          }
+
+          .info {
+            padding-left: 1rem;
+
+            .name {
+              font-weight: 600;
+            }
+
+            .date {
+              font-size: 12px;
+            }
+          }
         }
-        li{
-            height: 44px;
-            text-align: center;
-            float: left;
-            width: 50%;
+
+        p {
+          margin: 0;
+          font-size: 12px;
+          padding: 5px;
         }
+      }
+
+      .content {
+        width: 100%;
+        height: 3rem;
+        line-height: 3rem;
+        font-weight: 600;
+        padding-left: 5px;
+      }
+
+      .zan {
+        width: 100%;
+        height: 3rem;
+        line-height: 3rem;
+        padding-left: 5px;
+      }
+
+      .note {
+        display: flex;
+        flex-direction: row;
+        height: 9rem;
+
+        img {
+          width: 8rem;
+          height: 8rem;
+        }
+
+        .notecontent {
+          background-color:
+
+            rgb(246, 246, 246);
+          height: 8rem;
+          width: 80%;
+
+          p {
+            margin: 0;
+            height: 8rem;
+            line-height: 8rem;
+            padding-left: 10px;
+
+            span {
+              color: rgb(0, 102, 255);
+              font-weight: 600;
+            }
+          }
+        }
+
+        .note_content {
+          width: 100%;
+        }
+
+      }
     }
-    ion-content{
-        background-color: /*#ece5da*/ rgb(246,246,246)!important;
-        .repeat {
-            border-bottom:0.1px solid gray;
-            background-color: /*rgba(239, 236, 198,0.6)*/rgb(246,246,246)!important;
-            ul{
-                padding: 0;
-                margin:0;
-                width: 100%;
-                height:54px;
-                .head{
-                    width: 40px;
-                    height:40px;
-                    border-radius:100%;
-                    overflow: hidden;
-                    float: left;
-                    margin-left: 15px;
-                    margin-top: 10px;
-                }
-                .name{
-                    display: inline-block;
-                    margin-top: 15px;
-                    margin-left: 15px;
-                }
-                .date{
-                    margin-top: 1px;
-                    margin-left: 70px;
-                }
-                .btn{
-                    width: 50px;
-                    height: 30px;
-                    float: right;
-                    margin-right: 20px;
-                    margin-top: -35px;
-                    button{
-                        width: 50px;
-                        height: 30px;
-                        border:1px solid  #42413f;
-                        border-radius: 10%;
-                        background-color: #ece5da;
-                    }
-                }
-                .btn1{
-                    width: 70px;
-                    height: 30px;
-                    float: right;
-                    margin-right: 20px;
-                    margin-top: -35px;
-                    a {
-                        color: #000000 !important;
-                        text-decoration: none;
-                    }
-                }
-            }
-            p {
-                text-indent: 15px;
-            }
-            .content {
-                margin: 10px auto;
-                width: 90%;
-                height: 60px;
-                background-color: /*#f8b840*/white !important;
-                border: none;
-                img {
-                    height: 60px;
-                }
-                p {
-                    display: block;
-                    float: right;
-                    margin-right: 35px;
-                }
-            }
-        }
-        .follow {
-            width: 100%;
-            height: 60px;
-            border-bottom:0.1px solid gray;
-            background-color: /*rgba(239, 236, 198,0.6)*/white!important;
-            .head{
-                width: 40px;
-                height:40px;
-                border-radius:100%;
-                overflow: hidden;
-                float: left;
-                margin-left: 15px;
-                margin-top: 10px;
-                img {
-                    height: 40px;
-                }
-            }
-            .cont {
-                margin-left: 10px;
-                margin-top: 8px;
-                width: 70%;
-                float: left;
-            }
-        }
+
+    .container {
+      padding-top: 1rem;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      background: #ffffff;
+
+      img {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+      }
+
+      .date {
+        padding-left: 38%;
+        height: 35px;
+        line-height: 35px;
+      }
     }
+  }
+
+  ion-footer {
+    height: 4rem;
+    position: absolute;
+    bottom: 0;
+    background-color:
+
+      rgb(246, 246, 246);
+
+    #text {
+      width: 80%;
+      border: 0;
+      height: 3rem;
+      margin-top: 0.5rem;
+      text-indent: 10px;
+    }
+
+    #send {
+      float: right;
+      margin-right: 10px;
+      margin-top: 1rem;
+      color: gray;
+      border: 0;
+      background-color: #fff;
+    }
+  }
+
 }

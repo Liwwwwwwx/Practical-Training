@@ -83,7 +83,7 @@ export class DetailPage {
           this.imgs = "imgs";
           this.notecontent = "note_content";
         }
-        console.log(data);
+        console.log(this.item);
       });
     //点赞数量
     this.http
@@ -192,13 +192,11 @@ export class DetailPage {
     this.isClick = !this.isClick;
   }
 
-  //跳转他人资料页面
   goother() {
     this.navCtrl.push(OtheruserPage, {
       username: this.item[0].username
     });
   }
-
   //收藏数量加减
   collection() {
     this.collectionCount = this.isCol
@@ -235,7 +233,6 @@ export class DetailPage {
         console.log(result);
       });
   }
-  
   //点赞
   Click() {
     this.http
@@ -247,7 +244,6 @@ export class DetailPage {
         console.log(result);
       });
   }
-
   //取消收藏
   disCollection() {
     this.http
@@ -259,7 +255,6 @@ export class DetailPage {
         console.log(result);
       });
   }
-
   //收藏
   Collection() {
     this.http

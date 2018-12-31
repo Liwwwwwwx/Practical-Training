@@ -1,94 +1,51 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>
-    消息
+      消息
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
- <!-- <ul class="navList">
-   <li >
-     通知
-   </li>
-   <li>消息</li>
- </ul> -->
+  <ul>
+    <li *ngFor="let data of items;let i = index">
+      <div class="box" *ngIf="data.type !== '关注'">
+        <div class="head">
+          <div class="userInfo">
+            <img src="{{data.avatar}}" alt="">
+            <div class="info">
+              <div class="name">{{data.username}}</div>
+              <div class="date">{{data.messagedate.substr(5,5)}} {{data.messagedate.substr(11,5)}}</div>
+            </div>
+          </div>
+          <p *ngIf="data.type == '回复'" (click)="comment(i)">回复</p>
+        </div>
+        <div *ngIf="data.type == '回复'" class="content" (click)="gotocomment(i)">{{data.ccontent}}</div>
+        <div *ngIf="data.type == '点赞'" class="zan">赞了你</div>
+        <div class="note" (click)="gotodetail(i)">
+          <img src="{{data.noteimg}}" *ngIf="data.noteimg" alt="">
+          <div class="notecontent" ngClass="{{data.noteimg?'':note_content}}">
+            <p><span>{{username}}</span>:{{data.notecontent.substr(0,10)}}...</p>
+          </div>
+        </div>
+      </div>
+      <div class="container" *ngIf="data.type == '关注'">
+        <div class="avatar">
+          <img src="{{data.avatar}}" alt="">
+        </div>
+        <div style="height: 35px;line-height: 35px;">
+          <span style="color: blue;padding: 10px;">{{data.username}}</span>关注了你
+        </div>
+        <div class="date">{{data.messagedate.substr(5,5)}} {{data.messagedate.substr(11,5)}}</div>
+      </div>
 
-
-  <ul class="navList">
-    <li *ngFor="let item of arr;let idx=index" (click)="isClick(idx)" [class.first]="isActive==idx">{{item}}</li>
-  
+    </li>
   </ul>
-<div [ngSwitch]="isActive">
-    <div *ngSwitchCase="0">
-      <div class="follow">
-        <div class="head">
-          <img src="assets/imgs/my.jpg" alt="">
-        </div>
-        <div class="cont">
-          <p>你有一条系统通知</p>
-        </div>
-      </div>
-    </div>
-    <div *ngSwitchCase="1">
-      <div class="repeat">
-        <ul>
-          <li class="head">
-            <img src="assets/imgs/my.jpg" alt="">
-          </li>
-          <li class="name">
-            <span>啦啦啦</span>
-          </li>
-          <li class="date">
-            <span>2018-12-12</span>
-          </li>
-          <li class="btn">
-            <a>回复</a>
-          </li>
-        </ul>
-        <p>评论内容</p>
-        <div class="content">
-          <img src="assets/imgs/my.jpg" alt="">
-          <p>
-            balabalabalabalabalabalabalabala
-          </p>
-        </div>
-      </div>
-      
-      <div class="repeat">
-        <ul>
-          <li class="head">
-            <img src="assets/imgs/my.jpg" alt="">
-          </li>
-          <li class="name">
-            <span>啦啦啦</span>
-          </li>
-          <li class="date">
-            <span>2018-12-12</span>
-          </li>
-          <li class="btn">
-            <a>回复</a>
-          </li>
-        </ul>
-        <p>评论内容</p>
-        <div class="content">
-          <img src="assets/imgs/my.jpg" alt="">
-          <p>
-            balabalabalabalabalabalabalabala
-          </p>
-        </div>
-      </div>
 
-      <div class="follow">
-        <div class="head">
-          <img src="assets/imgs/my.jpg" alt="">
-        </div>
-        <div class="cont">
-          <p>lalala关注了你</p>
-        </div>
-      </div>
-    </div>
-   
-</div>
+
 </ion-content>
-  
+    <!-- 发表评论 -->
+    <ion-footer *ngIf="isComment">
+      <input type="text" [(ngModel)]="content" id="text" placeholder="写评论...">
+      <input type="submit" value="发送" id="send" (click)="submit()" />
+    </ion-footer>

@@ -55,11 +55,10 @@ export class OtherathologyPage {
   }
   goTog(i) {
     console.log(this.data[i]);
-    this.data[i].username = this.username;
-    this.data[i].anthologyname = this.anthologyname;
+    
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      note: this.data[i]
+      noteid: this.data[i].noteid
     });
     profileModal.present();
   }
