@@ -1,31 +1,33 @@
 const db = require('./database.js');
 
 class LoginData {
-  getAll(callback){
+  getAll(callback) {
     const sql = 'SELECT * FROM user';
     var datas = [];
-    db.query(sql, (err,results)=>{
+    db.query(sql, (err, results) => {
       if (err) {
         callback(true);
-        return;                              
+        return;
       }
-      results.forEach((e)=>{ datas.push(e);  });
+      results.forEach((e) => {
+        datas.push(e);
+      });
       callback(false, datas);
-    });        
+    });
   };
-    
+
   getOne(username, callback) {
     const sql = 'SELECT password FROM user WHERE username = ?';
-        db.query(sql, [username], (err,results)=>{
-          if(err) {
-            callback(true);
-            return ;
-          }
-          console.log(results)
-          
-          callback(false,results);            
-        });
-    }
+    db.query(sql, [username], (err, results) => {
+      if (err) {
+        callback(true);
+        return;
+      }
+      console.log(results)
+
+      callback(false, results);
+    });
+  }
 }
 
 module.exports = LoginData;

@@ -5,9 +5,9 @@ class SignData {
   checkName(name, callback) {
     const sql = 'SELECT COUNT(*) sunum  FROM user WHERE username = ?';
     db.query(sql, [name], (err, result) => {
-      if(err) {
+      if (err) {
         callback(true);
-        return ;
+        return;
       }
       callback(false, result);
     });
@@ -16,9 +16,9 @@ class SignData {
   checkMail(mail, callback) {
     const sql = 'SELECT COUNT(*) sunum FROM user WHERE email = ?';
     db.query(sql, [mail], (err, result) => {
-      if(err) {
+      if (err) {
         callback(true);
-        return ;
+        return;
       }
       callback(false, result);
     });
@@ -27,9 +27,9 @@ class SignData {
   checkPhone(phone, callback) {
     const sql = 'SELECT COUNT(*) sunum FROM user WHERE phoneNumber = ?';
     db.query(sql, [phone], (err, result) => {
-      if(err) {
+      if (err) {
         callback(true);
-        return ;
+        return;
       }
       callback(false, result);
     });
@@ -37,23 +37,23 @@ class SignData {
   //插入新的数据
   insertOne(name, psw, phone, mail, callback) {
     const sql = 'INSERT INTO user (username,password,phoneNumber,email) VALUES (?,?,?,?)';
-    db.query(sql,[name, psw, phone, mail],(err,results)=>{
-      if(err){
+    db.query(sql, [name, psw, phone, mail], (err, results) => {
+      if (err) {
         callback(true);
-        return ;
+        return;
       }
-      callback(false,results);
+      callback(false, results);
     });
   }
   //创建文集
   createAnt(name, anthologyname, callback) {
     const sql = 'INSERT INTO anthology(userid, anthologyname) VALUES ((SELECT userid FROM user WHERE username = ?),?)';
     db.query(sql, [name, anthologyname], (err, results) => {
-      if(err) {
+      if (err) {
         callback(true);
-        return ;
+        return;
       }
-      callback(false,results);
+      callback(false, results);
     })
   }
 }

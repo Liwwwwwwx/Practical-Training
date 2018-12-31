@@ -4,10 +4,10 @@ var LoginData = require('../models/loginData.js');
 var loginData = new LoginData();
 var db = require('../models/database.js')
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   console.log('收到');
   loginData.getAll((err, datas) => {
-    if(err) {
+    if (err) {
       console.log(err);
     } else {
       res.send(datas);
@@ -23,7 +23,7 @@ router.post('/login', function (req, res) {
   loginData.getOne(name, (err, data) => {
     let password = '' + data[0].password;
     console.log(password);
-    if(err) {
+    if (err) {
       console.log(err);
       res.send(false);
     } else {
@@ -37,35 +37,35 @@ router.post('/login', function (req, res) {
   });
 });
 
-router.post('/land', function(req, res){
-  res.header('Access-Control-Allow-Origin','*');
+router.post('/land', function (req, res) {
+  res.header('Access-Control-Allow-Origin', '*');
   var name = req.body.name;
   var psw = req.body.psw;
-  loginData.getOne(name,  (err,data)=>{
+  loginData.getOne(name, (err, data) => {
     let password = '' + data[0].password;
-    if(err) {
+    if (err) {
       console.log(err);
       res.send(JSON.stringify({
-        isLogin:false,
-        msg:'错误',
-        status:'101'
+        isLogin: false,
+        msg: '错误',
+        status: '101'
       }));
-    }else{
-      if(psw !== password){
+    } else {
+      if (psw !== password) {
         res.send(JSON.stringify({
-          isLogin:false,
-          status:'200',
-          msg:'用户明密码错误'
+          isLogin: false,
+          status: '200',
+          msg: '用户明密码错误'
         }))
-      }else{
+      } else {
         res.send(JSON.stringify({
-          data:{
-            username:name,
-            password:psw
+          data: {
+            username: name,
+            password: psw
           },
-          isLogin:true,
-          status:'200',
-          msg:'登陆成功'
+          isLogin: true,
+          status: '200',
+          msg: '登陆成功'
         }))
       }
 
