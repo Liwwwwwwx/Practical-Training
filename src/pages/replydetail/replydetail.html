@@ -42,5 +42,6 @@
     </ul>
 </ion-content>
 <ion-footer>
-    <input type="text" id="text" placeholder="回复评论">
+    <input type="text" [(ngModel)]="content"  id="text" placeholder="回复评论">
+    <input type="submit" value="发送" id="send" (click)="submit()" />
 </ion-footer>

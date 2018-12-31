@@ -120,12 +120,32 @@ date:2018/12/25/16:57
 修改detail页面，my-anthology,my-collection,athologyname,comment
 修改api的todo-notedata
 
-date:2018/12/15/17:30
+date:2018/12/25/17:30
 修改了otheruser页面，新增othersdata页面
 
-date:2018/12/15/17:42
+date:2018/12/25/17:42
 修改了aboutstorytelling, aboutnarration, aboutscenery, aboutappearance,aboutlyrics页面
 yuanchuang、tuwen、music、love、about、tongxin、dream页面的背景色
 
-date:2018/12/15/17:53
+date:2018/12/25/17:53
 更新了问题反馈页面CSS样式
+
+date:2018/12/26/15:12
+修改home页面，comment，detial，三个发布p
+
+
+date:2018/12/26/15:33
+修改replydetail页面
+
+
+date:2018/12/26/16:06
+修改love,dream,tongxin页面
+
+date:2018/12/26/16:16
+修改home，detail，comment，replydetail
+
+date:2018/12/26/16:20
+修改了todo-notedate,notedate
+
+date:2018/12/26/18:00
+更新了他人资料页面

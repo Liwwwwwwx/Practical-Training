@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { DetailPage } from '../detail/detail';
 /**
  * Generated class for the TongxinPage page.
  *
@@ -30,6 +31,9 @@ export class TongxinPage {
       this.content = data;
       // console.log(this.content[0].userid)
     })
+  }
+  goTog() {
+   this.navCtrl.push(DetailPage);
   }
 
 }
