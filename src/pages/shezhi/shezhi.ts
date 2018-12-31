@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams,ActionSheetController} from 'ionic-angular';
 import { WePage } from '../we/we';
-import { AdvicePage } from '../advice/advice';
+import { Storage } from '@ionic/storage';
 import { NumPage } from '../num/num';
 import { LoginPage } from '../login/login';
 /**
@@ -18,7 +18,7 @@ import { LoginPage } from '../login/login';
 })
 export class ShezhiPage {
 
-  constructor(public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -30,6 +30,28 @@ export class ShezhiPage {
   goto(){
     this.navCtrl.push(NumPage);
   }
+  removeStorage() {
+    this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: '确认退出登录',
+          cssClass: 'zm-action-button',
+          role: 'destructive',
+          handler: () => {
+            this.storage.remove("USER_INFO");
+            this.navCtrl.push(LoginPage);
+          }
+        },{
+          text: '取消',
+          cssClass: 'zm-action-button',
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        }
+      ]
+    }).present();
+  }
+
   goLogin(){
     const actionSheet = this.actionSheetCtrl.create({
       // title: 'Modify your album',
