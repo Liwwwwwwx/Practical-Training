@@ -105,8 +105,8 @@ class TodoNoteData{
   //创建Note
   insertOneNote(datas, callback) {
     console.log('up to insertOnePhoto');
-    const sql = 'INSERT INTO note(anthologyid, notecategory, notecontent, isnoteoriginal, isnoteprivate, noteimg, notemusic) VALUES ((SELECT anthologyid FROM anthology WHERE anthologyname = ? AND userid = (SELECT userid FROM user WHERE username = ?)),?,?,?,?,?,?)';
-    db.query(sql, [datas.anthologyname, datas.username, datas.notecategory, datas.content, datas.isOriginal, datas.isPrivate, datas.imgPath, datas.musicPath], (err, results) => {
+    const sql = 'INSERT INTO note(anthologyid, notetag, notecategory, notecontent, isnoteoriginal, isnoteprivate, noteimg, notemusic) VALUES ((SELECT anthologyid FROM anthology WHERE anthologyname = ? AND userid = (SELECT userid FROM user WHERE username = ?)),?,?,?,?,?,?,?)';
+    db.query(sql, [datas.anthologyname, datas.username, datas.notetag, datas.notecategory, datas.content, datas.isOriginal, datas.isPrivate, datas.imgPath, datas.musicPath], (err, results) => {
       if (err){
         callback(true);
         return;
