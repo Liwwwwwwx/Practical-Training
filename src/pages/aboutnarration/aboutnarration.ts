@@ -42,7 +42,7 @@ export class AboutnarrationPage {
       this.data = data;
       var note = [];
       this.data.map(function(item) {
-        if (item.notestyle == "叙事") {
+        if (item.notetag == "心情") {
           note.push(item);
         }
       });

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+  import { Component } from '@angular/core';
 import { ModalController,NavController } from 'ionic-angular';
 import { DetailPage } from '../detail/detail';
 import { HttpClient } from "@angular/common/http";
@@ -38,7 +38,7 @@ export class TuwenPage {
     console.log(this.data[i]);
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      noteid: this.data[i].noteid
+      note: this.data[i]
     });
     profileModal.present();
   }

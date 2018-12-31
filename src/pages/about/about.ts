@@ -32,7 +32,9 @@ export class AboutPage {
   goToc(){
     this.navCtrl.push(MusicPage);
   }
-  
+  goTod(){
+    this.navCtrl.push(AboutstorytellingPage);
+  }
   goToe(){
     this.navCtrl.push(TongxinPage);
   }
@@ -56,8 +58,5 @@ export class AboutPage {
   }
   goTom(){
     this.navCtrl.push(AboutnarrationPage);
-  }
-  goTod(){
-    this.navCtrl.push(AboutstorytellingPage);
   }
 }

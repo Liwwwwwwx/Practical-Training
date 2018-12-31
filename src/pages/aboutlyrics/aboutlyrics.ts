@@ -43,7 +43,7 @@ export class AboutlyricsPage {
       this.data = data;
       var note = [];
       this.data.map(function(item) {
-        if (item.notestyle == "抒情") {
+        if (item.notetag == "情感") {
           note.push(item);
         }
       });

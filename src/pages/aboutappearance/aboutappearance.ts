@@ -43,7 +43,7 @@ export class AboutappearancePage {
       this.data = data;
       var note = [];
       this.data.map(function(item) {
-        if (item.notestyle == "状物") {
+        if (item.notestag == "节日") {
           note.push(item);
         }
       });

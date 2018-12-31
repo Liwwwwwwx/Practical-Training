@@ -157,4 +157,7 @@ date:2018/12/31/16:12
 更新了shezhi页面
 
 date:2018/12/31/16:14
-更新了otheruer页面
+更新了otheruer页面'
+
+date:2018/12/31/18:22
+修改了about tuwen  yuanchuan  aboutstorytelling aboutappearance  aboutlkyrics aboutnarration aboutscenery页面

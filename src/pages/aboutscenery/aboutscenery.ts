@@ -42,7 +42,7 @@ export class AboutsceneryPage {
       this.data = data;
       var note = [];
       this.data.map(function(item) {
-        if (item.notestyle == "写景") {
+        if (item.notetag == "经典") {
           note.push(item);
         }
       });

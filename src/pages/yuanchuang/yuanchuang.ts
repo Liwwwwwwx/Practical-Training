@@ -30,7 +30,7 @@ export class YuanchuangPage {
       this.data = data;
       var note = [];
       this.data.map(function(item) {
-        if (item.isnoteoriginal == 1) {
+        if (item.notecategory == "文字") {
           note.push(item);
         }
       });
@@ -44,7 +44,7 @@ export class YuanchuangPage {
     console.log(this.data[i]);
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      noteid: this.data[i].noteid
+      note: this.data[i]
     });
     profileModal.present();
   }
