@@ -121,6 +121,16 @@ export class PphotoPage {
       datas.musicPath = null;
       datas.isOriginal = that.isOriginal;
       datas.isPrivate = that.isPrivate;
+      // 获取标签
+      var tags = document.getElementsByClassName('tag')[0];
+      console.log(tags);
+      var inputs = tags.getElementsByTagName('input');
+      for(var i = 0;i<inputs.length;i++) {
+        if(inputs[i].checked) {
+          datas.notetag = inputs[i].value;
+          console.log(datas.notetag);
+        }
+      }
       datas.notecategory = '图片';
       datas.content = that.content;
       console.log('datas:', datas);

@@ -26,6 +26,7 @@ export class PwordsPage {
     content: '',
     anthologyname: '',
     notecategory: '文字',
+    notetag:'',
     isOriginal: false,
     isPrivate: false
   };
@@ -43,8 +44,19 @@ export class PwordsPage {
   goPublish(){
     this.navCtrl.push(PublishPage);
   }
-
+  
   go(){
+    // 获取标签
+    var tags = document.getElementsByClassName('tag')[0];
+    console.log(tags);
+    var inputs = tags.getElementsByTagName('input');
+    for(var i = 0;i<inputs.length;i++) {
+      if(inputs[i].checked) {
+        this.datas.notetag = inputs[i].value;
+        console.log(this.datas.notetag);
+      }
+    }
+    
     var that = this;
     // 判断字数
     function wordsNum() {
@@ -87,6 +99,7 @@ export class PwordsPage {
       resolve();
     });
     p.then(wordsNum).then(getName).then(getDetails).catch(reason => {console.log(reason);});
+    
   }
   showToast(msg) {
     let toast = this.toastCtrl.create({

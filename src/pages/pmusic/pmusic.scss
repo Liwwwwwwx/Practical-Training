@@ -76,18 +76,13 @@ page-pmusic {
             float: left;
             margin-left: 15px;
         }
-
-        .isoriginal{                     
+        .tag {
             margin-top: 50px; 
-            
             font-size: 14px;
-         input{
-             margin-top: 10px;
-             margin-left: 5px;
-             //background-color:rgb(58, 12, 12)!important;
-         }
+            input {
+                margin-left: 5px;
+            }
         }
-      
          .button-md {
              width: 50%;
              margin-top: 20px;

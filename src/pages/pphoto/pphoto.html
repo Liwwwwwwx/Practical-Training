@@ -33,34 +33,22 @@
     </div>
   </div>
   <!-- 字体&表情&字数限制 -->
-    <div class="icon_family">
-      <i class="iconfont">&#xe6ec;</i>
-    </div>
-    <div class="icon_emoji">
-      <i class="iconfont">&#xe602;</i>
-    </div>
-    <div class="wordlimit">
-      输入文字在200字以内
-    </div>
-  <!-- 是否原创 --> <!-- 是否私密发布 -->
-  <div class="isoriginal">
-     <input name="" type="checkbox" value="" />     是否原创  <br>
-     <input name="" type="checkbox" value="" />     是否私密发布
+  <div class="icon_family">
+    <i class="iconfont">&#xe6ec;</i>
   </div>
- 
-   <!-- <ul>
-        <li class="li1">
-            <p>是否原创</p>
-            <ion-checkbox color="dark" checked="false" [(ngModel)]="isOriginal"></ion-checkbox>
-        </li>
-  
- 
-      <!-- <li>
-          <p>是否私密发布</p>
-          <ion-checkbox color="dark" checked="false" [(ngModel)]="isPrivate"></ion-checkbox>
-
-      </li>
-    </ul> --> 
-    <button ion-button  round (click)="go()">&nbsp;下&nbsp;一&nbsp;步</button>
+  <div class="icon_emoji">
+    <i class="iconfont">&#xe602;</i>
+  </div>
+  <div class="wordlimit">
+    输入文字在200字以内
+  </div>
+  <div class="tag">
+    <input type="radio" name="tags" value="励志"> 励志
+    <input type="radio" name="tags" value="心情"> 心情
+    <input type="radio" name="tags" value="经典"> 经典
+    <input type="radio" name="tags" value="节日"> 节日
+    <input type="radio" name="tags" value="情感"> 情感
+  </div>
+  <button ion-button  round (click)="go()">&nbsp;下&nbsp;一&nbsp;步</button>
   
 </ion-content>
