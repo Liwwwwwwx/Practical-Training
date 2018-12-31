@@ -1,10 +1,9 @@
-﻿const db = require('./database.js');
+const db = require('./database.js');
 
 class TodoNoteData{
   getAll(callback){
-   const sql = 'select * from (select note.*,avatar,username,anthologyname from note,user,anthology where anthology.userid = user.userid and note.anthologyid = anthology.anthologyid and note.isnoteprivate = 0) as c left join ( select a.noteid,commentCount,collectionCount from (select count(replyid) commentCount,note.noteid from note left join comment on note.noteid = comment.noteid group by (note.noteid)) as a left join (select count(collection.userid) collectionCount,note.noteid from note left join collection on note.noteid = collection.noteid group by (note.noteid)) as b on a.noteid = b.noteid ) as d on c.noteid = d.noteid order by (c.notedate) desc;'
     var datas = [];
-
+    const sql = 'select * from (select note.*,avatar,username,anthologyname from note,user,anthology where anthology.userid = user.userid and note.anthologyid = anthology.anthologyid and note.isnoteprivate = 0) as c left join ( select a.noteid,commentCount,collectionCount from (select count(replyid) commentCount,note.noteid from note left join comment on note.noteid = comment.noteid group by (note.noteid)) as a left join (select count(collection.userid) collectionCount,note.noteid from note left join collection on note.noteid = collection.noteid group by (note.noteid)) as b on a.noteid = b.noteid ) as d on c.noteid = d.noteid order by (c.notedate) desc;'
     db.query(sql, (err,results)=>{
       if (err) {
         callback(true);
@@ -16,6 +15,17 @@ class TodoNoteData{
     });
   };
 
+  //获取一个文章详情
+  getNoteDetail(noteid, callback){
+    const sql = 'select note.*,avatar,username,anthologyname from note,user,anthology where user.userid = anthology.userid and note.anthologyid = anthology.anthologyid and noteid = ?';
+    db.query(sql, [noteid], (err,results)=>{
+      if(err) {
+        callback(true);
+        return ;
+      }
+      callback(false,results);
+    })
+  }
   getCount(notecategory, callback){
     console.log(notecategory)
     console.log(typeof notecategory)
@@ -151,7 +161,7 @@ class TodoNoteData{
   //收藏
   
   CollectionCount(noteid, callback){
-    const sql = 'select count(*) CollectionCount from collection where noteid = ? group by (noteid)';
+    const sql = 'select count(userid) CollectionCount from collection where noteid = ? group by (noteid)';
     db.query(sql, [noteid], (err, results)=>{
       if(err) {
         callback(true);
@@ -206,7 +216,7 @@ class TodoNoteData{
   }
 
   getAnthologyNote(anthologyid, callback) {
-      const sql = 'select a.*,c.commentCount,b.collectionCount from (select * from note where anthologyid = (select anthologyid from anthology where anthologyid = ?)) as a left join (select count(userid) collectionCount,note.noteid from note left join collection on note.noteid = collection.noteid group by (noteid)) as b on a.noteid = b.noteid left join (select count(replyid) commentCount,note.noteid from note left join comment on note.noteid = comment.noteid group by (note.noteid)) as c on a.noteid = c.noteid order by (a.notedate) desc;';
+    const sql = 'select a.*,c.commentCount,b.collectionCount from (select * from note where anthologyid = (select anthologyid from anthology where anthologyid = ?)) as a left join (select count(userid) collectionCount,note.noteid from note left join collection on note.noteid = collection.noteid group by (noteid)) as b on a.noteid = b.noteid left join (select count(replyid) commentCount,note.noteid from note left join comment on note.noteid = comment.noteid group by (note.noteid)) as c on a.noteid = c.noteid order by (a.notedate) desc;';
     db.query(sql, [anthologyid], (err, results)=>{
       if(err) {
         callback(true);
@@ -215,7 +225,19 @@ class TodoNoteData{
       callback(false, results);
     });
   }
-  
+
+  //获取评论数量
+  getCommentCount(noteid, callback){
+    const sql = 'select count(conameid) commentCount from comment where noteid = ? group by (noteid)';
+    db.query(sql, [noteid], (err, results)=>{
+      if(err) {
+        callback(true);
+        return ;
+      }
+      callback(false, results);
+    })
+  }
+  //获取评论详情
   getComment(noteid, callback) {
     const sql = 'select count(b.com_replyid) commentCount, a.* from (select comment.*, username,avatar from comment left join user on user.userid = comment.conameid where com_replyid is NULL) as a left join (select * from comment where com_replyid is not null) as b on a.replyid = b.com_replyid where a.noteid = ? group by (a.replyid);'
       db.query(sql, [noteid], (err, results)=>{
@@ -237,8 +259,9 @@ class TodoNoteData{
       }
       callback(false, results);
     });
-  } 
-//发表文章的评论
+  }
+
+  //发表文章的评论
   insertComment(noteid, username, content, callback) {
     const sql = "insert into comment (noteid,conameid,ccontent) values (?,(select userid from user where username = ?),?);";
     db.query(sql, [noteid, username, content], (err, results)=>{
@@ -248,6 +271,18 @@ class TodoNoteData{
       }
       callback(false, results);
     });
+  }
+  
+  //发表评论的评论
+  insertOneComments(noteid, username, content, replyid, callback) {
+    const sql = 'insert into comment (noteid,conameid,ccontent,com_replyid) values (?,(select userid from user where username = ?),?,?);'
+    db.query(sql, [noteid, username, content, replyid], (err, results)=>{
+      if(err) {
+        callback(true);
+        return ;
+      }
+      callback(false, results);
+    })
   }
 
  //获取评论人名称
@@ -273,7 +308,6 @@ class TodoNoteData{
       callback(false, results);
     })
   }
-
 };
 
 module.exports = TodoNoteData;

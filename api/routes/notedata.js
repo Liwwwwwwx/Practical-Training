@@ -1,4 +1,4 @@
-﻿const TodoNoteData = require('../models/todo-notedata');
+const TodoNoteData = require('../models/todo-notedata');
 const db = require('../models/database.js');
 var express = require('express');
 var router = express.Router();
@@ -16,6 +16,19 @@ router.get('/',(req,res)=>{
     res.status(200).send(datas);
   });
 });
+
+//获取文章详情
+router.post('/notedetail', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  todonotedata.getNoteDetail(noteid, (err, results)=>{
+    if(err) {
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(results);
+  })
+})
 
 router.post('/notecount',(req,res)=>{
   res.header('Access-Control-Allow-Origin','*');
@@ -268,6 +281,32 @@ router.post('/mycollection', (req, res)=>{
   })
 })
 
+//获取评论数量
+router.post('/commentCount', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  todonotedata.getCommentCount(noteid, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
+//获取评论详情
+router.post('/getcomment', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  var noteid = req.body.noteid;
+  todonotedata.getComment(noteid, (err, result)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+    res.status(200).send(result);
+  })
+})
+
 //发表文章评论
 router.post('/insertcomment', (req, res)=>{
   res.header('Access-Control-Allow-Origin','*');
@@ -285,6 +324,26 @@ router.post('/insertcomment', (req, res)=>{
       msg:'发表成功'
     }))
   })
+})
+
+//发表评论的评论
+router.post('/insertonecomments', (req, res)=>{
+  res.header('Access-Control-Allow-Origin','*');
+  console.log(req.body)
+  var noteid = req.body.noteid,
+      username = req.body.username,
+      content = req.body.content,
+      replyid = req.body.replyid;
+todonotedata.insertOneComments(noteid, username, content, replyid, (err, results)=>{
+  if(err){
+    console.log(err);
+    return ;
+  }
+  res.send(JSON.stringify({
+    status:'200',
+    msg:'发表成功'
+  }))
+})
 })
 
 //获取评论人名称
@@ -306,18 +365,6 @@ router.post('/getcommentsdetail', (req, res)=>{
   res.header('Access-Control-Allow-Origin','*');
   var replyid = req.body.replyid;
   todonotedata.getCommentDetail(replyid, (err, result)=>{
-    if(err){
-      console.log(err);
-      return ;
-    }
-    res.status(200).send(result);
-  })
-})
-
-router.post('/getcomment', (req, res)=>{
-  res.header('Access-Control-Allow-Origin','*');
-  var noteid = req.body.noteid;
-  todonotedata.getComment(noteid, (err, result)=>{
     if(err){
       console.log(err);
       return ;
