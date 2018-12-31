@@ -20,25 +20,40 @@ import { OtherathologyPage } from '../otherathology/otherathology';
 export class OtheruserPage {
   data: { [x: string]: any; };
   userid: any;
+  items: any;
+  mutual = '<i class="iconfont">&#xe610;</i>互相关注';
+  follow = "+关注";
+  isMutual;
   autograph: string;
   athologyname: any;
   array: Object;
   avatar;
   constructor(
     public navCtrl: NavController,
-    public params: NavParams,
+    public navParams: NavParams,
     public storage: Storage,
     public http: HttpClient,
     public events: Events,
 
-  ) { }
-  datas = this.params.data;
-  username = this.datas.username;
+  ) { 
 
+  }
+  datas = this.navParams.data;
+  username = this.datas.username;
+  name;
   ionViewDidLoad() {
-    console.log(this.username);
     console.log('ionViewDidLoad OtheruserPage');
-    console.log(this.datas);
+      this.http
+        .post("/userdata/fandetail", { userid: this.userid })
+        .subscribe(data => {
+          console.log(data);
+          this.items = data;
+          this.isMutual = this.items.map(item => {
+            return item.Mutual;
+          });
+          console.log(this.isMutual);
+        });
+      console.log("ionViewDidLoad FanPage");
   }
 
   ngOnInit() {
@@ -56,6 +71,33 @@ export class OtheruserPage {
       }
 
     });
+
+    //获取自己的用户ID
+    var that = this;
+    function getName() {
+      return new Promise(resolve => {
+        that.storage.get("USER_INFO").then(value => {
+          console.log(value);
+          console.log(JSON.parse(value));
+          that.name = JSON.parse(value).username;
+          console.log(that.name);
+          console.log("storage:", that.storage);
+          resolve(that.name);
+        });
+      });
+    }
+    function getID(){
+      return new Promise(resolve => {
+        that.http.post("userdata/getId",{ username:that.name })
+        .subscribe(result => {
+          console.log(result);
+        })
+      });
+    }
+    var p = new Promise((resolve) => {
+      resolve();
+    });
+    p.then(getName).then(getID).catch(reason => {console.log(reason);});
 
 
     //获取文集
@@ -83,5 +125,25 @@ export class OtheruserPage {
       userid: this.array[i].userid,
       username: this.username,
     });
+  }
+
+  
+
+  Follow() {
+    console.log(this.items.Mutual);
+    this.isMutual = this.isMutual ? 0 : 1;
+    if (this.isMutual) {
+      this.http
+        .post("/userdata/becomeFans", { userid: this.userid,fansid:this.items.userid })
+        .subscribe(data => {
+          console.log(data);
+        });
+    }else{
+      this.http
+        .post("/userdata/disfollow", { userid: this.items.userid,fansid:this.userid })
+        .subscribe(data => {
+          console.log(data);
+        });
+    }
   }
 }

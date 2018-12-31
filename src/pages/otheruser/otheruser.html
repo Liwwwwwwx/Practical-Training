@@ -13,7 +13,8 @@
         <div class="head" (click)="godata()">
             <img src="{{avatar}}">
         </div>
-        <p text-center class="name">{{username}}</p>
+        <!-- <p text-center class="name">{{username}}</p> -->
+        <ion-icon class="name">{{username}}</ion-icon>
         <p text-center class="qm">{{autograph}}</p>
     </div>
     <div class="funs">
@@ -31,9 +32,7 @@
     </div>
     <ion-footer>
         <ion-toolbar>
-            <button ion-button full>
-                关注
-            </button>
+          <button ion-button full (click)="Follow()" [innerHTML]="isMutual?mutual:follow"></button>
         </ion-toolbar>
     </ion-footer>
 </ion-content>
