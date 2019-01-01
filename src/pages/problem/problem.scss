@@ -3,25 +3,25 @@ page-problem {
         margin-left: -25px;
     }
     ion-content{
-        background-color:#ece5da!important;
+        background-color:/*#ece5da*/rgb(246,246,246)!important;
         #text{
             width: 90%;
             height: 20%;
             display: block;
             margin: auto;
-            background-color:rgba(217, 186, 138, 0.8);
+            border: 0;
+            background-color:#fff;
             border-radius: 5px;
         }
         input{
-            text-align: center;
+            margin-top: 30%!important;
             display: block;
             margin: auto;
-            line-height: 40px;
-            width: 90%;
+            width: 60%;
             height: 40px;
-            font-size:20px;
-            background-color:rgba(217, 186, 138, 0.5);
-            border-radius: 5px;
+            font-size: 16px;
+            text-shadow: 1px 1px 5px #d9ba8a;
+            font-family: '宋体';
         }
     }
 }

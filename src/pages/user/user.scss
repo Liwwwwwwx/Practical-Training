@@ -34,16 +34,14 @@ page-user {
             }
         }
         .save {
-            text-align: center;
+            margin-top: 50%!important;
             display: block;
-            margin: 50px auto;
-            line-height: 40px;
-            width: 90%;
+            margin: auto;
+            width: 60%;
             height: 40px;
-            font-size:20px;
-            border: 1px solid #000;
-            border-radius: 5px;
-            background-color:/*rgba(217, 186, 138, 0.5)*/rgb(250, 245, 245);
+            font-size: 16px;
+            text-shadow: 1px 1px 5px #d9ba8a;
+            font-family: '宋体';
         }
     }
 }
