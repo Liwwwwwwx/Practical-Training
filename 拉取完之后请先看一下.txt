@@ -161,3 +161,6 @@ date:2018/12/31/16:14
 
 date:2018/12/31/18:22
 修改了about tuwen  yuanchuan  aboutstorytelling aboutappearance  aboutlkyrics aboutnarration aboutscenery页面
+
+date:2019/1/1/15:30
+修改了账号与安全相关页面（my.ts,shezhi.ts,num页面）

@@ -17,24 +17,20 @@
     <ul>
         <li>
           <span class="left">手机号</span>
-          <input type="text">
-          <font class="right">15123456789</font>
+          <input type="tel" value="{{user.phoneNumber}}"  id="text" (change)="changePhone(phoneNumber)" #phoneNumber/>
         </li>
         <li>
           <span class="left">邮箱账号</span>
-          <input type="text">
-          <font class="right">123@163.com</font>
+          <input type="email" id="text" value="{{user.email}}" (change)="changeEmail(email)" #email/>
         </li>
         <li>
           <span class="left">微信账号</span>
-          <input type="text">
-          <font class="right">ddd123</font>
+          <input type="text" id="text" value="{{user.wechat}}" (change)="changeWechat(wechat)" #wechat/>
         </li>
         <li>
             <span class="left">QQ账号</span>
-            <input type="text">
-            <font class="right">2335644789</font>
+            <input type="text" id="text" value="{{user.qq}}" (change)="changeQq(qq)" #qq/>
         </li>
       </ul>
-
+      <button (click)="storeMessage(phoneNumber,email,wechat,qq)" class="btn">保存</button>
 </ion-content>

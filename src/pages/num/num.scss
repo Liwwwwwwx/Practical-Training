@@ -21,18 +21,24 @@ page-num {
                     height: 40px;
                     line-height: 40px;
                     border: 0;
-                    margin-left: 5px;
+                    float:right;
                 }
                .left{
-                 font-size:16px;
-                 margin-left:10px;
-               }
-               .right{
-                 float:right;
-                 margin-right: 10px;
-                 color:rgb(148, 145, 145);
+                 font-size:15px;
+                 margin-left:15px;
+                 color: gray;
                }
             }
+        }
+        .btn{
+            margin-top: 50%!important;
+            display: block;
+            margin: auto;
+            width: 60%;
+            height: 40px;
+            font-size: 16px;
+            text-shadow: 1px 1px 5px #d9ba8a;
+            font-family: '宋体';
         }
     }
 }

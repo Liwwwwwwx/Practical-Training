@@ -17,8 +17,10 @@ import { LoginPage } from '../login/login';
   templateUrl: 'shezhi.html',
 })
 export class ShezhiPage {
-
+  data;
   constructor(public actionSheetCtrl: ActionSheetController,public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+    this.data=navParams.data;
+    console.log(this.data);
   }
 
   ionViewDidLoad() {
@@ -28,7 +30,7 @@ export class ShezhiPage {
     this.navCtrl.push(WePage);
   }
   goto(){
-    this.navCtrl.push(NumPage);
+    this.navCtrl.push(NumPage,this.data);
   }
   removeStorage() {
     this.actionSheetCtrl.create({

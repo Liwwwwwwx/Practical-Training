@@ -87,7 +87,7 @@ export class MyPage {
   }
 
   go() {
-    this.navCtrl.push(ShezhiPage);
+    this.navCtrl.push(ShezhiPage,this.data);
     console.log(this.data);
   }
   goto() {
