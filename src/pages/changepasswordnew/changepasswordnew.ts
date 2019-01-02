@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, ModalController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the ChangepasswordnewPage page.
@@ -9,40 +10,40 @@ import { LoginPage } from '../login/login';
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-changepasswordnew',
   templateUrl: 'changepasswordnew.html',
 })
 export class ChangepasswordnewPage {
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public toastCtrl: ToastController, public http: HttpClient, public params: NavParams) {
   }
-
-  params = {
-    newpass: '',
-    sure_pwd: ''
-}
-
+  datas = this.params.data;
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChangepasswordnewPage');
+    console.log(this.datas);
   }
-  doReset(){
-    if(! this.params.newpass) {
+  doReset(password: HTMLInputElement, repsw: HTMLInputElement){
+    if(!password.value) {
       this.showToast('middle','请输入新的密码！');
       return ;
     }
-    if (this.params.newpass == this.params.sure_pwd) {
-      this.showToast('middle','恭喜您修改成功！');
-      setTimeout(()=>{
-        // this.navCtrl.popToRoot();
-        let modal = this.modalCtrl.create(LoginPage);
-        modal.present();
-      },1000);
-    } else {
-    // console.debug("两次密码输入不一致");
-    this.showToast('middle','两次密码输入不一致！');
+    if (password.value !== repsw.value) {
+      this.showToast('middle','两次密码输入不一致！');
+      return ;
     }
+    this.datas.password = password.value;
+    console.log(this.datas)
+    this.http.post('/userdata/changepsw', {phone:this.datas.phonenum,newpsw:this.datas.password}).subscribe(result => {
+      console.log(result);
+      if(result) {
+        this.showToast('middle','恭喜您修改成功！');
+        setTimeout(()=>{
+          let modal = this.modalCtrl.create(LoginPage);
+          modal.present();
+        },1000);
+      }
+    });
   }
   // 提示信息
   showToast(position: string, message: string) {

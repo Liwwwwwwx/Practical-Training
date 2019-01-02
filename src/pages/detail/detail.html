@@ -23,14 +23,14 @@
 
       </div>
       <div class="nav">
-        <img (click)="goother()" src="../../assets/imgs/logo.png" class="image">
+        <img (click)="goother()" src="{{item.avatar}}" class="image">
         <p (click)="goother()" class="pub_name">{{item.username}}</p>
         <p>发表于</p>
         <p class="native">[{{item.anthologyname}}]</p>
       </div>
       <img src="{{item.noteimg}}" ngClass="{{imgs}} {{rotation}}">
       <img src="{{isPlaying?displaysrc:playsrc}}" (click)="play()" ngClass="{{item.notemusic?player:displayer}}">
-      <audio src="{{item.music}}" type="audio/mp3" id='audios'></audio>
+      <audio src="{{item.notemusic}}" type="audio/mp3" id='audios'></audio>
       <div ngClass="{{notecontent}}">
         <p [innerHTML]="contentdetail"></p>
         <p class="avater">-{{item.username}}-</p>

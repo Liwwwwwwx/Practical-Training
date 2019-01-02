@@ -17,6 +17,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AboutappearancePage {
   data;
+  imgs = 'imgs'
   constructor(public modalCtrl: ModalController,   public http: HttpClient,public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -27,7 +28,7 @@ export class AboutappearancePage {
     console.log(this.data[i]);
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      note: this.data[i]
+      noteid:this.data[i].noteid,
     });
     profileModal.present();
   }
@@ -43,7 +44,7 @@ export class AboutappearancePage {
       this.data = data;
       var note = [];
       this.data.map(function(item) {
-        if (item.notestag == "节日") {
+        if (item.notetag == "节日") {
           note.push(item);
         }
       });

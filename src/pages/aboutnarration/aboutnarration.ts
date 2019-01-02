@@ -16,6 +16,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AboutnarrationPage {
   data;
+  imgs = 'imgs'
   constructor(public modalCtrl: ModalController,   public http: HttpClient,public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -23,10 +24,10 @@ export class AboutnarrationPage {
     console.log('ionViewDidLoad AboutappearancePage');
   }
   goTog(i){
-    console.log(this.data[i]);
+    console.log(this.data[i].noteid);
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      note: this.data[i]
+      noteid:this.data[i].noteid,
     });
     profileModal.present();
   }

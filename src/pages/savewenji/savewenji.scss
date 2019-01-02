@@ -4,7 +4,7 @@ page-savewenji {
   }
 
   ion-content {
-    background-color: #ece5da !important;
+    background-color: rgb(246, 246, 246) !important;
 
     ion-list {
       margin: 20px auto;
@@ -14,14 +14,17 @@ page-savewenji {
       ion-item {
         line-height: 90px;
         height: 90px;
-        background-color: rgb(240, 236, 185) !important;
+        background-image: url(../../assets/imgs/yimg1.jpg);
+        background-size: 100%;
       }
-      .item-md{
-          width: 45%;
-          margin: 5px;
-          float: left;
+
+      .item-md {
+        width: 45%;
+        margin: 5px;
+        float: left;
       }
-      .label-md{
+
+      .label-md {
         text-align: center
       }
     }

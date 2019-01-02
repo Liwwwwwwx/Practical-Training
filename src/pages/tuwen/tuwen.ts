@@ -38,7 +38,7 @@ export class TuwenPage {
     console.log(this.data[i]);
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      note: this.data[i]
+      noteid:this.data[i].noteid
     });
     profileModal.present();
   }

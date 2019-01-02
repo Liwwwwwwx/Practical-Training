@@ -94,9 +94,4 @@ export class ReplydetailPage {
       username: this.items[i].username,
     })
   }
-  goothers(){
-    this.navCtrl.push(OtheruserPage,{
-      username: this.items[0].username,
-    })
-  }
 }

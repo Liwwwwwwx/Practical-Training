@@ -3,7 +3,7 @@ import { NavController, IonicPage, ModalController, ToastController } from 'ioni
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { TabsPage } from '../tabs/tabs';
 import { Storage } from '@ionic/storage';
-import { ChangepasswordPage } from '../changepassword/changepassword';
+import { ChangepasswordselectPage } from '../changepasswordselect/changepasswordselect';
 import { SignupPage } from '../signup/signup';
 /**
  * Generated class for the LoginPage page.
@@ -115,6 +115,6 @@ export class LoginPage {
   
   // 忘记密码
   forget() {
-    this.navCtrl.push(ChangepasswordPage);
+    this.navCtrl.push(ChangepasswordselectPage);
   }
 }

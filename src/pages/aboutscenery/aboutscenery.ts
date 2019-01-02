@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ModalController, NavController,NavParams } from "ionic-angular";
+import { Component } from "@angular/core";
+import { ModalController, NavController, NavParams } from "ionic-angular";
 import { DetailPage } from "../detail/detail";
 import { HttpClient } from "@angular/common/http";
 /**
@@ -11,22 +11,27 @@ import { HttpClient } from "@angular/common/http";
 
 //@IonicPage()
 @Component({
-  selector: 'page-aboutscenery',
-  templateUrl: 'aboutscenery.html',
+  selector: "page-aboutscenery",
+  templateUrl: "aboutscenery.html"
 })
 export class AboutsceneryPage {
   data;
-  constructor(public modalCtrl: ModalController,   public http: HttpClient,public navCtrl: NavController, public navParams: NavParams) {
-  }
+  imgs = "imgs";
+  constructor(
+    public modalCtrl: ModalController,
+    public http: HttpClient,
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutappearancePage');
+    console.log("ionViewDidLoad AboutappearancePage");
   }
-  goTog(i){
+  goTog(i) {
     console.log(this.data[i]);
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      note: this.data[i]
+      noteid: this.data[i].noteid
     });
     profileModal.present();
   }

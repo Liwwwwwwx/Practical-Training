@@ -19,34 +19,14 @@
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>  
     <ul>
-        <li (click)="goTog()" class="li1">
-            <img src="assets/imgs/img4.jpg" alt="">
+        <li (click)="goTog(i)" class="li1" *ngFor="let item of data;let i = index">
+            <img src="{{item.noteimg}}" alt="">
           <div class="li_audate">
-            <div class="li_audate_author"> 葛舒悦</div>
-            <div class="li_audate_date">2018/12/12</div>
+            <div class="li_audate_author"> {{item.username}}</div>
+            <div class="li_audate_date">{{item.notedate.substr(0,10)}}</div>
           </div>
         </li>
-        <li (click)="goTog()">
-              <img src="assets/imgs/img3.jpg" alt="">
-            <div class="li_audate">
-              <div class="li_audate_author">李薇</div>
-              <div class="li_audate_date">2018/1/12</div>
-            </div>
-        </li>
-        <li (click)="goTog()">
-            <img src="assets/imgs/img2.jpg" alt="">
-          <div class="li_audate">
-            <div class="li_audate_author">张三</div>
-            <div class="li_audate_date">2018/5/12</div>
-          </div>
-        </li>
-        <li (click)="goTog()">
-            <img src="assets/imgs/img1.jpg" alt="">
-          <div class="li_audate">
-            <div class="li_audate_author">李四</div>
-            <div class="li_audate_date">2018/6/8</div>
-          </div>
-        </li>
+        
       </ul>
      
 

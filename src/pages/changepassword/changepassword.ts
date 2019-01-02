@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {  NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { ChangepasswordselectPage } from '../changepasswordselect/changepasswordselect';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the ChangepasswordPage page.
@@ -9,25 +10,34 @@ import { ChangepasswordselectPage } from '../changepasswordselect/changepassword
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-changepassword',
   templateUrl: 'changepassword.html',
 })
 export class ChangepasswordPage {
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public http: HttpClient) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangepasswordPage');
   }
-  toNext(username: HTMLInputElement) {
-    if(! username.value) {
+  toNext(name: HTMLInputElement) {
+    if(! name.value) {
       this.showToast('middle','请输入用户名');
       return ;
     }
-    this.navCtrl.push(ChangepasswordselectPage);
+    console.log(name.value);
+    // 检测是否存在该用户或邮箱或手机号
+    this.http.post('/changepsw/checkIs',{name:name.value}).subscribe(data => {
+      console.log(data);
+      if(!data) {
+        this.showToast('middle','该账户不存在！');
+        return ;
+      }
+      this.navCtrl.push(ChangepasswordselectPage);
+    });
   }
   showToast(position: string, message: string) {
     let toast = this.toastCtrl.create({

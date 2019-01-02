@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { ChangepasswordnewPage } from '../changepasswordnew/changepasswordnew';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 /**
@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-changepasswordmobile',
   templateUrl: 'changepasswordmobile.html',
@@ -23,10 +23,7 @@ export class ChangepasswordmobilePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangepasswordmobilePage');
   }
-  codeParam = {
-    fromflag: 2,
-    usertel: ""
-  }
+
   // 验证码倒计时
   verifyCode: any = {
     verifyCodeTips: "获取验证码",
@@ -51,7 +48,7 @@ export class ChangepasswordmobilePage {
     }, 1000);
   }
   getCode(phonenum: HTMLInputElement) {
-    if (this.codeParam.usertel == '') {
+    if (!phonenum.value) {
       this.showToast('middle','请填写手机号！');
       return;
     }else if (phonenum.value.length !== 11) {
@@ -63,15 +60,15 @@ export class ChangepasswordmobilePage {
   
     this.verifyCode.disable = false;
     this.settime();
-	//该部分需要进行post请求，需要时去掉注释
-	// 发送验证码
+
     this.http.post('/phonecode', {phone:phonenum.value},{
       headers : this.headers,
       observe : 'body',
       responseType : 'json'
     }).subscribe( data => {
-      this.matchCode = '' + data;
-      console.log('typeof matchCode:',typeof this.matchCode);
+      console.log(JSON.stringify(data));
+      console.log(typeof JSON.stringify(data));
+      this.matchCode = JSON.stringify(data).slice(9,15);
       console.log(this.matchCode);
     });
     console.log('已发送！');
@@ -82,7 +79,7 @@ export class ChangepasswordmobilePage {
   }
 
   toNew(phonenum: HTMLInputElement, matchnum: HTMLInputElement) {
-    if(! this.codeParam.usertel) {
+    if(!phonenum.value) {
       this.showToast('middle','请输入手机号！');
       return ;
     }else if (phonenum.value.length !== 11) {
@@ -93,7 +90,7 @@ export class ChangepasswordmobilePage {
       this.showToast('middle','请输入验证码！');
       return ;
     }
-    this.navCtrl.push(ChangepasswordnewPage);
+    this.navCtrl.push(ChangepasswordnewPage, {phonenum: phonenum.value});
   }
 
   // 提示信息

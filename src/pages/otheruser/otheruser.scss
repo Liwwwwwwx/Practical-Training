@@ -1,86 +1,106 @@
 page-otheruser {
-    ion-content{
-        background-color:rgb(246,246,246)!important;
-        .iconfont{
-            font-style:normal;
-            -webkit-text-stroke-width:0px!important;
-        }
-        .header{
-            height: 34%;
-            background-image: url(../../assets/imgs/lixiang8.png);
-            padding-top: 20px;
-            .head{
-                width: 102px;
-                height:102px;
-                border-radius:100%;
-                overflow: hidden;
-                margin:  auto;  
-                img {
-                    max-width: 100%;
-                    width: 100%;
-                    height: 100%;
-                    border: 0;
-                }
-            }
-        }
-        .name{
-            margin-top: 5px;
-            // margin-left: 43%;
-            font-size: 22px;
-            font-family: '宋体';
-            font-weight: bolder;
-            text-align: center;
-        }
-        .qm{
-            margin-top: -10px;
-            font-size: 12px;
-            letter-spacing: 2px;
-        }
-        .funs{
-            ul{
-                padding: 0%;
-                margin: 0%;
-                // margin-top: 5px;
-                width: 100%;
-                height: 30px;
-                li{
-                    background-color: white;
-                    float: left;
-                    width: 50%;
-                    height: 30px;
-                    text-align: center;
-                    padding-top:6px;
-                }
-            }
-        }
-        .wenji{
-            margin: 10px auto;
-            padding: 0;
-            width: 100%;
-            height: 320px;
-            overflow-y:scroll;
-            li{
-                text-align: center;
-                line-height: 90px;
-                width: 45%;
-                // height: 90px;
-                float: left;
-                margin: 5px 0 5px 3%;
-                background-color: rgb(240, 236, 185)!important;
-            }
-        }
-        ion-footer{
-            .toolbar-md{
-                padding: 0!important;
-                min-height: 0!important;
-            }
-            .button-md{
-                background-color: white!important;
-                color: black;
-            }
-        }
-        .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
-            top: 0 !important;
-        }
+  ion-content {
+    background-color: rgb(246, 246, 246) !important;
+
+    .iconfont {
+      font-style: normal;
+      -webkit-text-stroke-width: 0px !important;
+      color: rgb(246, 246, 246) !important;
     }
+
+    .header {
+      height: 34%;
+      background-image: url(../../assets/imgs/yimg1.jpg);
+      background-size: 100%;
+      padding-top: 20px;
+
+      .head {
+        width: 102px;
+        height: 102px;
+        border-radius: 100%;
+        overflow: hidden;
+        margin: auto;
+
+        img {
+          max-width: 100%;
+          width: 100%;
+          height: 100%;
+          border: 0;
+        }
+      }
+    }
+
+    .name {
+      margin-top: 5px;
+      margin-left: 43%;
+      font-size: 22px;
+      font-family: '宋体';
+      font-weight: bolder;
+    }
+
+    .qm {
+      // margin-top: -10px;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .funs {
+      ul {
+        padding: 0%;
+        margin: 0%;
+        // margin-top: 5px;
+        width: 100%;
+        height: 30px;
+
+        li {
+          background-color: white;
+          float: left;
+          width: 50%;
+          height: 30px;
+          text-align: center;
+          padding-top: 6px;
+        }
+      }
+    }
+
+    .wenji {
+      margin: 10px auto;
+      padding: 0;
+      width: 100%;
+      height: 320px;
+      overflow-y: scroll;
+
+      li {
+        text-align: center;
+        line-height: 90px;
+        width: 45%;
+        // height: 90px;
+        float: left;
+        margin: 5px 0 5px 3%;
+        background-image: url(../../assets/imgs/yimg1.jpg);
+        background-size: 100%;
+        p{
+            font-weight: 600;
+            font-size: 16px;
+        }
+      }
+    }
+
+    ion-footer {
+      .toolbar-md {
+        padding: 0 !important;
+        min-height: 0 !important;
+      }
+
+      .button-md {
+        background-color: white !important;
+        color: black;
+      }
+    }
+
+    .footer-md::before,
+    .tabs-md[tabsPlacement="bottom"]>.tabbar::before {
+      top: 0 !important;
+    }
+  }
 }

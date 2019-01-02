@@ -19,7 +19,8 @@ page-my {
 
     .header {
       height: 34%;
-      background-image: url(../../assets/imgs/lixiang8.png);
+      background-size:100%;
+      background-image: url(../../assets/imgs/usebg.jpg);
       padding-top: 20px;
 
       .head {
@@ -41,11 +42,13 @@ page-my {
       font-size: 22px;
       font-family: '宋体';
       font-weight: bolder;
+      // color: #ffffff;
     }
 
     .qm {
       margin-top: -10px;
       font-size: 12px;
+      
       letter-spacing: 2px;
     }
 

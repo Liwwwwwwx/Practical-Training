@@ -100,9 +100,9 @@ export class ContactPage {
     });
     toast.present(toast);
   }
-  goother(){
+  goother(i){
     this.navCtrl.push(OtheruserPage,{
-      username: this.items[0].username,
+      username: this.items[i].username,
     })
   }
 }

@@ -16,6 +16,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AboutstorytellingPage {
   data;
+  imgs = 'imgs'
   constructor(public modalCtrl: ModalController,   public http: HttpClient,public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -26,7 +27,7 @@ export class AboutstorytellingPage {
     console.log(this.data[i]);
     let profileModal = this.modalCtrl.create(DetailPage, {
       index: i,
-      note: this.data[i]
+      noteid:this.data[i].noteid,
     });
     profileModal.present();
   }

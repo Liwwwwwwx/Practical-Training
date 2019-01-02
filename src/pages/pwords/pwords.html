@@ -1,0 +1,28 @@
+<ion-content padding>
+  <!-- 返回图标 -->
+  <i class="iconfont" (click)="goPublish()" style="font-size:25px;">&#xe642;</i>
+  <span class="title">心灵语录</span>
+  <!-- 分享文字内容（多行文本框） -->
+    <textarea class="addtext" placeholder="分享你的视线所及" [(ngModel)]="content"></textarea>
+  <!-- 字体&表情&字数限制 -->
+  <div class="icon_family">
+  <i class="iconfont">&#xe6ec;</i>
+  </div>
+  <div class="icon_emoji">
+  <i class="iconfont">&#xe602;</i>
+  </div>
+  <div class="wordlimit">
+    输入文字在200字以内
+  </div>
+  <div class="tag">
+    <input type="radio" name="tags" value="励志"> 励志
+    <input type="radio" name="tags" value="心情"> 心情
+    <input type="radio" name="tags" value="经典"> 经典
+    <input type="radio" name="tags" value="节日"> 节日
+    <input type="radio" name="tags" value="情感"> 情感
+  </div>
+  <button ion-button  round (click)="go()">&nbsp;下&nbsp;一&nbsp;步</button>
+   
+  
+  </ion-content>
+  

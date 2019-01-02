@@ -15,8 +15,8 @@
 
 <ion-content>
     <div class="comment">
-      <img src="{{comment.avatar}}" alt="" class="image" (click)="goothers()">
-      <div class="user" (click)="goothers()">{{comment.username}}</div>
+      <img src="{{comment.avatar}}" alt="" class="image" (click)="goother(i)">
+      <div class="user" (click)="goother()">{{comment.username}}</div>
       <div class="date">
             {{comment.commentdate.substr(0,10)}} {{comment.commentdate.substr(11,5)}}
       </div>
@@ -28,7 +28,7 @@
       </div>
     </div> 
     <ul> 
-        <li *ngFor="let item of items;let i = index">
+        <li *ngFor="let item of items">
             <img src="{{item.avatar}}" alt="" class="image" (click)="goother(i)">
             <div class="user" (click)="goother(i)">{{item.username}}</div>
             <div class="date">

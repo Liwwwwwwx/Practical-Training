@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController,ToastController } from 'ionic-angular';
+import { IonicPage, NavController,ToastController, NavParams } from 'ionic-angular';
 import { ChangepasswordnewPage } from '../changepasswordnew/changepasswordnew';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 /**
@@ -9,24 +9,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-changepasswordemail',
   templateUrl: 'changepasswordemail.html',
 })
 export class ChangepasswordemailPage {
-  matchCode:any;// 验证码
   private headers = new HttpHeaders({'Content-Type':'application/json'});
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public http: HttpClient) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public http: HttpClient, public params: NavParams) {
   }
+  matchCode:any;// 验证码
+  // datas = this.params;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangepasswordemailPage');
   }
-  codeParam = {
-    fromflag: 2,
-    usermail: ""
-}
+
   // 验证码倒计时
   verifyCode: any = {
     verifyCodeTips: "获取验证码",
@@ -54,7 +52,7 @@ export class ChangepasswordemailPage {
     if (! mail.value) {
       this.showToast('middle','请填写邮箱！');
       return;
-    }else if(!(/@\S+.(com|cn)/.test(mail.value))) {
+    }else if(!(/@\S+.(com|cn)$/.test(mail.value))) {
       this.showToast('middle','请输入正确的邮箱格式！');
       return ;
     }
@@ -63,7 +61,7 @@ export class ChangepasswordemailPage {
   
     this.verifyCode.disable = false;
     this.settime();
-	//该部分需要进行post请求，需要时去掉注释
+
 	// 发送验证码
     this.http.post('/mail',{mail:mail.value} ,{
       headers : this.headers,
@@ -84,7 +82,7 @@ export class ChangepasswordemailPage {
     if(! mail.value) {
       this.showToast('middle','请输入邮箱！');
       return ;
-    }else if(!(/@\S+.(com|cn)/.test(mail.value))) {
+    }else if(!(/@\S+.(com|cn)$/.test(mail.value))) {
       this.showToast('middle','请输入正确的邮箱格式！');
       return ;
     }
@@ -92,13 +90,13 @@ export class ChangepasswordemailPage {
       this.showToast('middle','请输入验证码！');
       return ;
     }
-	/*
+	
     if(matchnum.value !== this.matchCode){
       this.showToast('middle','验证码输入错误！');
       return ;
     }
-	*/
-    this.navCtrl.push(ChangepasswordnewPage);
+	
+    this.navCtrl.push(ChangepasswordnewPage, {email: mail.value});
   }
   // 提示信息
   showToast(position: string, message: string) {

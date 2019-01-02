@@ -18,10 +18,10 @@
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher> 
       <ul>
-        <li (click)="goTog()" *ngFor="let item of data;let i=index;">
-          <img src="assets/imgs/img3.jpg" alt="">
+        <li (click)="goTog(i)" *ngFor="let item of data;let i=index;">
+          <img src="{{item.noteimg}}"  ngClass="{{item.noteimg?imgs:2}}"alt="">
           <div class="li_content">
-            <div class="li_content_p">{{item.notecontent.substr(0,15)}}......</div>
+            <div class="li_content_p">{{item.notecontent.substr(0,10)}}......</div>
             <div class="li_content_author">{{item.username}}</div>
             <div class="li_content_date">{{item.notedate.substr(0,10)}}</div>
           </div>

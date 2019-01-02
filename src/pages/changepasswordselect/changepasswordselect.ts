@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ChangepasswordmobilePage } from '../changepasswordmobile/changepasswordmobile';
 import { ChangepasswordemailPage } from '../changepasswordemail/changepasswordemail';
 
@@ -10,7 +10,7 @@ import { ChangepasswordemailPage } from '../changepasswordemail/changepasswordem
  * Ionic pages and navigation.
  */
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-changepasswordselect',
   templateUrl: 'changepasswordselect.html',

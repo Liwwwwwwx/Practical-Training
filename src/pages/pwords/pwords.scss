@@ -1,0 +1,60 @@
+page-pwords {
+    ion-content{
+
+        background-color: #e4e2e2!important;
+        .title{
+            // float: right;
+            margin-left: 35%;
+            font-size: 18px;
+            color: #42413F;
+        }
+        .addtext{
+            font-size: 16px;
+            margin-top: 25px;
+            height: 170px;
+            width: 100%;
+            background-color: rgb(255, 255, 255);
+            box-shadow: 2px 2px 5px #888888;
+            border:0px solid;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .icon_family{
+            color: #42413F;
+            margin-top: 15px;
+            float: left;
+            margin-left: 5px;
+        }
+        .icon_emoji{
+            color: #42413F;
+            margin-top: 15px;
+            float: left;
+            margin-left: 12px;
+        }
+        .wordlimit{
+            color: #42413F;
+            font-size: 14px;
+            margin-top: 15px;
+            float: left;
+            margin-left: 15px;
+        }
+        .tag {
+            margin-top: 50px; 
+            font-size: 14px;
+            input {
+                margin-left: 5px;
+            }
+        }
+         .button-md {
+             width: 50%;
+             margin-top: 20px;
+             margin-left: 28%;
+             background-color:rgb(255, 255, 255)!important;
+             color: #42413F;
+             
+         }
+         
+    }
+
+}
