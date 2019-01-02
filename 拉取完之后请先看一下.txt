@@ -170,3 +170,6 @@ date:2019/1/1/15:50
 
 date:2019/1/2/9:46
 修改了pages的fan,guanzhu,replydetail,comment,contact页面的他人资料链接，修改了otheruser页面样式
+
+date:2019/1/2/11:26
+修改了需求说明书
