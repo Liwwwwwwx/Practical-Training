@@ -68,9 +68,9 @@ export class CommentPage {
       commentCount:this.items[i].commentCount
     });
   }
-  gootheruser(){
+  gootheruser(i){
     this.navCtrl.push(OtheruserPage,{
-      username: this.items[0].username,
+      username: this.items[i].username,
     });
   }
   submit() {

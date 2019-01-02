@@ -16,9 +16,9 @@
 <ion-content >
     <ul *ngFor="let item of items;let i = index">
         <li class="head">
-          <img src="{{item.avatar}}" alt="" (click)="goother()">
+          <img src="{{item.avatar}}" alt="" (click)="goother(i)">
         </li>
-        <li class="name" (click)="goother()">
+        <li class="name" (click)="goother(i)">
           <span>{{item.username}}</span>
         </li>
         <li class="word">
