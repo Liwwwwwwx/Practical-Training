@@ -9,6 +9,7 @@ import {
 import { HttpClient } from "@angular/common/http";
 import { Storage } from "@ionic/storage";
 import { ReplydetailPage } from "../replydetail/replydetail";
+import { OtheruserPage } from "../otheruser/otheruser";
 /**
  * Generated class for the CommentPage page.
  *
@@ -65,6 +66,11 @@ export class CommentPage {
       username: this.username,
       index: i,
       commentCount:this.items[i].commentCount
+    });
+  }
+  gootheruser(){
+    this.navCtrl.push(OtheruserPage,{
+      username: this.items[0].username,
     });
   }
   submit() {

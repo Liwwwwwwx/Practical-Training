@@ -8,6 +8,7 @@ import {
 import { HttpClient } from "@angular/common/http";
 import { DetailPage } from "../detail/detail";
 import { CommentPage } from "../comment/comment";
+import { OtheruserPage } from "../otheruser/otheruser";
 
 //import { Camera } from '@ionic-native/camera';
 
@@ -98,5 +99,10 @@ export class ContactPage {
       position: position
     });
     toast.present(toast);
+  }
+  goother(){
+    this.navCtrl.push(OtheruserPage,{
+      username: this.items[0].username,
+    })
   }
 }

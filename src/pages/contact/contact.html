@@ -14,7 +14,7 @@
           <div class="userInfo">
             <img src="{{data.avatar}}" alt="">
             <div class="info">
-              <div class="name">{{data.username}}</div>
+              <div class="name" (click)="goother()">{{data.username}}</div>
               <div class="date">{{data.messagedate.substr(5,5)}} {{data.messagedate.substr(11,5)}}</div>
             </div>
           </div>
@@ -23,18 +23,18 @@
         <div *ngIf="data.type == '回复'" class="content" (click)="gotocomment(i)">{{data.ccontent}}</div>
         <div *ngIf="data.type == '点赞'" class="zan">赞了你</div>
         <div class="note" (click)="gotodetail(i)">
-          <img src="{{data.noteimg}}" *ngIf="data.noteimg" alt="">
+          <img src="{{data.noteimg}}" *ngIf="data.noteimg" alt="" (click)="goother()">
           <div class="notecontent" ngClass="{{data.noteimg?'':note_content}}">
-            <p><span>{{username}}</span>:{{data.notecontent.substr(0,10)}}...</p>
+            <p><span (click)="goother()">{{username}}</span>:{{data.notecontent.substr(0,10)}}...</p>
           </div>
         </div>
       </div>
       <div class="container" *ngIf="data.type == '关注'">
         <div class="avatar">
-          <img src="{{data.avatar}}" alt="">
+          <img src="{{data.avatar}}" alt="" (click)="goother()">
         </div>
         <div style="height: 35px;line-height: 35px;">
-          <span style="color: blue;padding: 10px;">{{data.username}}</span>关注了你
+          <span style="color: blue;padding: 10px;" (click)="goother()">{{data.username}}</span>关注了你
         </div>
         <div class="date">{{data.messagedate.substr(5,5)}} {{data.messagedate.substr(11,5)}}</div>
       </div>

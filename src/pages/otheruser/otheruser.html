@@ -13,16 +13,16 @@
         <div class="head" (click)="godata()">
             <img src="{{avatar}}">
         </div>
-        <!-- <p text-center class="name">{{username}}</p> -->
-        <ion-icon class="name">{{username}}</ion-icon>
+        <p text-center class="name">{{username}}</p>
+        <!-- <ion-icon class="name">{{username}}</ion-icon> -->
         <p text-center class="qm">{{autograph}}</p>
     </div>
-    <div class="funs">
+    <!-- <div class="funs">
         <ul>
             <li class="iconfont" style="border-right: 1px solid gray">&#xe65d;Ta的关注</li>
             <li class="iconfont" >&#xe60f;Ta的粉丝</li>
         </ul>
-    </div>
+    </div> -->
     <div>
         <ul class="wenji">
             <li *ngFor="let item of array; let i = index" (click)="gotoathology(i)">

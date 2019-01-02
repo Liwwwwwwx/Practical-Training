@@ -6,6 +6,7 @@ import {
   ToastController
 } from "ionic-angular";
 import { HttpClient } from "@angular/common/http";
+import { OtheruserPage } from "../otheruser/otheruser";
 
 /**
  * Generated class for the ReplydetailPage page.
@@ -87,5 +88,10 @@ export class ReplydetailPage {
       position: position
     });
     toast.present(toast);
+  }
+  goother(){
+    this.navCtrl.push(OtheruserPage,{
+      username: this.items[0].username,
+    })
   }
 }

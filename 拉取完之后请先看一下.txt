@@ -167,3 +167,6 @@ date:2019/1/1/15:30
 
 date:2019/1/1/15:50
 修改了pages的fun,help，problem，my-collection页面的背景色，user，sign页面(删除了该页面的module.ts)的保存按钮样式
+
+date:2019/1/2/9:46
+修改了pages的fan,guanzhu,replydetail,comment,contact页面的他人资料链接，修改了otheruser页面样式

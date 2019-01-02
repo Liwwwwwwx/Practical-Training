@@ -16,8 +16,8 @@
 <ion-content>
   <ul>
     <li *ngFor="let item of items;let i = index">
-      <img src="{{item.avatar}}" alt="" class="image">
-      <div class="user">{{item.username}}</div>
+      <img src="{{item.avatar}}" alt="" class="image" (click)="gootheruser()">
+      <div class="user" (click)="gootheruser()">{{item.username}}</div>
       <div class="reply">
         <font (click)="goDetail(i)">回复</font>
       </div>

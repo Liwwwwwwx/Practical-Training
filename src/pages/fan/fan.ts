@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams, Events } from "ionic-angular";
 import { HttpClient } from "@angular/common/http";
+import { OtheruserPage } from "../otheruser/otheruser";
 /**
  * Generated class for the FanPage page.
  *
@@ -57,5 +58,10 @@ export class FanPage {
           console.log(data);
         });
     }
+  }
+  goother(){
+    this.navCtrl.push(OtheruserPage,{
+      username: this.items[0].username,
+    })
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams, Events } from "ionic-angular";
 import { HttpClient } from "@angular/common/http";
+import { OtheruserPage } from "../otheruser/otheruser";
 /**
  * Generated class for the GuanzhuPage page.
  *
@@ -56,5 +57,10 @@ export class GuanzhuPage {
         });
         console.log(this.isMutual);
       });
+  }
+  goother(){
+    this.navCtrl.push(OtheruserPage,{
+      username: this.items[0].username,
+    })
   }
 }

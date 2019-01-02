@@ -15,8 +15,8 @@
 
 <ion-content>
     <div class="comment">
-      <img src="{{comment.avatar}}" alt="" class="image">
-      <div class="user">{{comment.username}}</div>
+      <img src="{{comment.avatar}}" alt="" class="image" (click)="goother()">
+      <div class="user" (click)="goother()">{{comment.username}}</div>
       <div class="date">
             {{comment.commentdate.substr(0,10)}} {{comment.commentdate.substr(11,5)}}
       </div>
@@ -29,8 +29,8 @@
     </div> 
     <ul> 
         <li *ngFor="let item of items">
-            <img src="{{item.avatar}}" alt="" class="image">
-            <div class="user">{{item.username}}</div>
+            <img src="{{item.avatar}}" alt="" class="image" (click)="goother()">
+            <div class="user" (click)="goother()">{{item.username}}</div>
             <div class="date">
                 {{item.commentdate.substr(0,10)}}&nbsp;{{item.commentdate.substr(11,5)}}
             </div>
