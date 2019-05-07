@@ -1,0 +1,9 @@
+<!-- pages/classic/classic.wxml -->
+<view class='container'>
+    <view class="header">
+        <v-episode class="episode" />
+        <v-like class="like" />
+    </view>
+    <v-movie wx:if="{{isHidden}}" />
+    <v-essay wx:if="{{!isHidden}}" />
+</view>
