@@ -3,3 +3,27 @@ page{
   font-family: "PingFangSC-Thin";
   font-size: 32rpx;
 }
+@font-face {
+  font-family: 'iconfont';  /* project id 938567 */
+  src: url('//at.alicdn.com/t/font_938567_dgdjipht2li.eot');
+  src: url('//at.alicdn.com/t/font_938567_dgdjipht2li.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_938567_dgdjipht2li.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_938567_dgdjipht2li.woff') format('woff'),
+  url('//at.alicdn.com/t/font_938567_dgdjipht2li.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_938567_dgdjipht2li.svg#iconfont') format('svg');
+}
+.iconfont {
+ font-family:"iconfont" !important;
+ font-size:60rpx;
+ font-style:normal;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+}
+.icon-close:before{content: '\e641';}
+.icon-wenzi:before{content: '\e670';}
+.icon-photo:before{content: '\e63a';}
+.icon-music:before{content: '\e63c';}
+.icon-family:before{content: '\e6ec';}
+.icon-emoji:before{content: '\e602';}
+.icon-pic:before{content: '\e6eb';}
+.icon-mus:before{content: '\e65e';}

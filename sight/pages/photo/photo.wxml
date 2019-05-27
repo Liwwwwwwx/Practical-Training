@@ -1,0 +1,12 @@
+<!--pages/photo/photo.wxml-->
+<view class='container'> 
+  <view class='text'>
+    <textarea placeholder='分享你的视线所及'></textarea>
+  </view>
+  <view>
+    <icon class="iconfont icon-pic family"></icon>
+    <icon class="iconfont icon-emoji emoji"></icon>
+    <button class='btn' disabled='true'>发布</button>
+  </view>
+
+</view>

@@ -1,0 +1,19 @@
+<view class="title">
+  <image src="images/logo.png"/>
+  <text class="name">所及</text>
+  <text>v0.0.1</text>
+</view>
+<view class='lists'>
+  <ul>
+    <li>
+      <span class="left">版本更新</span>
+      <span class="right">已是最新版</span>
+    </li>
+    <li>
+      <span class="left">功能介绍</span>
+    </li>
+    <li>
+      <span class="left">用户帮助</span>
+    </li>
+  </ul>
+</view>  

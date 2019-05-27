@@ -1,0 +1,36 @@
+.title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 1px;
+}
+.title image{
+  width: 130px;
+  height: 130px;
+}
+.title .name{
+  margin-top: -10px;
+}
+.lists ul{
+  padding: 0;
+  width: 100%;
+}
+.lists ul li{
+  padding: 0;
+  margin: 0;
+  float: right;
+  width: 98%;
+  height: 50px;
+  line-height: 50px;
+  background-color:#fff;
+  border-bottom: 0.1px solid lightgray;
+}
+.lists ul li .left{
+  font-size:14px;
+  margin-left:10px;
+}
+.lists ul li .right{
+  color: gray;
+  float:right;
+  margin-right: 10px;
+}

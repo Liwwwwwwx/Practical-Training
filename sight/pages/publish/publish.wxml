@@ -1,0 +1,22 @@
+<view>
+  <button class="words" bindtap='goWords'>
+    <icon class="iconfont icon-wenzi"></icon>
+  </button>
+  <view class='text'>
+    <text>文字类型</text>
+  </view>
+  <button  class="photo" bindtap='goPhoto'>
+    <icon class="iconfont icon-photo"></icon>
+  </button>
+  <view class='text'>
+    <text>图片类型</text>
+  </view>
+  <!-- 音乐 -->
+  <button class="photo" bindtap='goMusic'>
+    <icon class="iconfont icon-music"></icon>
+  </button>
+  <view class='text'>
+    <text>音乐类型</text>
+  </view>
+
+</view>

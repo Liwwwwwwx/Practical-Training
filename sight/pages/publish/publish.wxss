@@ -1,0 +1,42 @@
+/* pages/publish/publish.wxss */
+.close{
+  font-size: 25px;
+  display: block;
+  text-align: center;
+}
+.words{
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  margin-top: 40px;
+  font-size: 30px;
+  line-height: 80px;
+  color:rgb(239, 179, 54);
+  border:0;
+}
+/* .words text{
+  position: absolute;
+  font-size: 10px;
+  color: black;
+  margin-top: 20px;
+} */
+.photo{
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  display: block;
+  line-height: 80px;
+  margin-top: 30px;
+  font-size: 30px;
+  color:rgb(239, 179, 54);
+}
+.text{
+  width: 100%;
+  text-align: center;
+  margin-top: 3%;
+  letter-spacing: 2.5px;
+  text-shadow: 0.5px 0.5px 0.5px rgb(239, 179, 54);
+}

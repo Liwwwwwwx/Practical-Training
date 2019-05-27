@@ -1,0 +1,13 @@
+<!--pages/music/music.wxml-->
+<view class='container'> 
+  <view class='text'>
+    <textarea placeholder='分享你的视线所及' class='txt'></textarea>
+  </view>
+  <view>
+    <icon class="iconfont icon-mus music"></icon>
+    <icon class="iconfont icon-pic emoji"></icon>
+    <icon class="iconfont icon-emoji emoji"></icon>
+    <button class='btn' disabled='true'>发布</button>
+  </view>
+
+</view>

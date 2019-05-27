@@ -1,2 +1,33 @@
-<!--pages/my/ny.wxml-->
-<text>pages/my/ny.wxml</text>
+<view class="container">
+  <view>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+    <block wx:else>
+      <view class='userinfo '>
+         <image  class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view class='text'>
+          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='lists'>
+    <ul>
+      <li>
+        <image src="images/xiaoxi1.png"/>
+        <text>我的消息</text>
+      </li>
+      <li>
+        <image src="images/shoucang.png"/>
+        <text>我喜欢的</text>
+      </li>
+      <li>
+        <image src="images/banben.png"/>
+        <text bindtap="goTo">关于小程序</text>
+      </li>
+    </ul>
+  </view>
+  <view class='btn'>
+    <button bindtap="goPub">我要发布</button>
+  </view>
+
+</view>
