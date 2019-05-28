@@ -48,7 +48,7 @@ Page({
       url: '/pages/version/version',
     })
   },
-  
+
   //切换到发布页面
   goPub: function () {
     wx.navigateTo({
