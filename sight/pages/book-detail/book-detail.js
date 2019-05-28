@@ -1,20 +1,83 @@
 // pages/book-detail/book-detail.js
+import {
+  BookModel
+} from '../../models/book.js'
+// import {
+//   LikeModel
+// } from '../../models/like.js'
+const bookModel = new BookModel()
+// const likeModel = new LikeModel()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    comments:[],
+    book:null,
+    likeCount:false,
+    likeCount:0,
+    posting:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const bid = options.bid
+    console.log(bid)
+    const detail = bookModel.getDetail(bid)
+    // const comments = bookModel.getComments(bid)
+    // const likeStatus = bookModel.getLikeStatus(bid)
+    detail.then(res=>{
+      console.log(res.data.data)
+      this.setData({
+        book:res.data.data
+      })
+    })
+
+    // comments.then(res=>{
+    //   this.setData({
+    //     comments:res.comments
+    //   })
+    // })
+
+    // likeStatus.then(res=>{
+    //   this.setData({
+    //     likeStatus:res.like_status,
+    //     likeCount:res.fav_nums
+    //   })
+    // })
 
   },
+  onLike(event) {
+    const like_or_cancel = event.detail.behavior
+    likeModel.like(like_or_cancel, this.data.book.id,400)
+  },
+  onFakePost(event){
+    this.setData({
+      posting:true
+    })
+  },
+  onCancel(event){
+    this.setData({
+      posting:false
+    })
+  },
 
+  onPost(event){
+    const comment = event.detail.text
+
+    if(comment.length>12){
+      wx.showToast({
+        title: '短评最多12个字',
+        icon:'none'
+      })
+      return
+    }
+  },
+
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
