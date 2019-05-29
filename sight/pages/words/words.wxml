@@ -1,12 +1,20 @@
 <!--pages/words/words.wxml-->
 <view class='container'> 
+  <view class='title'>
+    <textarea placeholder='请输入主题'></textarea>
+  </view>
   <view class='text'>
     <textarea placeholder='分享你的视线所及'></textarea>
+  </view>
+
+  <view>
+    <image class= "show-image" mode="widthFix" src="{{src}}"></image>
   </view>
   <view>
     <icon class="iconfont icon-family family"></icon>
     <icon class="iconfont icon-emoji emoji"></icon>
     <button class='btn' disabled='true'>发布</button>
+    <button class="goPicbtn" type="default" bindtap="goPic" >点击上传照片</button> 
   </view>
 
 </view>
