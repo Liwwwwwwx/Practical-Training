@@ -24,10 +24,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const bid = options.bid
+    var bid = options.bid
     console.log(bid)
     const detail = bookModel.getDetail(bid)
-    // const comments = bookModel.getComments(bid)
+    const comments = bookModel.getComments(bid)
     // const likeStatus = bookModel.getLikeStatus(bid)
     detail.then(res=>{
       console.log(res.data.data)
@@ -36,11 +36,13 @@ Page({
       })
     })
 
-    // comments.then(res=>{
-    //   this.setData({
-    //     comments:res.comments
-    //   })
-    // })
+    comments.then(res=>{
+      console.log(res.data)
+      this.setData({
+        comments:res.data.data
+      })
+    })
+
 
     // likeStatus.then(res=>{
     //   this.setData({
@@ -66,9 +68,20 @@ Page({
   },
 
   onPost(event){
-    const comment = event.detail.text
-
-    if(comment.length>12){
+    const content = event.detail.text
+    console.log(content)
+    const bid  = this.data.book.bookid
+    bookModel.commentPlusOne(bid,content)
+    const comment = this.data.comments
+    comment.find(item => { 
+      if(item.comment == content) {
+        item.count += 1;
+        this.setData({
+          comments:comment
+        })
+      }
+    })
+    if(content.length>12){
       wx.showToast({
         title: '短评最多12个字',
         icon:'none'

@@ -17,6 +17,25 @@ class BookModel extends HTTP {
             }
         })
     }
+    getComments(bid) {
+        return this.request({
+            url:'books/getcomment',
+            method:'POST',
+            data:{
+                bookid:bid
+            }
+        })
+    }
+    commentPlusOne(bid,comment){
+        return this.request({
+            url:'books/commentplusone',
+            method:'POST',
+            data:{
+                bookid:bid,
+                comment:comment
+            }
+        })
+    }
 }
 
 export {

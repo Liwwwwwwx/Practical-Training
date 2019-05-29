@@ -4,7 +4,15 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    
+    index:{
+      type:String,
+      observer:function(newVal,oldVal,changePath){
+        let val = newVal < 10?'0'+newVal:newVal
+        this.setData({
+          _index:val
+        })
+      }
+    }
   },
 
   /**
@@ -13,7 +21,7 @@ Component({
   data: {
     year:0,
     month:'',
-    _index:'01',
+    _index:'',
     months:['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月',
     '九月', '十月', '十一月', '十二月']
   },

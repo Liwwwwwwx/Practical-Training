@@ -24,7 +24,6 @@ class HTTP {
                 'content_type': 'application/json',
             },
             success: (res) => {
-                console.log(res)
                 resolve(res)
             },
             fail: (err) => {

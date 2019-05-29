@@ -9,12 +9,12 @@
   <view class='sub-container'>
     <text class='headline'>短评</text>
     <view class='comment-container'>
-      <block wx:key="content" wx:for="{{util.limit(comments,15)}}">
+      <block wx:key="content" wx:for="{{util.limit(comments,15)}}" >
         <!-- <v-tag tag-class="{{too.hithlight(index)}}" text="{{item.content}}">
           <text class='num' slot="after">{{'+'+item.nums}}</text>
         </v-tag> -->
-        <v-tag text="{{item.content}}">
-          <text class='num' slot="after">{{'+'+item.nums}}</text>
+        <v-tag text="{{item.comment}}" bind:tapping="onPost"> 
+          <text class='num' slot="after">{{'+'+item.count}}</text>
         </v-tag>
       </block>
     </view>
@@ -59,8 +59,8 @@
   </view>
   <view class='comment-container'>
     <block wx:key="content" wx:for="{{util.limit(comments,3)}}">
-        <v-tag bind:tapping="onPost" text="{{item.content}}">
-          <text class='num' slot="after">{{'+'+item.nums}}</text>
+        <v-tag bind:tapping="onPost" text="{{item.comment}}">
+          <text class='num' slot="after">{{'+'+item.count}}</text>
         </v-tag>
       </block>
   </view>

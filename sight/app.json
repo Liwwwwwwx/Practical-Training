@@ -10,6 +10,7 @@
     "pages/photo/photo",
     "pages/music/music"
   ],
+  "requiredBackgroundModes":["audio"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -39,7 +40,7 @@
       {
         "selectedIconPath": "/images/tab/my@highlight.png",
         "pagePath": "pages/my/my",
-        "text": "喜欢",
+        "text": "我的",
         "iconPath": "/images/tab/my.png"
       }
     ]

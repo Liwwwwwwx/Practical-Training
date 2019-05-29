@@ -1,5 +1,6 @@
-<view class="classic-container">
-    <image class="classic-img" src="{{img}}" />
-    <image class="tag" src="images/movie@tag.png" />
-    <text class="content">{{content}}</text>
+<!--components/classic/movie/index.wxml-->
+<view hidden="{{hidden}}" class="classic-container">
+  <image class='classic-img' src="{{img}}" />
+  <image class='tag' src="images/movie@tag.png" />
+  <text class='content'>{{content}}</text>
 </view>
