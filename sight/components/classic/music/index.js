@@ -3,6 +3,7 @@ import {
   classicBeh
 } from '../classic-beh.js'
 
+const bgMusic = wx.getBackgroundAudioManager();
 
 Component({
   /**
@@ -22,12 +23,17 @@ Component({
     playSrc: 'images/player@play.png'
   },
 
+
+  attached(event) {
+    this._recoverStatus()
+    this._monitorSwitch()
+  },
+  
   /**
    * 组件的方法列表
    */
   methods: {
     onPlay: function (event) {
-      const bgMusic = wx.getBackgroundAudioManager();
       bgMusic.title = this.properties.content
       bgMusic.src = this.properties.src
       if (!this.data.playing) {
@@ -43,6 +49,35 @@ Component({
       }
 
     },
+
+    _recoverStatus:function(){
+      if(bgMusic.paused){
+        this.setData({
+          playing:false
+        })
+        return 
+      }
+      if(bgMusic.src == this.properties.src){
+        this.setData({
+          playing:true
+        })
+      }
+    },
+
+    _monitorSwitch:function(){
+      bgMusic.onPlay(()=>{
+        this._recoverStatus()
+      })
+      bgMusic.onPause(() => {
+        this._recoverStatus()
+      })
+      bgMusic.onStop(() => {
+        this._recoverStatus()
+      })
+      bgMusic.onEnded(() => {
+        this._recoverStatus()
+      })
+    }
 
 
 

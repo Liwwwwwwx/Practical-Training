@@ -1,10 +1,11 @@
 <!--pages/photo/photo.wxml-->
 <view class='container'> 
   <view class='text'>
-    <textarea placeholder='分享你的视线所及'></textarea>
+    <textarea placeholder='分享你的视线所及' auto-focus></textarea>
+    <image src="{{tempFilePaths}}" mode="aspecFill" style="width:20%; height:100rpx"/>
   </view>
   <view>
-    <icon class="iconfont icon-pic family"></icon>
+    <icon class="iconfont icon-pic family" bindtap="loadImage"></icon>
     <icon class="iconfont icon-emoji emoji"></icon>
     <button class='btn' disabled='true'>发布</button>
   </view>

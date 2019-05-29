@@ -1,11 +1,12 @@
 // pages/photo/photo.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    tempFilePaths: ''
   },
 
   /**
@@ -14,6 +15,18 @@ Page({
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '发图文'
+    })
+  },
+  loadImage: function () {
+    var _this = this;
+    wx.chooseImage({
+      count: 1,
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        _this.setData({
+          tempFilePaths: res.tempFilePaths
+        })
+      }
     })
   },
 
