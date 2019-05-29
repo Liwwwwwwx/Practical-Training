@@ -23,6 +23,7 @@ class ClassicModel extends HTTP{
 
   isFirst(index){
     let firstIndex = this._getLatestIndex()
+    console.log(index)
     return firstIndex == index?true:false
   }
 
@@ -35,8 +36,9 @@ class ClassicModel extends HTTP{
   }
 
   _getLatestIndex(){
-   let index = wx.getStorageSync('latest')
-   return index
+    return this.request({
+      url:'notes/maxindex'
+    })
   }
 
   _getKey(index){
