@@ -35,8 +35,8 @@
 </p>
 <p>
 <img src="./image/书籍.png" width=250 height=400 />
-<img src="./image/书籍详情页（续）.png" width=250 height=400 />
 <img src="./image/书籍详情页.png" width=250 height=400 />
+<img src="./image/书籍详情页（续）.png" width=250 height=400 />
 </p>
 <p>
 <img src="./image/我的.png" width=250 height=400 />
