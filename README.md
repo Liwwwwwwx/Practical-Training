@@ -6,7 +6,7 @@
 
 **所及app**旨在让每一位用户都能够寻找到自己灵魂深处的共鸣。他是每一位用户的知己。视线所及之处，总有一段文字、几句歌词、一段对白触动到你的心弦，所及app为你记录下每一个触动你的瞬间。同时，所及app也是每一位用户的创作天地，你可以写些小诗，创作长文，亦或是平实的记录生活，引起他人的共鸣，成为你的读者。
 ### 项目地址
-- Github：[https://github.com/nieliangpeng/Worry-Grocery-Shop-APP](https://github.com/nieliangpeng/Worry-Grocery-Shop-APP)
+- Github：[https://github.com/Aluaead/Practical-Training?tdsourcetag=s_pctim_aiomsg](https://github.com/Aluaead/Practical-Training?tdsourcetag=s_pctim_aiomsg)
 
 ### 项目成员
 
